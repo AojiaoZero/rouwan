@@ -1,7 +1,6 @@
 var crypto=require('crypto');
 
 exports.nfix=function(n,l,f){f=f?f:'0';var i=0,t=l-n.toString().length,fix='';for(i;i<t;i++){fix+=f;}return fix+n;}
-exports.fixDate=function(n){return (n<10)?('0'+n.toString()):n.toString();}
 
 exports.date=function(str,t){
 	var d=new Date(),pos,re='';
@@ -13,19 +12,19 @@ exports.date=function(str,t){
 				re+=d.getFullYear().toString();
 				break;
 			case 'm':
-				re+=exports.fixDate(d.getMonth()+1);
+				re+=exports.nfix(d.getMonth()+1,2);
 				break;
 			case 'd':
-				re+=exports.fixDate(d.getDate());
+				re+=exports.nfix(d.getDate(),2);
 				break;
 			case 'h':
-				re+=exports.fixDate(d.getHours());
+				re+=exports.nfix(d.getHours(),2);
 				break;
 			case 'i':
-				re+=exports.fixDate(d.getMinutes());
+				re+=exports.nfix(d.getMinutes(),2);
 				break;
 			case 's':
-				re+=exports.fixDate(d.getSeconds());
+				re+=exports.nfix(d.getSeconds(),2);
 				break;
 			case 'q':
 				re+=exports.nfix(d.getMilliseconds(),3);
