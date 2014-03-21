@@ -1,0 +1,53 @@
+exports.validate=function(m,o){
+	var i,re=[];
+	for(i in o){
+		if(m[i]){
+			if(m[i].email){
+				if(!rw.util.isEmail(o[i])){
+					re.push(m[i].fail);
+					break;
+				}
+			}
+			if(m[i].safe){
+				o[i]=rw.util.safe(o[i]);
+			}
+			if(m[i].safereg){
+				o[i]=rw.util.safeReg(o[i]);
+			}
+			if(m[i].lowercase){
+				o[i]=o[i].toLowerCase();
+			}
+			if(m[i].inarr){
+				if(m[i].inarr.indexOf(o[i])<0){
+					re.push(m[i].fail);
+					break;
+				}
+			}
+			if(m[i].type){
+				if(typeof(o[i])!=m[i].type){
+					re.push(m[i].fail);
+					break;
+				}
+			}
+			if(m[i].length){
+				if(m[i].length[0]!=0){
+					if(o[i].length<m[i].length[0]){
+						re.push(m[i].fail);
+						break;
+					}
+				}
+				if(m[i].length[1]!=0){
+					if(o[i].length>m[i].length[1]){
+						re.push(m[i].fail);
+						break;
+					}
+				}
+			}
+		}
+	}
+	m=null;
+	o=null;
+	i=null;
+	return re;
+	re=null;
+};
