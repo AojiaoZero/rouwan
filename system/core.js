@@ -55,10 +55,6 @@ rw.log.write('Load System Module [Zlib] ...');
 global.rw.zlib=require('zlib');
 rw.log.write('System Module [Zlib] Loaded.');
 
-rw.log.write('Load System Module [Util.Inspect] ...');
-global.rw.inspect=require('util').inspect;
-rw.log.write('System Module [Util.Inspect] Loaded.');
-
 rw.log.write('Load System Module [Querystring] ...');
 global.rw.querystring=require('querystring');
 rw.log.write('System Module [Querystring] Loaded.');

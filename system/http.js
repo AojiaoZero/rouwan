@@ -2,13 +2,16 @@ global.rw.moduleList={};
 global.rw.moduleReloadList={};
 
 function buildErrorData(data){
-	return (data.stack+'{LINE}URL: \n'+data.url+'{LINE}').replace(/ |\n|{LINE}/g,function(str){
+	return (data.stack+'{LINE}URL: {URL}{LINE}').replace(/ |\n|{LINE}|{URL}/g,function(str){
 		switch(str){
 			case ' ':
 				return '&nbsp;';
 				break;
 			case '\n':
 				return '<br />';
+				break;
+			case '{URL}':
+				return '<div id="jf"><script type="text/javascript">var json='+data.url+';jsonFormat(json);</script>';
 				break;
 			case '{LINE}':
 				return '<div class="line"></div>';
@@ -86,7 +89,7 @@ exports.throw=function(id,res,data){
 			break;
 		case 500:
 			if(data){
-				data.url=rw.inspect(data.url);
+				data.url=JSON.stringify(data.url);
 				rw.log.write(data.server+': '+data.url+'\n'+data.stack,'error');
 			}
 			res.writeHead(500,rw.config.http.header);

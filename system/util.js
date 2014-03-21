@@ -50,69 +50,6 @@ exports.date=function(str,t){
 	return re;
 };
 
-exports.printJson=function(obj,level){
-	var tagon='{',tagoff='}',fix='',i,arr=[];
-	if(level){
-		for(i=0;i<level;i++){
-			fix+='    ';
-		}
-	}else{
-		level=0;
-		fix='';
-	}
-	if(obj instanceof Array){
-		tagon='[';
-		tagoff=']';
-	}
-	/*if(obj instanceof Array){
-		var t=obj.length;
-		for(i=0,i<t;i++){
-			switch(typeof(obj[i])){
-				case 'string':
-					arr.push('"'+obj[i]+'"');
-					break;
-				case 'number':
-				case 'boolean':
-					arr.push(obj[i]);
-					break;
-				case 'function':
-					arr.push('[Function]');
-					break;
-				case 'object':
-					level++;
-					arr.push(printJson(obj[i],level));
-					break;
-				default:
-					arr.push(fix+'    '+i+': undefined');
-			}
-		}
-	}else{*/
-		for(i in obj){
-			switch(typeof(obj[i])){
-				case 'string':
-					arr.push(fix+'    '+i+': "'+obj[i]+'"');
-					break;
-				case 'number':
-				case 'boolean':
-					arr.push(fix+'    '+i+': '+obj[i]);
-					break;
-				case 'function':
-					//arr.push(fix+'    '+i+': '+obj[i]);
-					arr.push(fix+'    '+i+': [Function]');
-					break;
-				case 'object':
-					level++;
-					arr.push(fix+'    '+i+': '+exports.printJson(obj[i],level));
-					break;
-				default:
-					arr.push(fix+'    '+i+': undefined');
-			}
-		//console.log(i+': '+typeof(obj[i]));
-		}
-	//}
-	return tagon+'\n'+arr.join(',\n')+'\n'+fix+tagoff;
-};
-
 exports.safe=function(s){
 	if(typeof(s)=='undefined'){
 		return;

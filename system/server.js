@@ -61,10 +61,10 @@ exports.request=function(req,res){
 	}else{
 		req.cookie={};
 	}
-	if(req.url.query.log){
+	/*if(req.url.query.log){
 		console.log(req.url);
 		console.log(req.headers);
-	}
+	}*/
 	req.module=rw.routerList[req.server][req.url.router[0]];
 	if(req.module){
 		try{
