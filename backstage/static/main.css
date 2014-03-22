@@ -61,7 +61,7 @@ a:hover{
 	float:left;
 }
 .main .topbox .topbox_menu #logo{
-	margin:0 82px 0 0;
+	margin:0 85px 0 0;
 	width:58px;
 }
 .main .topbox .topbox_menu .menu{
@@ -74,7 +74,7 @@ a:hover{
 .main .topbox .topbox_menu #menu3{
 	margin:0 7px;
 }
-.main .topbox .topbox_menu #menu4{
+.main .topbox .topbox_menu #menu0,.main .topbox .topbox_menu #menu4{
 	margin:1px 0 0;
 }
 .main .topbox .topbox_menu .cur{
@@ -82,6 +82,9 @@ a:hover{
 }
 .main .topbox .topbox_menu .menu:hover{
 	background-position:center -50px  !important;
+}
+.main .topbox .topbox_menu #menu0{
+	background:url(./images/menu0.png?sp=2) no-repeat center 0;
 }
 .main .topbox .topbox_menu #menu1{
 	background:url(./images/menu1.png?sp=2) no-repeat center 0;

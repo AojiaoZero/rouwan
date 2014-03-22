@@ -2,11 +2,14 @@ global.rw.tcache={};
 
 global.rw.templateReloadList={};
 
+var cacheLink={};
+
 var buildTemplateReloadObject=function(source){
 	rw.templateReloadList[source]={};
 	rw.templateReloadList[source].r=function(){
 		exports.load(source,true);
 		rw.log.write('Template File Updated ['+source+']','system');
+		exports.clearCacheLink(source);
 	};
 	rw.templateReloadList[source].d=function(e){
 		if(rw.templateReloadList[source].w){rw.templateReloadList[source].w.close();}
@@ -34,7 +37,7 @@ exports.load=function(source,clear){
 };
 
 exports.render=function(source,data,name,clear){
-	if(name && rw.tcache[name]){
+	if(name && rw.tcache[name] && !clear){
 		return rw.tcache[name];
 	}
 	exports.load(source,clear);
@@ -56,10 +59,21 @@ exports.render=function(source,data,name,clear){
 			re+=(cc[1] || '');
 		}
 	});
-	if(name && !clear){
+	if(name){
 		rw.tcache[name]=re;
+		cacheLink[name]=source;
 	}
 	return re;
+};
+
+exports.clearCacheLink=function(source){
+	var i;
+	for(i in cacheLink){
+		if(cacheLink[i]==source){
+			rw.log.write('Template Cache Deleted ['+i+']','system');
+			delete rw.tcache[i];
+		}
+	}
 };
 
 exports.deleteCache=function(id){

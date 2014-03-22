@@ -44,6 +44,7 @@ exports.config={
 		pass:'/* CHANGE THIS !!! */',
 		ipList:[],
 		switch:{
+			master:true
 		}
 	},
 
