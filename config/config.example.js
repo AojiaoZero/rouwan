@@ -43,8 +43,8 @@ exports.config={
 		/*'backstage':{
 			host:['localhost','127.0.0.1'],
 			port:8931,
-			root:'../backstage/module/',
-			staticPath:'../backstage/static/',
+			root:__dirname+'/../backstage/module/',
+			staticPath:__dirname+'/../backstage/static/',
 			errorPage:{},
 			router:{
 				'index':['','index','index.html'],
@@ -53,8 +53,8 @@ exports.config={
 		'ExampleA.com':{
 			host:['localhost','127.0.0.1'],
 			port:80,
-			root:'../example/',
-			staticPath:'../example/static/',
+			root:__dirname+'/../example/',
+			staticPath:__dirname+'/../example/static/',
 			errorPage:{
 				//403:'403.html',
 				//404:'404.html'

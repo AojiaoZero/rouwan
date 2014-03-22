@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="nofollow" />
+	<title>{{TITLE}}Rouwan - BackStage</title>
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	{{LINK}}
+	<link href="./main.css?sp=1" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./jquery.min.js?sp=1"></script>
+	<script type="text/javascript" src="./main.js?sp=1"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="topbox">
+			<div class="topbox_menu">
+				<a href="./index.html" id="logo"><img src="./images/logo.png?sp=2" alt="Rouwan" /></a>
+				<a href="./index.html" id="menu1" class="menu{{MCUR1}}">Index</a>
+				<a href="./code.html" id="menu2" class="menu{{MCUR2}}">Code</a>
+				<a href="./cache.html" id="menu3" class="menu{{MCUR3}}">Cache</a>
+				<a href="./log.html" id="menu4" class="menu{{MCUR4}}">Log</a>
+			</div>
+			<div class="topbox_bar"></div>
+			<div id="hitokoto">『Loading...』</div>
+		</div>
+		<img src="./images/bk.png?sp=2" id="bkImg" onmousedown="return false" />
+		<div class="wrapper">
+			{{WRAPPER}}
+		</div>
+		<div id="fbox">
+			<a href="javascript:void(0);" onclick="$(document).scrollTop(0)"><img src="./images/gotop.png?sp=2" alt="goTop" /></a>
+		</div>
+		<div class="bottombox">
+			<img src="./images/nodelogo_s.png?sp=2" alt="NodeJs" onmousedown="return false" />
+			Email: sai # marisai.com<br />
+			Copyright &copy; 2014 Hitokoto.us &amp; Sai. &nbsp;
+		</div>
+	</div>
+	<div id="cover"></div>
+	<div id="msgBox"><a id="msgBoxAc" href="javascript:void(0);" class="cbu" onclick="$pw.close()"><img src="./css/images/closeBu.png" alt="关闭" /></a><h1 id="msgTitle"></h1><div id="msgCon"></div></div>
+	<script type="text/javascript">
+		setTimeout(function(){
+			var hjs=document.createElement('script');
+			hjs.setAttribute('src','http://api.hitokoto.us/rand?encode=jsc&fun=$m.hitokoto');
+			document.body.appendChild(hjs);
+		},100);
+		$(document).scroll($m.docScroll);
+		$('#topbox_ua').on('mouseenter',$m.uame);
+	</script>
+</body>
+</html>
