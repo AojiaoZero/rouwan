@@ -1,4 +1,5 @@
 exports.config={
+	version:0.1,
 	http:{
 		header:{
 			'Content-Type':'text/html;charset=utf-8',
