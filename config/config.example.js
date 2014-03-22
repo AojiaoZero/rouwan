@@ -33,10 +33,17 @@ exports.config={
 			download:"application/octet-stream"
 		},
 		compress:/html|js|css/ig,
-
 		cookie:{
 			lifeTime:30*24*3600,
 			prefix:'NRWSID'
+		}
+	},
+	
+	backstage:{
+		user:'/* CHANGE THIS !!! */',
+		pass:'/* CHANGE THIS !!! */',
+		ipList:[],
+		switch:{
 		}
 	},
 
@@ -97,6 +104,12 @@ exports.config={
 		error:{
 			color:31,
 			filename:'error',
+			path:'./log/',
+			of:true
+		},
+		backstage:{
+			color:34,
+			filename:'backstage',
 			path:'./log/',
 			of:true
 		}

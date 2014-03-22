@@ -72,7 +72,7 @@ a:hover{
 	margin:0 10px 0 0;
 }
 .main .topbox .topbox_menu #menu3{
-	margin:0 8px;
+	margin:0 7px;
 }
 .main .topbox .topbox_menu #menu4{
 	margin:1px 0 0;
@@ -251,4 +251,9 @@ a:hover{
 	-khtml-opacity:0.2;
 	opacity:0.2;
 	z-index:-999;
+	-khtml-user-select:none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	user-select:none;
+	-moz-user-select:none;
 }
