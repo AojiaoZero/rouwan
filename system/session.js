@@ -50,4 +50,5 @@ exports.start=function(req,res,f){
 		}
 	}
 	req.session=rw.session[req.cookie[rw.config.http.cookie.prefix]];
+	req.session.utime=new Date().getTime();
 };
