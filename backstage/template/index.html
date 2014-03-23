@@ -2,7 +2,26 @@
 				<h1>Process</h1>
 				<div class="process">
 					NodeJs Version: <b>{{NV}}</b><br />
-					PID: <b>{{PID}}</b> as <b>{{TITLE}}</b>, Memory Usage: <b>{{MEM}}</b>, Uptime: <b>{{UP}}</b><br />
-					[ <a href="javascript:void(0)" onclick="$a.restart()">Restart</a><span id="rsh"></span> ] [ <a href="javascript:void(0)" onclick="$a.exit()">Exit</a><span id="exh"></span> ]
+					PID: <b>{{PID}}</b> as <b>{{TITLE}}</b>, Memory Usage: <b>{{MEM}}</b> (<b>{{MEMP}}</b> of <b>{{SMEM}}</b>), Uptime: <b>{{UP}}</b><br />
+					Loadavg: <b>{{LAV}}</b>, Free Memory: <b>{{FRM}}</b>, Uptime: <b>{{OSUP}}</b><br />
+					[ <a href="javascript:void(0)" onclick="$i.restart()" id="rsa">Restart</a><span id="rsh"></span> ] [ <a href="javascript:void(0)" onclick="$i.exit()" id="exa">Exit</a><span id="exh"></span> ]
+				</div>
+			</div>
+			<div>
+				<h1>Object</h1>
+				<div class="object">
+					Target: <input id="oid" class="bindOid uinput" value="{{OID}}" /> <input id="oidBu" class="abu" value="Edit" type="button" onclick="$i.oid()" /> <input type="hidden" id="do" class="bindOid" value="oid" /> <input type="hidden" id="oid" class="bindOids bindOidd" value="oid" />
+					<div id="objectEditor"></div>
+					<script type="text/javascript">
+						var editor=ace.edit("objectEditor");
+						//editor.session.setUseWorker(false);
+						editor.setTheme("ace/theme/textmate");
+						editor.session.setMode("ace/mode/json");
+						editor.setFontSize(15);
+						editor.session.setUseWrapMode(true);
+						editor.setShowPrintMargin(false);
+						editor.session.setUseSoftTabs(false);
+					</script>
+					<div id="objectBar"><input id="oidsBu" class="abu" value="Save" type="button" onclick="$i.oids()" /> <input id="oiddBu" class="abu" value="Delete" type="button" onclick="$i.oidd()" /> <input id="oidscBu" class="abu" value="Cancel" type="button" onclick="$i.oidsc()" /> <input type="hidden" id="do" class="bindOids" value="oids" /></div>
 				</div>
 			</div>

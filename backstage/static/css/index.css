@@ -1,0 +1,47 @@
+.process{
+	font-size:14px;
+	margin:5px 18px 40px;
+}
+
+.object{
+	margin:5px 18px 40px;
+}
+#oid{
+	width:400px;
+	font-size:15px;
+	margin:0 10px 0;
+}
+#oidBu{
+	margin:0 0 0 5px;
+}
+#objectEditor{
+	border:1px solid #dddddd;
+	display:none;
+	margin:15px 0;
+	width:80%;
+	height:300px;
+}
+#objectBar{
+	display:none;
+}
+
+.ace-tm{
+	background:url(./images/topBkl.png?sp=2) !important;
+}
+.ace_bracket{
+	background:#cccccc !important;
+}
+
+#oidsBu{
+	background:#19ab20;
+}
+#oidsBu:hover{
+	background:#43e028;
+}
+#oiddBu{
+	background:#d63d3e;
+	margin:0 10px 0;
+}
+#oiddBu:hover{
+	background:#ff6f70;
+}

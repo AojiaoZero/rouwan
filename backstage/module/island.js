@@ -12,6 +12,7 @@ var dataReceived=function(req,res){
 	}
 	if(req.post.do!='login'){
 		if(!common.checkAuth(req,res)){
+			rw.log.write('Auth Fail ['+req.post.do+'] ['+req.connection.remoteAddress+']','backstage');
 			req=null;
 			res=null;
 			return;
@@ -56,6 +57,37 @@ var dataReceived=function(req,res){
 			delete req.session.data;
 			req.session.data={};
 			rw.http.zout('{"js":"$m.logouted()"}',req,res);
+			rw.log.write('Logout ['+req.connection.remoteAddress+']','backstage');
+			req=null;
+			res=null;
+			break;
+		case 'exit':
+			rw.http.zout('{"js":"$i.r()"}',req,res);
+			rw.log.write('Exit ['+req.connection.remoteAddress+']','backstage');
+			process.kill(process.pid,'SIGINT');
+			break;
+		case 'restart':
+			rw.http.zout('{"js":"$i.r()"}',req,res);
+			rw.log.write('Restart ['+req.connection.remoteAddress+']','backstage');
+			rw.log.write('Restarting ...','system');
+			var exec=require('child_process').exec;
+			exec('node '+__dirname+'/../lib/restart.js '+process.pid+' "'+rw.config.backstage.startScript+'"');
+			break;
+		case 'oid':
+			var arr=req.post.oid.split('.');
+			arr.shift();
+			var i,o=rw;
+			for(i in arr){
+				if(!o[arr[i]]){
+					o=null;
+					break;
+				}
+				o=o[arr[i]];
+			}
+			//o=require('util').inspect(o,{showHidden:true,depth:1}).replace(/\n/g,'');
+			i=null;
+			arr=null;
+			rw.http.zout(JSON.stringify({'js':'$i.oided(json.re,json.oid)','re':o,'oid':req.post.oid}),req,res);
 			req=null;
 			res=null;
 			break;

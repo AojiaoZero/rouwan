@@ -203,6 +203,7 @@ a:hover{
 	line-height:20px;
 	padding:10px 0 10px 15px;
 	font-family:微软雅黑,黑体,Arial;
+	z-index:9999;
 }
 .main .bottombox img{
 	position:absolute;
@@ -311,9 +312,4 @@ a:hover{
 	width:200px;
 	height:20px;
 	line-height:20px;
-}
-
-.process{
-	font-size:14px;
-	margin:5px 18px;
 }

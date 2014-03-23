@@ -43,6 +43,7 @@ exports.config={
 		user:'/* CHANGE THIS !!! */',
 		pass:'/* CHANGE THIS !!! */',
 		ipList:[],
+		startScript:'',
 		switch:{
 			master:true
 		}
