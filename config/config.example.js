@@ -50,7 +50,7 @@ exports.config={
 	},
 
 	server:{
-		/*'backstage':{
+		'backstage':{
 			host:['localhost','127.0.0.1'],
 			port:8931,
 			root:__dirname+'/../backstage/module/',
@@ -58,9 +58,10 @@ exports.config={
 			errorPage:{},
 			router:{
 				'index':['','index','index.html'],
+				'code':['code','code.html'],
 				'island':['island']
 			}
-		},*/
+		},
 		'ExampleA.com':{
 			host:['localhost','127.0.0.1'],
 			port:80,
