@@ -16,7 +16,7 @@ var buildTemplateReloadObject=function(source){
 		rw.templateReloadList[source].w=rw.fs.watch(source,{persistent:false},rw.templateReloadList[source].d);
 		if(e=='change'){
 			if(rw.templateReloadList[source].s){clearTimeout(rw.templateReloadList[source].s);}
-			rw.templateReloadList[source].s=setTimeout(rw.templateReloadList[source].r,5000);
+			rw.templateReloadList[source].s=setTimeout(rw.templateReloadList[source].r,rw.config.reloadInt);
 		}else if(!e){
 			exports.load(source);
 		}

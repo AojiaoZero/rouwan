@@ -1,5 +1,6 @@
 exports.config={
 	version:0.1,
+	reloadInt:5000,
 	http:{
 		header:{
 			'Content-Type':'text/html;charset=utf-8',

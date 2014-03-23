@@ -430,7 +430,7 @@ function buildModuleReloadObject(m,mp){
 		rw.moduleReloadList[m].w=rw.fs.watch(mp,{persistent:false},rw.moduleReloadList[m].d);
 		if(e=='change'){
 			if(rw.moduleReloadList[m].s){clearTimeout(rw.moduleReloadList[m].s);}
-			rw.moduleReloadList[m].s=setTimeout(rw.moduleReloadList[m].r,5000);
+			rw.moduleReloadList[m].s=setTimeout(rw.moduleReloadList[m].r,rw.config.reloadInt);
 		}else if(!e){
 			rw.moduleList[m]=require(mp);
 		}
