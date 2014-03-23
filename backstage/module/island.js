@@ -177,7 +177,7 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'etc':
-			rw.http.zout(JSON.stringify({'js':'$i.etced(json.re,json.id)','re':encodeURI(rw.tcache[req.post.id]),'id':req.post.id}),req,res);
+			rw.http.zout(JSON.stringify({'js':'$i.etced(json.re,json.id)','re':new Buffer(rw.tcache[req.post.id],'utf8').toString('base64'),'id':req.post.id}),req,res);
 			req=null;
 			res=null;
 			break;
@@ -189,7 +189,7 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'savetc':
-			rw.tcache[req.post.id]=decodeURI(req.post.o);
+			rw.tcache[req.post.id]=new Buffer(req.post.o,'base64').toString('utf8');
 			rw.log.write('Template Cache Saved ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.savetced()'}),req,res);
 			req=null;
@@ -206,6 +206,70 @@ var dataReceived=function(req,res){
 			delete rw.tcache[req.post.id];
 			rw.log.write('Template Cache Deleted ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.deltced()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'go':
+			req.post.path=rw.path.normalize(req.post.path);
+			if(!rw.fs.existsSync(req.post.path)){
+				rw.http.zout(JSON.stringify({'js':'$c.goNE()'}),req,res);
+				req=null;
+				res=null;
+				return;
+			}
+			var f=false;
+			try{
+				f=rw.fs.readdirSync(req.post.path);
+			}catch(e){
+				
+			}
+			if(!f){
+				rw.http.zout(JSON.stringify({'js':'$c.goND()'}),req,res);
+				f=null;
+				req=null;
+				res=null;
+				return;
+			}
+			var darr=[],farr=[],i,o;
+			for(i in f){
+				o=rw.fs.statSync(req.post.path+'/'+f[i]);
+				if(o.isDirectory()){
+					darr.push(f[i]);
+				}else if(o.isFile()){
+					farr.push({f:f[i],s:o.size});
+				}
+			}
+			req.session['rouwan_path']=req.post.path;
+			rw.http.zout(JSON.stringify({'js':'$c.god(json.darr,json.farr,json.cd)','darr':darr,'farr':farr,'cd':req.post.path}),req,res);
+			req=null;
+			res=null;
+			o=null;
+			i=null;
+			darr=null;
+			farr=null;
+			f=null;
+			break;
+		case 'gof':
+			req.post.f=rw.path.normalize(req.post.f);
+			var re=rw.fs.readFileSync(req.post.f).toString('base64');
+			rw.http.zout(JSON.stringify({'js':'$c.gofed(json.re,json.cf)','re':re,'cf':req.post.f}),req,res);
+			re=null;
+			req=null;
+			res=null;
+			break;
+		case 'sf':
+			req.post.f=rw.path.normalize(req.post.f);
+			rw.fs.writeFileSync(req.post.f,new Buffer(req.post.o,'base64'));
+			rw.log.write('File Saved ['+req.post.f+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$c.sfed()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'df':
+			req.post.f=rw.path.normalize(req.post.f);
+			rw.fs.unlinkSync(req.post.f);
+			rw.log.write('File Deleted ['+req.post.f+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$c.dfed()'}),req,res);
 			req=null;
 			res=null;
 			break;

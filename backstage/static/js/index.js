@@ -141,7 +141,7 @@ var $i={
 		$("#msgTitle").html('Edit Template Cache - '+id);
 		$("#msgCon").append('<input id="stcBu" class="abu" value="Save" type="button" onclick="$i.savetc()" /> <input id="dtcBu" class="abu" value="Delete" type="button" onclick="$i.deltc()" /> <input id="stccBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" /><input type="hidden" id="id" class="bindStc bindDtc" /><input type="hidden" id="do" class="bindStc" value="savetc" /><input type="hidden" id="do" class="bindDtc" value="deltc" />');
 		
-		pwdEditor.setValue(decodeURI(re));
+		pwdEditor.setValue(B64.decode(re));
 		pwdEditor.clearSelection();
 		
 		$("#pwdType").val('html');
@@ -170,7 +170,7 @@ var $i={
 			$m.dbu("#dtcBu","Delete");
 			$m.dbu("#stccBu","Cancel");
 			var o=$m.bind('bindStc');
-			o.o=encodeURI(pwdEditor.getValue());
+			o.o=B64.encode(pwdEditor.getValue());
 			$m.post('./island?sp=1',o);
 		}
 	},

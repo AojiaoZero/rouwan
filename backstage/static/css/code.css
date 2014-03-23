@@ -1,0 +1,40 @@
+#path{
+	font-size:18px;
+	width:80%;
+	margin:0 17px 0 15px;
+}
+
+#tree{
+	margin:20px 0 40px 33px !important;
+	font-size:16px;
+}
+#tree li{
+	list-style:disc;
+}
+
+#tree .dir{
+	font-size:17px;
+	font-weight:bold;
+}
+#tree .file{
+	color:green;
+}
+#tree .size{
+	margin:0 20px 0;
+	font-size:13px;
+	color:#999999;
+}
+
+#sfBu{
+	background:#19ab20;
+}
+#sfBu:hover{
+	background:#43e028;
+}
+#dfBu{
+	background:#d63d3e;
+	margin:0 10px 0;
+}
+#dfBu:hover{
+	background:#ff6f70;
+}
