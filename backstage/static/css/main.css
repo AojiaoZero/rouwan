@@ -329,3 +329,9 @@ a:hover{
 .ace_bracket{
 	background:#cccccc !important;
 }
+
+#msgTitle{
+	white-space:nowrap;
+	overflow:hidden;
+	max-width:90%;
+}

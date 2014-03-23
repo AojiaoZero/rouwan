@@ -106,7 +106,7 @@ var dataReceived=function(req,res){
 			delete o[id];
 			o=null;
 			id=null;	
-			rw.log.write('Object Delete ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.log.write('Object Deleted ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.oidded()'}),req,res);
 			req=null;
 			res=null;
@@ -127,7 +127,7 @@ var dataReceived=function(req,res){
 			o[id]=req.post.o;
 			o=null;
 			id=null;	
-			rw.log.write('Object Save ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.log.write('Object Saved ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.oidsed()'}),req,res);
 			req=null;
 			res=null;
@@ -146,7 +146,7 @@ var dataReceived=function(req,res){
 		case 'lc':
 			var i,re='',c=0;
 			for(i in rw.cacheData){
-				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a></li>';
+				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a><span>'+rw.util.date('m.d h:i:s',rw.cacheData[i].create)+'</span></li>';
 				c++;
 			}
 			i=null;
@@ -160,7 +160,7 @@ var dataReceived=function(req,res){
 		case 'ltc':
 			var i,re='',c=0;
 			for(i in rw.tcache){
-				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a></li>';
+				re+='<li><a href="javascript:void(0)" onclick=$i.etc("'+i+'")>'+i+'</a></li>';
 				c++;
 			}
 			i=null;
@@ -168,6 +168,44 @@ var dataReceived=function(req,res){
 			rw.http.zout(JSON.stringify({'js':'$i.lced(json.re)','re':re}),req,res);
 			re=null;
 			c=null;
+			req=null;
+			res=null;
+			break;
+		case 'ec':
+			rw.http.zout(JSON.stringify({'js':'$i.eced(json.re,json.id)','re':rw.cacheData[req.post.id],'id':req.post.id}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'etc':
+			rw.http.zout(JSON.stringify({'js':'$i.etced(json.re,json.id)','re':encodeURI(rw.tcache[req.post.id]),'id':req.post.id}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'savec':
+			rw.cacheData[req.post.id]=req.post.o;
+			rw.log.write('Cache Saved ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.saveced()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'savetc':
+			rw.tcache[req.post.id]=decodeURI(req.post.o);
+			rw.log.write('Template Cache Saved ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.savetced()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'delc':
+			delete rw.cacheData[req.post.id];
+			rw.log.write('Cache Deleted ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.delced()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'deltc':
+			delete rw.tcache[req.post.id];
+			rw.log.write('Template Cache Deleted ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.deltced()'}),req,res);
 			req=null;
 			res=null;
 			break;

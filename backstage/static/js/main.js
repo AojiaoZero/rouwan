@@ -79,9 +79,17 @@ var $pw={
 };
 var $pwd={
 		logout:{
-			title:"登出",
+			title:"Logout",
 			ac:true,
-			content:"正在登出... ",
+			content:"Loading... ",
+			d:function(){
+				$('#uamenu').off('mouseleave');
+			}
+		},
+		loading:{
+			title:"Loading ...",
+			ac:true,
+			content:"",
 			d:function(){
 				$('#uamenu').off('mouseleave');
 			}

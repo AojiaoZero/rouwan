@@ -18,21 +18,30 @@
 #lcBu{
 	margin:0 10px 0 0;
 }
-#oidsBu,#lcBu{
+#oidsBu,#lcBu,#scBu,#stcBu{
 	background:#19ab20;
 }
-#oidsBu:hover,#lcBu:hover{
+#oidsBu:hover,#lcBu:hover,#scBu:hover,#stcBu:hover{
 	background:#43e028;
 }
-#oiddBu{
+#oiddBu,#dcBu,#dtcBu{
 	background:#d63d3e;
 	margin:0 10px 0;
 }
-#oiddBu:hover{
+#oiddBu:hover,#dcBu:hover,#dtcBu:hover{
 	background:#ff6f70;
 }
 
 #cacheRe{
-	margin:15px 0 !important;
+	margin:15px 0 40px 18px !important;
 	font-size:15px;
+}
+#cacheRe li{
+	list-style:disc !important;
+}
+#cacheRe span{
+	display:block !important;
+	font-size:13px !important;
+	color:#999999;
+	font-weight:normal;
 }

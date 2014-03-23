@@ -53,9 +53,12 @@ var $i={
 	oided:function(re,oid){
 		$pw.load($ipwd.objectEditor);
 		$("#msgTitle").html('Edit Object - '+oid);
+		$("#msgCon").append('<input id="oidsBu" class="abu" value="Save" type="button" onclick="$i.oids()" /> <input id="oiddBu" class="abu" value="Delete" type="button" onclick="$i.oidd()" /> <input id="oidscBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" /><input type="hidden" id="oid" class="bindOids bindOidd" /><input type="hidden" id="do" class="bindOidd" value="oidd" /><input type="hidden" id="do" class="bindOids" value="oids" />');
+		
 		re=JSON.stringify(re,null,'	');
 		pwdEditor.setValue(re);
 		pwdEditor.clearSelection();
+		
 		$m.ebu("#oidBu","Edit");
 		$m.bindFind("bindOids","oid").val(oid);
 	},
@@ -109,18 +112,108 @@ var $i={
 		$m.dbu("#ltcBu","Load Template Cache");
 		$("#cacheRe").html('<li>Loading Template Cache...</li>');
 		$m.post('./island?sp=1',{"do":"ltc"});
+	},
+	ec:function(id){
+		$pw.load($pwd.loading);
+		$("#msgCon").html(id+' ...');
+		$pw.fix();
+		$m.post('./island?sp=1',{"do":"ec","id":id});
+	},
+	etc:function(id){
+		$pw.load($pwd.loading);
+		$("#msgCon").html(id+' ...');
+		$pw.fix();
+		$m.post('./island?sp=1',{"do":"etc","id":id});
+	},
+	eced:function(re,id){
+		$pw.load($ipwd.objectEditor);
+		$("#msgTitle").html('Edit Cache - '+id);
+		$("#msgCon").append('<input id="scBu" class="abu" value="Save" type="button" onclick="$i.savec()" /> <input id="dcBu" class="abu" value="Delete" type="button" onclick="$i.delc()" /> <input id="sccBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" /><input type="hidden" id="id" class="bindSc bindDc" /><input type="hidden" id="do" class="bindSc" value="savec" /><input type="hidden" id="do" class="bindDc" value="delc" />');
+		
+		re=JSON.stringify(re,null,'	');
+		pwdEditor.setValue(re);
+		pwdEditor.clearSelection();
+		
+		$m.bindFind("bindSc","id").val(id);
+	},
+	etced:function(re,id){
+		$pw.load($ipwd.objectEditor);
+		$("#msgTitle").html('Edit Template Cache - '+id);
+		$("#msgCon").append('<input id="stcBu" class="abu" value="Save" type="button" onclick="$i.savetc()" /> <input id="dtcBu" class="abu" value="Delete" type="button" onclick="$i.deltc()" /> <input id="stccBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" /><input type="hidden" id="id" class="bindStc bindDtc" /><input type="hidden" id="do" class="bindStc" value="savetc" /><input type="hidden" id="do" class="bindDtc" value="deltc" />');
+		
+		pwdEditor.setValue(decodeURI(re));
+		pwdEditor.clearSelection();
+		
+		$("#pwdType").val('html');
+		pwdTypeChange();
+		
+		$m.bindFind("bindStc","id").val(id);
+	},
+	savec:function(){
+		if(window.confirm('Are you sure to SAVE ?')){
+			$m.dbu("#scBu","Loading...");
+			$m.dbu("#dcBu","Delete");
+			$m.dbu("#sccBu","Cancel");
+			var o=$m.bind('bindSc');
+			o.o=JSON.parse(pwdEditor.getValue());
+			$m.post('./island?sp=1',o);
+		}
+	},
+	saveced:function(){
+		$m.ebu("#scBu","Save");
+		$m.ebu("#dcBu","Delete");
+		$m.ebu("#sccBu","Cancel");
+	},
+	savetc:function(){
+		if(window.confirm('Are you sure to SAVE ?')){
+			$m.dbu("#stcBu","Loading...");
+			$m.dbu("#dtcBu","Delete");
+			$m.dbu("#stccBu","Cancel");
+			var o=$m.bind('bindStc');
+			o.o=encodeURI(pwdEditor.getValue());
+			$m.post('./island?sp=1',o);
+		}
+	},
+	savetced:function(){
+		$m.ebu("#stcBu","Save");
+		$m.ebu("#dtcBu","Delete");
+		$m.ebu("#stccBu","Cancel");
+	},
+	delc:function(){
+		if(window.confirm('Are you sure to DELETE ?')){
+			$m.dbu("#scBu","Save");
+			$m.dbu("#dcBu","Loading...");
+			$m.dbu("#sccBu","Cancel");
+			$m.post('./island?sp=1',$m.bind('bindDc'));
+		}
+	},
+	delced:function(){
+		$pw.close();
+		$i.lc();
+	},
+	deltc:function(){
+		if(window.confirm('Are you sure to DELETE ?')){
+			$m.dbu("#stcBu","Save");
+			$m.dbu("#dtcBu","Loading...");
+			$m.dbu("#stccBu","Cancel");
+			$m.post('./island?sp=1',$m.bind('bindDtc'));
+		}
+	},
+	deltced:function(){
+		$pw.close();
+		$i.ltc();
 	}
 };
 var $ipwd={
 	objectEditor:{
-		content:'<input type="hidden" id="oid" class="bindOids bindOidd" /><input type="hidden" id="do" class="bindOidd" value="oidd" /><input type="hidden" id="do" class="bindOids" value="oids" />'+pwdEditorCon+'<input id="oidsBu" class="abu" value="Save" type="button" onclick="$i.oids()" /> <input id="oiddBu" class="abu" value="Delete" type="button" onclick="$i.oidd()" /> <input id="oidscBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" />',
+		content:pwdEditorCon,
 		d:function(){
-			pwdEditor=ace.edit("pwdEditor");
-			pwdEditor.setTheme("ace/theme/textmate");
-			pwdEditor.session.setMode("ace/mode/json");
 			$("#pwdType").off("change");
 			$("#pwdType").val('json');
 			$("#pwdType").on("change",pwdTypeChange);
+			pwdEditor=ace.edit("pwdEditor");
+			pwdEditor.setTheme("ace/theme/textmate");
+			pwdEditor.session.setMode("ace/mode/json");
 			pwdEditor.setFontSize(15);
 			pwdEditor.session.setUseWrapMode(true);
 			pwdEditor.setShowPrintMargin(false);
