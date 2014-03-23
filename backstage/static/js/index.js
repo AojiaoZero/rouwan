@@ -91,6 +91,23 @@ var $i={
 	},
 	sced:function(c){
 		$("#sessionCount").html('<b>'+c+'</b>');
+	},
+	lc:function(){
+		$m.dbu("#lcBu","Load Cache");
+		$m.dbu("#ltcBu","Load Template Cache");
+		$("#cacheRe").html('<li>Loading Cache...</li>');
+		$m.post('./island?sp=1',{"do":"lc"});
+	},
+	lced:function(re){
+		$m.ebu("#lcBu","Load Cache");
+		$m.ebu("#ltcBu","Load Template Cache");
+		$("#cacheRe").html(re);
+	},
+	ltc:function(){
+		$m.dbu("#lcBu","Load Cache");
+		$m.dbu("#ltcBu","Load Template Cache");
+		$("#cacheRe").html('<li>Loading Template Cache...</li>');
+		$m.post('./island?sp=1',{"do":"ltc"});
 	}
 };
 var $ipwd={

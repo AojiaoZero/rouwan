@@ -143,6 +143,34 @@ var dataReceived=function(req,res){
 			req=null;
 			res=null;
 			break;
+		case 'lc':
+			var i,re='',c=0;
+			for(i in rw.cacheData){
+				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a></li>';
+				c++;
+			}
+			i=null;
+			re='<li>Total Cache: <b>'+c+'</b>, Click to View/Edit.</li>'+re;
+			rw.http.zout(JSON.stringify({'js':'$i.lced(json.re)','re':re}),req,res);
+			re=null;
+			c=null;
+			req=null;
+			res=null;
+			break;
+		case 'ltc':
+			var i,re='',c=0;
+			for(i in rw.tcache){
+				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a></li>';
+				c++;
+			}
+			i=null;
+			re='<li>Total Cache: <b>'+c+'</b>, Click to View/Edit.</li>'+re;
+			rw.http.zout(JSON.stringify({'js':'$i.lced(json.re)','re':re}),req,res);
+			re=null;
+			c=null;
+			req=null;
+			res=null;
+			break;
 		default:
 			rw.http.throw(3,res);
 			req=null;
