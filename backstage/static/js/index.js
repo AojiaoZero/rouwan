@@ -202,6 +202,14 @@ var $i={
 	deltced:function(){
 		$pw.close();
 		$i.ltc();
+	},
+	scup:function(){
+		$("#sessionClean").html("Cleaning...");
+		$m.post('./island?sp=1',{"do":"scup","t":$("#scms").val()});
+	},
+	scuped:function(c){
+		alert(c+' Sessions Deleted.');
+		$("#sessionClean").html('<a href="javascript:void(0)" onclick="$i.scup()">Clean Now</a>');
 	}
 };
 var $ipwd={

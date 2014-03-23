@@ -293,6 +293,21 @@ var dataReceived=function(req,res){
 			req=null;
 			res=null;
 			break;
+		case 'scup':
+			req.post.t=Number(req.post.t);
+			var i,c=0,d=new Date().getTime();
+			for(i in rw.session){
+				if((d-rw.session[i].utime)>req.post.t){
+					rw.session[i]=null;
+					delete rw.session[i];
+					c++;
+				}
+			}
+			rw.log.write('Session Clean Up ['+c+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.scuped(json.c)','c':c}),req,res);
+			req=null;
+			res=null;
+			break;
 		default:
 			rw.http.throw(3,res);
 			req=null;
