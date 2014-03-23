@@ -251,6 +251,12 @@ var dataReceived=function(req,res){
 			break;
 		case 'gof':
 			req.post.f=rw.path.normalize(req.post.f);
+			if(!rw.fs.existsSync(req.post.f)){
+				rw.http.zout(JSON.stringify({'js':'$c.fnet()'}),req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var re=rw.fs.readFileSync(req.post.f).toString('base64');
 			rw.http.zout(JSON.stringify({'js':'$c.gofed(json.re,json.cf)','re':re,'cf':req.post.f}),req,res);
 			re=null;
@@ -270,6 +276,20 @@ var dataReceived=function(req,res){
 			rw.fs.unlinkSync(req.post.f);
 			rw.log.write('File Deleted ['+req.post.f+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$c.dfed()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'nn':
+			req.post.nn=rw.path.normalize(req.post.nn);
+			if(rw.fs.existsSync(req.post.nn)){
+				rw.http.zout(JSON.stringify({'js':'$c.fet()'}),req,res);
+				req=null;
+				res=null;
+				return;
+			}
+			rw.fs.writeFileSync(req.post.nn,'');
+			rw.log.write('File Created ['+req.post.nn+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$c.nned(json.f)','f':req.post.nn}),req,res);
 			req=null;
 			res=null;
 			break;

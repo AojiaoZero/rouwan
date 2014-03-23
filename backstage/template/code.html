@@ -1,5 +1,5 @@
 			<div>
-				<h1>Path: <input id="path" class="uinput bindGo" value="{{PATH}}" onkeydown=$m.one('$c.go()',event) /> <input id="goBu" class="abu" value="Go" type="button" onclick="$c.go()" /><input type="hidden" class="bindGo" id="do" value="go" /></h1>
+				<h1><input id="path" class="uinput bindGo" value="{{PATH}}" onkeydown=$m.one('$c.go()',event) /> <input id="goBu" class="abu" value="Go" type="button" onclick="$c.go()" /><input id="nBu" class="abu" value="New" type="button" onclick="$c.n()" /><input type="hidden" class="bindGo" id="do" value="go" /><input type="hidden" class="bindN" id="do" value="n" /></h1>
 				<ul class="ulform" id="tree"></ul>
 			</div>
 			<script type="text/javascript">$c.go()</script>

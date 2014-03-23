@@ -38,3 +38,19 @@
 #dfBu:hover{
 	background:#ff6f70;
 }
+#nBu{
+	background:#ff7744;
+	margin-left:15px;
+}
+#nBu:hover{
+	background:#ffaa66;
+}
+
+#nn{
+	font-size:15px;
+	height:50px;
+	width:350px;
+}
+#nnBu{
+	margin:15px 0 0;
+}

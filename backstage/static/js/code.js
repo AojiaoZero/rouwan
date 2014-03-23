@@ -1,12 +1,14 @@
 var $c={
 	cd:'',
-	go:function(){
+	aof:false,
+	go:function(f){
 		if(!$("#path").val()){
 			return;
 		}
 		$m.dbu("#goBu","Go");
 		$("#path").attr("disabled","true");
 		$("#tree").html('<li>Loading...</li>');
+		if(f){$c.aof=f;}else{$c.aof=false;}
 		$m.post('./island?sp=1',$m.bind('bindGo'));
 	},
 	goNE:function(){
@@ -41,6 +43,10 @@ var $c={
 		//$("#path").val(cd);
 		$("#path").removeAttr("disabled");
 		$("#tree").html(re);
+		if($c.aof){
+			$c.gof($c.aof);
+			$c.aof=false;
+		}
 	},
 	dir:function(d){
 		$("#path").val($c.cd+'/'+d);
@@ -125,6 +131,33 @@ var $c={
 	dfed:function(){
 		$pw.close();
 		$c.go();
+	},
+	n:function(){
+		$pw.load($ipwd.n);
+	},
+	nn:function(){
+		$m.dbu("#nnbu","Loading...");
+		$m.post('./island?sp=1',$m.bind("bindNn"));
+	},
+	nned:function(f){
+		var ff;
+		f=f.split('/');
+		if(f.length==1){
+			f[1]=f[0];
+			f[0]='/';
+		}
+		ff=f.pop();
+		$("#path").val(f.join('/'));
+		$pw.close();
+		$c.go(ff);
+	},
+	fet:function(){
+		alert('File already exists.');
+		$m.ebu("#nnbu","Create");
+	},
+	fnet:function(){
+		alert('File does not exist.');
+		$pw.close();
 	}
 };
 var $ipwd={
@@ -144,6 +177,14 @@ var $ipwd={
 			$("#pwdEditor").css({width:$(window).width()-300,height:$(window).height()-200});
 			$pw.fix();
 			pwdEditor.resize(true);
+		}
+	},
+	n:{
+		title:'File Name:',
+		content:'<textarea id="nn" class="uinput bindNn"></textarea><br /><input id="nnBu" class="abu" value="Create" type="button" onclick="$c.nn()" /><input type="hidden" id="do" value="nn" class="bindNn" />',
+		d:function(){
+			$("#nn").focus();
+			$("#nn").val($c.cd+'/newFile.js');
 		}
 	}
 };
