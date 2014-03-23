@@ -62,6 +62,9 @@ var $pw={
 		$("#msgCon").html(con);
 		$("#msgBox").css({'opacity':0});
 		$("#msgBox").show();
+		$pw.fix(w,h);
+	},
+	fix:function(w,h){
 		w=w?w:$("#msgBox").width()+32;
 		h=h?h:$("#msgBox").height()+42;
 		var x=($(window).height()-h)*0.5;
@@ -83,4 +86,11 @@ var $pwd={
 				$('#uamenu').off('mouseleave');
 			}
 		}
+};
+var pwdEditor;
+var pwdEditorCon='<div id="pwdEditor"></div><div id="pwdEditorType"><select id="pwdType"><option value="javascript">javascript</option><option value="json">json</option><option value="html">html</option><option value="css">css</option></select></div>';
+var pwdTypeChange=function(){
+	if(pwdEditor && pwdEditor.session){
+		pwdEditor.session.setMode("ace/mode/"+$("#pwdType").val());
+	}
 };

@@ -203,7 +203,7 @@ a:hover{
 	line-height:20px;
 	padding:10px 0 10px 15px;
 	font-family:微软雅黑,黑体,Arial;
-	z-index:9999;
+	z-index:999;
 }
 .main .bottombox img{
 	position:absolute;
@@ -244,13 +244,13 @@ a:hover{
 	background:#000000;
 	opacity:.5;
 	filter:alpha(opacity=50);
-	z-index:90;
+	z-index:9998;
 	display:none;
 }
 
 #msgBox{
 	display:none;
-	z-index:100;
+	z-index:9999;
 	padding:15px 20px;
 	position:fixed;
 	background:#ffffff;
@@ -312,4 +312,20 @@ a:hover{
 	width:200px;
 	height:20px;
 	line-height:20px;
+}
+
+#pwdEditor{
+	margin:10px 0 15px;
+}
+#pwdEditorType{
+	position:relative;
+	float:right;
+}
+
+.ace-tm{
+	border:1px #dddddd solid;
+	background:url(./images/topBkl.png?sp=2) !important;
+}
+.ace_bracket{
+	background:#cccccc !important;
 }

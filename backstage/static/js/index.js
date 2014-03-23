@@ -51,22 +51,65 @@ var $i={
 		$m.post('./island?sp=1',$m.bind('bindOid'));
 	},
 	oided:function(re,oid){
-		$m.bindFind("bindOids","oid").val(oid);
+		$pw.load($ipwd.objectEditor);
+		$("#msgTitle").html('Edit Object - '+oid);
 		re=JSON.stringify(re,null,'	');
-		editor.setValue(re);
-		editor.clearSelection();
+		pwdEditor.setValue(re);
+		pwdEditor.clearSelection();
 		$m.ebu("#oidBu","Edit");
-		$("#objectEditor").show();
-		$("#objectBar").show();
-	},
-	oidsc:function(){
-		$("#objectEditor").hide();
-		$("#objectBar").hide();
+		$m.bindFind("bindOids","oid").val(oid);
 	},
 	oidd:function(){
-		$m.dbu("#oidBu","Edit");
-		$m.dbu("#oidsBu","Save");
-		$m.dbu("#oiddBu","Loading...");
-		$m.dbu("#oidscBu","Cancel");
+		if(window.confirm('Are you sure to DELETE ?')){
+			$m.dbu("#oidsBu","Save");
+			$m.dbu("#oiddBu","Loading...");
+			$m.dbu("#oidscBu","Cancel");
+			$m.post('./island?sp=1',$m.bind('bindOidd'));
+		}
+	},
+	oidded:function(){
+		$pw.close();
+	},
+	oids:function(){
+		if(window.confirm('Are you sure to SAVE ?')){
+			$m.dbu("#oidsBu","Loading...");
+			$m.dbu("#oiddBu","Delete");
+			$m.dbu("#oidscBu","Cancel");
+			var o=$m.bind('bindOids');
+			o.o=JSON.parse(pwdEditor.getValue());
+			$m.post('./island?sp=1',o);
+		}
+	},
+	oidsed:function(){
+		$m.ebu("#oidsBu","Save");
+		$m.ebu("#oiddBu","Delete");
+		$m.ebu("#oidscBu","Cancel");
+	},
+	sc:function(){
+		$("#sessionCount").html('Loading...');
+		$m.post('./island?sp=1',{"do":"sc"});
+	},
+	sced:function(c){
+		$("#sessionCount").html('<b>'+c+'</b>');
+	}
+};
+var $ipwd={
+	objectEditor:{
+		content:'<input type="hidden" id="oid" class="bindOids bindOidd" /><input type="hidden" id="do" class="bindOidd" value="oidd" /><input type="hidden" id="do" class="bindOids" value="oids" />'+pwdEditorCon+'<input id="oidsBu" class="abu" value="Save" type="button" onclick="$i.oids()" /> <input id="oiddBu" class="abu" value="Delete" type="button" onclick="$i.oidd()" /> <input id="oidscBu" class="abu" value="Cancel" type="button" onclick="$pw.close()" />',
+		d:function(){
+			pwdEditor=ace.edit("pwdEditor");
+			pwdEditor.setTheme("ace/theme/textmate");
+			pwdEditor.session.setMode("ace/mode/json");
+			$("#pwdType").off("change");
+			$("#pwdType").val('json');
+			$("#pwdType").on("change",pwdTypeChange);
+			pwdEditor.setFontSize(15);
+			pwdEditor.session.setUseWrapMode(true);
+			pwdEditor.setShowPrintMargin(false);
+			pwdEditor.session.setUseSoftTabs(false);
+			$("#pwdEditor").css({width:$(window).width()-300,height:$(window).height()-200});
+			$pw.fix();
+			pwdEditor.resize(true);
+		}
 	}
 };

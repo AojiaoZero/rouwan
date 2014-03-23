@@ -84,10 +84,62 @@ var dataReceived=function(req,res){
 				}
 				o=o[arr[i]];
 			}
-			//o=require('util').inspect(o,{showHidden:true,depth:1}).replace(/\n/g,'');
 			i=null;
 			arr=null;
 			rw.http.zout(JSON.stringify({'js':'$i.oided(json.re,json.oid)','re':o,'oid':req.post.oid}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'oidd':
+			var arr=req.post.oid.split('.');
+			arr.shift();
+			var id=arr.pop(),o=rw;
+			for(i in arr){
+				if(!o[arr[i]]){
+					o=null;
+					break;
+				}
+				o=o[arr[i]];
+			}
+			i=null;
+			arr=null;
+			delete o[id];
+			o=null;
+			id=null;	
+			rw.log.write('Object Delete ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.oidded()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'oids':
+			var arr=req.post.oid.split('.');
+			arr.shift();
+			var id=arr.pop(),o=rw;
+			for(i in arr){
+				if(!o[arr[i]]){
+					o=null;
+					break;
+				}
+				o=o[arr[i]];
+			}
+			i=null;
+			arr=null;
+			o[id]=req.post.o;
+			o=null;
+			id=null;	
+			rw.log.write('Object Save ['+req.post.oid+'] ['+req.connection.remoteAddress+']','backstage');
+			rw.http.zout(JSON.stringify({'js':'$i.oidsed()'}),req,res);
+			req=null;
+			res=null;
+			break;
+		case 'sc':
+			var c=0,i;
+			for(i in rw.session){
+				c++;
+			}
+			i=null;
+			rw.http.zout(JSON.stringify({'js':'$i.sced(json.re)','re':c}),req,res);
+			c=null;
 			req=null;
 			res=null;
 			break;

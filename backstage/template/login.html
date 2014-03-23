@@ -25,8 +25,8 @@
 		<div class="wrapper">
 			<h1>Login</h1>
 			<ul class="ulform loginform">
-				<li><span>User</span><input id="user" class="bindLogin uinput" maxlength="30" onkeydown=$m.one('$("#pass").focus()') /></li>
-				<li><span>Pass</span><input id="pass" class="bindLogin uinput" type="password" maxlength="255" onkeydown=$m.one('$m.login()') /></li>
+				<li><span>User</span><input id="user" class="bindLogin uinput" maxlength="30" onkeydown=$m.one('$("#pass").focus()',event) /></li>
+				<li><span>Pass</span><input id="pass" class="bindLogin uinput" type="password" maxlength="255" onkeydown=$m.one('$m.login()',event) /></li>
 				<li class="end"><span></span><input id="loginBu" class="abu" value="Login" type="button" onclick="$m.login()" /><input id="do" value="login" class="bindLogin" type="hidden" /></li>
 			</ul>
 			<script type="text/javascript">
