@@ -57,6 +57,7 @@ exports.config={
 			errorPage:{},
 			router:{
 				'index':['','index','index.html'],
+				'island':['island']
 			}
 		},*/
 		'ExampleA.com':{

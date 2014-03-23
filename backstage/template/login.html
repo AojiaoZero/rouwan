@@ -24,6 +24,14 @@
 		<img src="./images/bk.png?sp=2" id="bkImg" onmousedown="return false" />
 		<div class="wrapper">
 			<h1>Login</h1>
+			<ul class="ulform loginform">
+				<li><span>User</span><input id="user" class="bindLogin uinput" maxlength="30" onkeydown=$m.one('$("#pass").focus()') /></li>
+				<li><span>Pass</span><input id="pass" class="bindLogin uinput" type="password" maxlength="255" onkeydown=$m.one('$m.login()') /></li>
+				<li class="end"><span></span><input id="loginBu" class="abu" value="Login" type="button" onclick="$m.login()" /><input id="do" value="login" class="bindLogin" type="hidden" /></li>
+			</ul>
+			<script type="text/javascript">
+				$("#user").focus();
+			</script>
 		</div>
 		<div id="fbox">
 			<a href="javascript:void(0);" onclick="$(document).scrollTop(0)"><img src="./images/gotop.png?sp=2" alt="goTop" /></a>
@@ -35,7 +43,7 @@
 		</div>
 	</div>
 	<div id="cover"></div>
-	<div id="msgBox"><a id="msgBoxAc" href="javascript:void(0);" class="cbu" onclick="$pw.close()"><img src="./css/images/closeBu.png" alt="关闭" /></a><h1 id="msgTitle"></h1><div id="msgCon"></div></div>
+	<div id="msgBox"><a id="msgBoxAc" href="javascript:void(0);" class="cbu" onclick="$pw.close()"><img src="./images/closeBu.png?sp=2" alt="关闭" /></a><h1 id="msgTitle"></h1><div id="msgCon"></div></div>
 	<script type="text/javascript">
 		setTimeout(function(){
 			var hjs=document.createElement('script');
