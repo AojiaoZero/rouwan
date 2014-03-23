@@ -90,7 +90,7 @@ var $i={
 		$m.post('./island?sp=1',{"do":"sc"});
 	},
 	sced:function(c){
-		$("#sessionCount").html('<b>'+c+'</b>');
+		$("#sessionCount").html('<b>'+c+'</b>, <a href="javascript:void(0)" onclick="$i.sc()">ReCount</a>');
 	},
 	lc:function(){
 		$m.dbu("#lcBu","Load Cache");
@@ -102,6 +102,7 @@ var $i={
 		$m.ebu("#lcBu","Load Cache");
 		$m.ebu("#ltcBu","Load Template Cache");
 		$("#cacheRe").html(re);
+		$(document).scrollTop($("#cachea").offset().top);
 	},
 	ltc:function(){
 		$m.dbu("#lcBu","Load Cache");

@@ -37,6 +37,7 @@ exports.load=function(source,clear){
 };
 
 exports.render=function(source,data,name,clear){
+	source=rw.path.normalize(source);
 	if(name && rw.tcache[name] && !clear){
 		return rw.tcache[name];
 	}
