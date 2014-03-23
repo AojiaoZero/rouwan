@@ -4,7 +4,7 @@ exports.nfix=function(n,l,f){f=f?f:'0';var i=0,t=l-n.toString().length,fix='';fo
 exports.s2t=function(t){
 	var h=parseInt(t/3600);
 	var m=parseInt((t-h*3600)/60);
-	var s=t-h*3600-m*60;
+	var s=parseInt(t-h*3600-m*60);
 	var d=parseInt(h/24);
 	h-=d*24;
 	return {d:d,h:h,m:m,s:s};
