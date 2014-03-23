@@ -62,19 +62,16 @@ a:hover{
 }
 .main .topbox .topbox_menu #logo{
 	margin:0 85px 0 0;
-	width:58px;
+	width:61px;
 }
 .main .topbox .topbox_menu .menu{
 	width:70px;
 	height:50px;
 	text-indent:-9999px;
 	overflow:hidden;
-	margin:0 10px 0 0;
+	margin:1px 10px 0 0;
 }
-.main .topbox .topbox_menu #menu3{
-	margin:0 7px;
-}
-.main .topbox .topbox_menu #menu0,.main .topbox .topbox_menu #menu4{
+.main .topbox .topbox_menu #menu0{
 	margin:1px 0 0;
 }
 .main .topbox .topbox_menu .cur{
@@ -92,13 +89,6 @@ a:hover{
 .main .topbox .topbox_menu #menu2{
 	background:url(./images/menu2.png?sp=2) no-repeat center 0;
 }
-.main .topbox .topbox_menu #menu3{
-	background:url(./images/menu3.png?sp=2) no-repeat center 0;
-}
-.main .topbox .topbox_menu #menu4{
-	background:url(./images/menu4.png?sp=2) no-repeat center 0;
-}
-
 .main .topbox #topbox_lr{
 	z-index:70;
 	width:200px;
