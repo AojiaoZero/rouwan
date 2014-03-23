@@ -46,7 +46,7 @@ exports.config={
 		ipList:[],
 		startScript:'',
 		switch:{
-			master:true
+			master:false
 		}
 	},
 
