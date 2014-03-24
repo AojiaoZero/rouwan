@@ -1,4 +1,5 @@
 exports.config={
+	host:'YOUR SERVER NAME',
 	version:0.1,
 	reloadInt:5000,
 	http:{
@@ -45,10 +46,12 @@ exports.config={
 		pass:'/* CHANGE THIS !!! */',
 		ipList:[],
 		startScript:'',
+		email:'',
 		switch:{
 			master:true,
 			restart:true,
-			exit:true,		
+			exit:true,
+			email:true,
 			object:{
 				view:true,
 				edit:true,
@@ -114,6 +117,13 @@ exports.config={
 	},
 
 	mail:{
+		'backstage':{
+			service:'Gmail',
+			auth:{
+				user:"USER",
+				pass:"PASS"
+			}
+		},
 		'NAME':{
 			service:'Gmail',
 			auth:{

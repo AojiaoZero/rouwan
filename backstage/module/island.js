@@ -27,6 +27,12 @@ var dataReceived=function(req,res){
 				if(loginFaill[req.connection.remoteAddress].c>4){
 					rw.http.zout(JSON.stringify({'js':'$m.throw(json.re)','re':[2]}),req,res);
 					rw.log.write('Locked Login ['+req.post.user+'] ['+req.post.pass+'] ['+req.connection.remoteAddress+']','backstage');
+					rw.mail('backstage',{
+						from:rw.config.mail['backstage']['auth']['user']+" <"+rw.config.mail['backstage']['auth']['user']+">",
+						to:rw.config.backstage.email,
+						subject:"User Login Fail 5 Times ["+req.connection.remoteAddress+"]",
+						html:"User Login Fail 5 Times ["+req.connection.remoteAddress+"]"
+					},rw.emptyCall);
 					req=null;
 					res=null;
 					return;
@@ -36,6 +42,12 @@ var dataReceived=function(req,res){
 				req.session.data['rouwanbs_login']='yes';
 				rw.http.zout('{"js":"$m.logined()"}',req,res);
 				rw.log.write('Login ['+req.post.user+'] ['+req.connection.remoteAddress+']','backstage');
+				rw.mail('backstage',{
+					from:rw.config.mail['backstage']['auth']['user']+" <"+rw.config.mail['backstage']['auth']['user']+">",
+					to:rw.config.backstage.email,
+					subject:"User Login ["+req.connection.remoteAddress+"]",
+					html:"User Login ["+req.connection.remoteAddress+"]"
+				},rw.emptyCall);
 			}else{
 				rw.http.zout(JSON.stringify({'js':'$m.throw(json.re)','re':[1]}),req,res);
 				if(loginFaill.count>100){
