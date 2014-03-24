@@ -46,7 +46,31 @@ exports.config={
 		ipList:[],
 		startScript:'',
 		switch:{
-			master:false
+			master:true,
+			restart:true,
+			exit:true,		
+			object:{
+				view:true,
+				edit:true,
+				delete:true
+			},
+			session:{
+				count:true,
+				clean:true
+			},
+			cache:{
+				list:true,
+				view:true,
+				edit:true,
+				delete:true
+			},
+			code:{
+				list:true,
+				view:true,
+				edit:true,
+				delete:true,
+				create:true
+			}
 		}
 	},
 

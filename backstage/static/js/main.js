@@ -41,6 +41,9 @@ var $m={
 			}
 		}
 		alert(re);
+	},
+	locked:function(){
+		alert('Feature Locked.');
 	}
 };
 var $pw={

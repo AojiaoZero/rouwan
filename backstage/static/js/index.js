@@ -96,20 +96,20 @@ var $i={
 		$("#sessionCount").html('<b>'+c+'</b>, <a href="javascript:void(0)" onclick="$i.sc()">ReCount</a>');
 	},
 	lc:function(){
-		$m.dbu("#lcBu","Load Cache");
-		$m.dbu("#ltcBu","Load Template Cache");
+		$m.dbu("#lcBu","List Cache");
+		$m.dbu("#ltcBu","List Template Cache");
 		$("#cacheRe").html('<li>Loading Cache...</li>');
 		$m.post('./island?sp=1',{"do":"lc"});
 	},
 	lced:function(re){
-		$m.ebu("#lcBu","Load Cache");
-		$m.ebu("#ltcBu","Load Template Cache");
+		$m.ebu("#lcBu","List Cache");
+		$m.ebu("#ltcBu","List Template Cache");
 		$("#cacheRe").html(re);
 		$(document).scrollTop($("#cachea").offset().top);
 	},
 	ltc:function(){
-		$m.dbu("#lcBu","Load Cache");
-		$m.dbu("#ltcBu","Load Template Cache");
+		$m.dbu("#lcBu","List Cache");
+		$m.dbu("#ltcBu","List Template Cache");
 		$("#cacheRe").html('<li>Loading Template Cache...</li>');
 		$m.post('./island?sp=1',{"do":"ltc"});
 	},

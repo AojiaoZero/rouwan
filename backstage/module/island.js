@@ -62,11 +62,23 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'exit':
+			if(!rw.config.backstage.switch.exit){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.http.zout('{"js":"$i.r()"}',req,res);
 			rw.log.write('Exit ['+req.connection.remoteAddress+']','backstage');
 			process.kill(process.pid,'SIGINT');
 			break;
 		case 'restart':
+			if(!rw.config.backstage.switch.restart){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.http.zout('{"js":"$i.r()"}',req,res);
 			rw.log.write('Restart ['+req.connection.remoteAddress+']','backstage');
 			rw.log.write('Restarting ...','system');
@@ -74,6 +86,12 @@ var dataReceived=function(req,res){
 			exec('node '+__dirname+'/../lib/restart.js '+process.pid+' "'+rw.config.backstage.startScript+'"');
 			break;
 		case 'oid':
+			if(!rw.config.backstage.switch.object.view){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var arr=req.post.oid.split('.');
 			arr.shift();
 			var i,o=rw;
@@ -91,6 +109,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'oidd':
+			if(!rw.config.backstage.switch.object.delete){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var arr=req.post.oid.split('.');
 			arr.shift();
 			var id=arr.pop(),o=rw;
@@ -112,6 +136,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'oids':
+			if(!rw.config.backstage.switch.object.edit){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var arr=req.post.oid.split('.');
 			arr.shift();
 			var id=arr.pop(),o=rw;
@@ -133,6 +163,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'sc':
+			if(!rw.config.backstage.switch.session.count){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var c=0,i;
 			for(i in rw.session){
 				c++;
@@ -144,6 +180,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'lc':
+			if(!rw.config.backstage.switch.cache.list){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var i,re='',c=0;
 			for(i in rw.cacheData){
 				re+='<li><a href="javascript:void(0)" onclick=$i.ec("'+i+'")>'+i+'</a><span>'+rw.util.date('m.d h:i:s',rw.cacheData[i].create)+'</span></li>';
@@ -158,6 +200,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'ltc':
+			if(!rw.config.backstage.switch.cache.list){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			var i,re='',c=0;
 			for(i in rw.tcache){
 				re+='<li><a href="javascript:void(0)" onclick=$i.etc("'+i+'")>'+i+'</a></li>';
@@ -172,16 +220,34 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'ec':
+			if(!rw.config.backstage.switch.cache.view){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.http.zout(JSON.stringify({'js':'$i.eced(json.re,json.id)','re':rw.cacheData[req.post.id],'id':req.post.id}),req,res);
 			req=null;
 			res=null;
 			break;
 		case 'etc':
+			if(!rw.config.backstage.switch.cache.view){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.http.zout(JSON.stringify({'js':'$i.etced(json.re,json.id)','re':new Buffer(rw.tcache[req.post.id],'utf8').toString('base64'),'id':req.post.id}),req,res);
 			req=null;
 			res=null;
 			break;
 		case 'savec':
+			if(!rw.config.backstage.switch.cache.edit){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.cacheData[req.post.id]=req.post.o;
 			rw.log.write('Cache Saved ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.saveced()'}),req,res);
@@ -189,6 +255,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'savetc':
+			if(!rw.config.backstage.switch.cache.edit){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			rw.tcache[req.post.id]=new Buffer(req.post.o,'base64').toString('utf8');
 			rw.log.write('Template Cache Saved ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.savetced()'}),req,res);
@@ -196,6 +268,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'delc':
+			if(!rw.config.backstage.switch.cache.delete){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			delete rw.cacheData[req.post.id];
 			rw.log.write('Cache Deleted ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.delced()'}),req,res);
@@ -203,6 +281,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'deltc':
+			if(!rw.config.backstage.switch.cache.delete){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			delete rw.tcache[req.post.id];
 			rw.log.write('Template Cache Deleted ['+req.post.id+'] ['+req.connection.remoteAddress+']','backstage');
 			rw.http.zout(JSON.stringify({'js':'$i.deltced()'}),req,res);
@@ -210,6 +294,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'go':
+			if(!rw.config.backstage.switch.code.list){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.path=rw.path.normalize(req.post.path);
 			if(!rw.fs.existsSync(req.post.path)){
 				rw.http.zout(JSON.stringify({'js':'$c.goNE()'}),req,res);
@@ -250,6 +340,12 @@ var dataReceived=function(req,res){
 			f=null;
 			break;
 		case 'gof':
+			if(!rw.config.backstage.switch.code.view){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.f=rw.path.normalize(req.post.f);
 			if(!rw.fs.existsSync(req.post.f)){
 				rw.http.zout(JSON.stringify({'js':'$c.fnet()'}),req,res);
@@ -264,6 +360,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'sf':
+			if(!rw.config.backstage.switch.code.edit){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.f=rw.path.normalize(req.post.f);
 			rw.fs.writeFileSync(req.post.f,new Buffer(req.post.o,'base64'));
 			rw.log.write('File Saved ['+req.post.f+'] ['+req.connection.remoteAddress+']','backstage');
@@ -272,6 +374,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'df':
+			if(!rw.config.backstage.switch.code.delete){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.f=rw.path.normalize(req.post.f);
 			rw.fs.unlinkSync(req.post.f);
 			rw.log.write('File Deleted ['+req.post.f+'] ['+req.connection.remoteAddress+']','backstage');
@@ -280,6 +388,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'nn':
+			if(!rw.config.backstage.switch.code.create){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.nn=rw.path.normalize(req.post.nn);
 			if(rw.fs.existsSync(req.post.nn)){
 				rw.http.zout(JSON.stringify({'js':'$c.fet()'}),req,res);
@@ -294,6 +408,12 @@ var dataReceived=function(req,res){
 			res=null;
 			break;
 		case 'scup':
+			if(!rw.config.backstage.switch.session.clean){
+				rw.http.zout('{"js":"$m.locked()"}',req,res);
+				req=null;
+				res=null;
+				return;
+			}
 			req.post.t=Number(req.post.t);
 			var i,c=0,d=new Date().getTime();
 			for(i in rw.session){
