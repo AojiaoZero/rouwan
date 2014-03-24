@@ -46,6 +46,8 @@ exports.config={
 		pass:'/* CHANGE THIS !!! */',
 		ipList:[],
 		startScript:'',
+		autoRestartMem:0,
+		autoRestartInt:30000,
 		email:'',
 		switch:{
 			master:true,
