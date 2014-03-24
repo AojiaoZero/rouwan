@@ -330,7 +330,7 @@ var dataReceived=function(req,res){
 				}
 			}
 			req.session['rouwan_path']=req.post.path;
-			rw.http.zout(JSON.stringify({'js':'$c.god(json.darr,json.farr,json.cd)','darr':darr,'farr':farr,'cd':req.post.path}),req,res);
+			rw.http.zout(JSON.stringify({'js':'$c.god(json.darr,json.farr,json.cd,json.sep)','darr':darr,'farr':farr,'cd':req.post.path,'sep':rw.path.sep}),req,res);
 			req=null;
 			res=null;
 			o=null;

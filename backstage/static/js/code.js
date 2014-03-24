@@ -28,7 +28,9 @@ var $c={
 			return (s/1024/1024).toFixed(2)+' MB';
 		}
 	},
-	god:function(d,f,cd){
+	sep:'/',
+	god:function(d,f,cd,sep){
+		$c.sep=sep;
 		$c.cd=cd;
 		$("#path").val($c.cd);
 		var i,re='<li><a href="javascript:void(0)" onclick=$c.dir("..") class="dir">..</a></li>',big='';
@@ -49,7 +51,7 @@ var $c={
 		}
 	},
 	dir:function(d){
-		$("#path").val($c.cd+'/'+d);
+		$("#path").val($c.cd+$c.sep+d);
 		$c.go();
 	},
 	gof:function(f,b){
@@ -72,11 +74,11 @@ var $c={
 		$pw.load($pwd.loading);
 		$("#msgCon").html(f+' ...');
 		$pw.fix();
-		$m.post('./island?sp=1',{"do":"gof","f":$c.cd+'/'+f});
+		$m.post('./island?sp=1',{"do":"gof","f":$c.cd+$c.sep+f});
 	},
 	cf:'',
 	gofed:function(re,cf){
-		var f=cf.split('/');
+		var f=cf.split($c.sep);
 		f=f[f.length-1];
 		$pw.load($ipwd.codeEditor);
 		$("#msgTitle").html('Edit - '+f);
@@ -141,13 +143,17 @@ var $c={
 	},
 	nned:function(f){
 		var ff;
-		f=f.split('/');
+		f=f.split($c.sep);
 		if(f.length==1){
 			f[1]=f[0];
-			f[0]='/';
+			if($c.sep!='/'){
+				f[0]='/';
+			}else{
+				f[0]='c:\\';
+			}
 		}
 		ff=f.pop();
-		$("#path").val(f.join('/'));
+		$("#path").val(f.join($c.sep));
 		$pw.close();
 		$c.go(ff);
 	},
