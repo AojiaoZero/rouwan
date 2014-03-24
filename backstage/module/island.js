@@ -341,7 +341,7 @@ var dataReceived=function(req,res){
 					farr.push({f:f[i],s:o.size});
 				}
 			}
-			req.session['rouwan_path']=req.post.path;
+			req.session.data['rouwan_path']=req.post.path;
 			rw.http.zout(JSON.stringify({'js':'$c.god(json.darr,json.farr,json.cd,json.sep)','darr':darr,'farr':farr,'cd':req.post.path,'sep':rw.path.sep}),req,res);
 			req=null;
 			res=null;
