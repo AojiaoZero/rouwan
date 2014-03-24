@@ -4,6 +4,9 @@ global.rw.routerList={};
 exports.start=function(){
 	var i,ii,iii,portList={};
 	for(i in rw.config.server){
+		if(rw.fs.existsSync(rw.config.server[i].root+'/init.js')){
+			require(rw.config.server[i].root+'/init.js').run();
+		}
 		if(!portList[rw.config.server[i].port]){
 			portList[rw.config.server[i].port]=[];
 		}
