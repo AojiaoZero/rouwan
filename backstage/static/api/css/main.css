@@ -92,12 +92,22 @@ a:hover{
 	width:100%;
 }
 .main #left{
-	background:red;
 	width:260px;
 }
 .main #right{
-	background:green;
-	width:260px;
+	
+}
+
+h1,h2{
+	margin:0;
+	padding:0 15px;
+	font-size:20px;
+	font-weight:normal;
+	background:url(../images/titleBar.png) no-repeat center left;
+}
+h2{
+	font-size:18px;
+	background:url(../images/title2Bar.png) no-repeat center left;
 }
 
 #bkImg{

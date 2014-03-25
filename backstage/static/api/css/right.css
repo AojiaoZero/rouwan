@@ -1,0 +1,25 @@
+@charset "utf-8";
+*{}
+body{
+	background:transparent;
+	word-break:break-all;
+	word-wrap:break-word;
+	font-size:13px;
+	margin:0;
+	padding:0;
+	color:#000000;
+	font-family:Hiragino Sans GB,微软雅黑,黑体,Arial,sans-serif;
+	overflow:auto;
+}
+
+.wrapper{
+	margin:0 0 50px 20px;
+}
+
+h1{
+	margin:0;
+	padding:0 15px;
+	font-size:20px;
+	font-weight:normal;
+	background:url(../images/titleBar.png) no-repeat center left;
+}

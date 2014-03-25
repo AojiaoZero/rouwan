@@ -1,0 +1,59 @@
+@charset "utf-8";
+*{}
+body{
+	background:transparent;
+	word-break:break-all;
+	word-wrap:break-word;
+	font-size:13px;
+	margin:0;
+	padding:0;
+	color:#000000;
+	font-family:Hiragino Sans GB,微软雅黑,黑体,Arial,sans-serif;
+	overflow:auto;
+}
+
+.wrapper{
+	margin:0 0 50px 15px;
+}
+
+h1{
+	margin:0;
+	padding:0 15px;
+	font-size:20px;
+	font-weight:normal;
+	background:url(../images/titleBar.png) no-repeat center left;
+}
+
+ul{
+	margin:0;
+	padding:15px 0 0 10px;
+}
+ul li{
+	padding:4px 0 1px 0;
+	font-size:15px;
+	list-style:none;
+	transition:background-color .2s linear;
+}
+ul li:hover{
+	background-color:#ececec;
+	transition:background-color .2s linear;
+}
+ul li a{
+	padding:4px 0 4px 10px;
+	text-decoration:none;
+	display:block;
+	width:200px;
+	transition:background-color .2s linear;
+}
+ul .cur{
+	background-color:#f1f1f1;
+}
+ul .par{
+	font-size:16px;
+	font-weight:bold;
+	color:#EFEFEF;
+}
+ul .sub,ul .sub .cur{
+	display:none;
+	margin:0 0 0 20px;
+}
