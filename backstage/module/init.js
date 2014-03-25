@@ -56,3 +56,7 @@ exports.run=function(){
 		setTimeout(checkAutoRestart,rw.config.backstage.autoRestartInt);
 	}
 };
+
+exports.onError=function(e){
+	console.log(e.stack);
+};

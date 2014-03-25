@@ -402,6 +402,9 @@ exports.runModule=function(req,res){
 			rw.moduleReloadList[m].d();
 		}catch(e){
 			exports.throw(500,res,{server:req.server,url:req.url,stack:e.stack});
+			if(rw.initList[req.server].onError){
+				rw.initList[req.server].onError(e);
+			}
 			res=null;
 			req=null;
 			return;
@@ -411,6 +414,9 @@ exports.runModule=function(req,res){
 		rw.moduleList[m].run(req,res);
 	}catch(e){
 		exports.throw(500,res,{server:req.server,url:req.url,stack:e.stack});
+		if(rw.initList[req.server].onError){
+			rw.initList[req.server].onError(e);
+		}
 		res=null;
 		req=null;
 	}

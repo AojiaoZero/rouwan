@@ -1,11 +1,13 @@
 global.rw.serverList={};
 global.rw.routerList={};
+global.rw.initList={};
 
 exports.start=function(){
 	var i,ii,iii,portList={};
 	for(i in rw.config.server){
 		if(rw.fs.existsSync(rw.config.server[i].root+'/init.js')){
-			require(rw.config.server[i].root+'/init.js').run();
+			rw.initList[i]=require(rw.config.server[i].root+'/init.js');
+			rw.initList[i].run();
 		}
 		if(!portList[rw.config.server[i].port]){
 			portList[rw.config.server[i].port]=[];
@@ -81,6 +83,9 @@ exports.request=function(req,res){
 			rw.http.runModule(req,res);
 		}catch(e){
 			rw.http.throw(500,res,{server:req.server,url:req.url,stack:e.stack});
+			if(rw.initList[req.server].onError){
+				rw.initList[req.server].onError(e);
+			}
 			req=null;
 		}
 		return;
