@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>API - Rouwan - BackStage</title>
+	<meta name="keywords" content="api,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan.Api" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="./css/main.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="topbox">
+			<div class="topbox_menu">
+				<a href="./index.html" id="logo"><img src="./images/logo.png" alt="Rouwan.Api" /></a>
+			</div>
+			<div class="topbox_bar"></div>
+			<div id="hitokoto">『Loading...』</div>
+		</div>
+		<div class="wrapper">
+			<iframe id="left" frameborder="0" src="./left.html"></iframe>
+			<iframe id="right" frameborder="0" src="./left.html"></iframe>
+		</div>
+		<img src="./images/bk.jpg" id="bkImg" onmousedown="return false" />
+		<div class="bottombox">
+			<img src="./images/nodelogo_s.png?sp=2" alt="NodeJs" onmousedown="return false" />
+			Email: sai # marisai.com<br />
+			Copyright &copy; 2014 Rouwan &amp; Sai.
+		</div>
+	</div>
+	<script type="text/javascript">
+		setTimeout(function(){
+			var hjs=document.createElement('script');
+			hjs.setAttribute('src','http://api.hitokoto.us/rand?encode=jsc&fun=$m.hitokoto');
+			document.body.appendChild(hjs);
+		},100);
+		$(window).on('resize',$m.resize);
+		$m.resize();
+	</script>
+</body>
+</html>
