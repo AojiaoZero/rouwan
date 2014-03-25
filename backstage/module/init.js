@@ -12,7 +12,7 @@ var restart=function(f){
 	}
 	rw.log.write('Auto Restarting ['+parseInt(process.memoryUsage().rss/1024/1024)+' MB] ['+rw.util.s2t(process.uptime()).join(':')+']'+email+' ...','system');
 	var exec=require('child_process').exec;
-	exec('node '+__dirname+'/../lib/restart.js '+process.pid+' "'+rw.config.backstage.startScript+'"');
+	//exec('node '+__dirname+'/../lib/restart.js '+process.pid+' "'+rw.config.backstage.startScript+'"');
 }
 
 var checkAutoRestart=function(){
@@ -30,6 +30,7 @@ var checkAutoRestart=function(){
 		setTimeout(checkAutoRestart,rw.config.backstage.autoRestartInt);
 		return;
 	}
+	rw.stb=true;
 	rw.log.write('Auto Restart ['+parseInt(process.memoryUsage().rss/1024/1024)+' MB] ['+rw.util.s2t(process.uptime()).join(':')+']','backstage');
 	rw.log.write('Auto Restart Sending Mail ['+rw.config.backstage.email+'] ...','backstage');
 	

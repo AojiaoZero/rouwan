@@ -39,7 +39,14 @@ exports.start=function(){
 	
 };
 
+global.rw.stb=false;
 exports.request=function(req,res){
+	if(rw.stb){
+		res.end('Server is too busy.');
+		req=null;
+		res=null;
+		return;
+	}
 	if(!rw.serverList[req.headers.host]){
 		rw.http.throw(0,res);
 		req=null;
