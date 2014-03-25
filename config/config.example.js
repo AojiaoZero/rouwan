@@ -48,6 +48,7 @@ exports.config={
 		startScript:'',
 		autoRestartMem:0,
 		autoRestartInt:30000,
+		autoRestartEmailTimeout:15000,
 		email:'',
 		switch:{
 			master:true,

@@ -33,9 +33,9 @@ var checkAutoRestart=function(){
 	rw.log.write('Auto Restart ['+parseInt(process.memoryUsage().rss/1024/1024)+' MB] ['+rw.util.s2t(process.uptime()).join(':')+']','backstage');
 	rw.log.write('Auto Restart Sending Mail ['+rw.config.backstage.email+'] ...','backstage');
 	
-	/*id=setTimeout(function(){
+	id=setTimeout(function(){
 		restart(true);
-	},15000);*/
+	},rw.config.backstage.autoRestartEmailTimeout);
 	
 	rw.mail('backstage',{
 		from:rw.config.mail['backstage']['auth']['user']+" <"+rw.config.mail['backstage']['auth']['user']+">",
