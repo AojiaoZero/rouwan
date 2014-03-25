@@ -9,9 +9,9 @@ exports.run=function(req,res){
 		return;
 	}
 	var t=rw.util.s2t(process.uptime());
-	var up=t.d+'d '+t.h+'h '+t.m+'m '+t.s+'s';
+	var up=t[0]+'d '+t[1]+'h '+t[2]+'m '+t[3]+'s';
 	t=rw.util.s2t(os.uptime());
-	var osup=t.d+'d '+t.h+'h '+t.m+'m '+t.s+'s';
+	var osup=t[0]+'d '+t[1]+'h '+t[2]+'m '+t[3]+'s';
 	var lav=os.loadavg();
 	lav[0]=lav[0].toFixed(2);
 	lav[1]=lav[1].toFixed(2);

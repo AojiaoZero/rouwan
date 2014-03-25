@@ -7,7 +7,8 @@ exports.s2t=function(t){
 	var s=parseInt(t-h*3600-m*60);
 	var d=parseInt(h/24);
 	h-=d*24;
-	return {d:d,h:h,m:m,s:s};
+	return [d,h,m,s];
+	//return {d:d,h:h,m:m,s:s};
 };
 exports.date=function(str,t){
 	var d=new Date(),pos,re='';
