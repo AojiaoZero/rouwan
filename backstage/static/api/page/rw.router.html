@@ -3,8 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Router - Rouwan - BackStage</title>
-	<meta name="keywords" content="about,关于,rouwan,nodejs,rouwanapi" />
-	<meta name="description" content="关于Rouwan" />
+	<meta name="keywords" content="router,关于,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Router" />
 	<meta name="author" content="Sai" />
 	<meta name="copyright" content="2014 Sai" />
 	<link href="../css/right.css" rel="stylesheet" type="text/css" />
@@ -15,8 +15,8 @@
 	<div class="wrapper">
 		<h1>Router</h1>
 		<div class="box">
-			Rouwan的Router是配合Config里面的Server(vHost)工作的，可以存在多个Router规则。<br />
-			通过绑定Router，发生对应访问行为时，会执行绑定脚本内的run()函数，并传送两个变量req和res，对应http请求的requese和response。
+			Rouwan的Router是配合Config里面的Server(vHost)工作的，可以存在多个Router规则<br />
+			通过绑定Router，发生对应访问行为时，会执行绑定脚本内的<code class="language-javascript"> exports.run() </code>函数，并传送两个变量<code class="language-javascript"> req </code>和<code class="language-javascript"> res </code>, 对应http请求的request和response
 		</div>
 		<h2>配置举例</h2>
 		<div class="box">
@@ -34,7 +34,7 @@
 	},
 	/* ...省略... */</code></pre>
 		以上内容的解析结果如下:<br />
-		客户端访问: http://example.com/test<br />
+		客户端访问: <code class="language-javascript"> http://example.com/test </code><br />
 		服务端动作: 执行<code class="language-javascript"> /www/example/module/test.js </code>内的<code class="language-javascript">exports.run</code>函数，并传递两个参数<code class="language-javascript"> req </code>, <code class="language-javascript"> res </code>
 		</div>
 		<h2>test.js 脚本举例</h2>
@@ -43,7 +43,7 @@
 exports.run=function(req,res){
 	rw.http.zout('['+rw.util.date('y.m.d H:i:s')+'] Test.',req,res);
 };</code></pre>
-			* 以下脚本使用了Rouwan的功能API, 详情请参考左侧的API列表
+			* 脚本使用了Rouwan的功能API, 详情请参考左侧的API列表
 		</div>
 	</div>
 </body>

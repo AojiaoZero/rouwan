@@ -4,6 +4,9 @@ var $m={
 		'Get Started',
 		'rw.config',
 		'rw.router',
+		'rw.mongo',
+		'rw.mail',
+		'rw.log',
 		{
 			'title':'Tools',
 			'child':['Tv Mao','Tool','Broadcast','Data List','Push']

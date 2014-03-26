@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>MongoDB - Rouwan - BackStage</title>
+	<meta name="keywords" content="mongodb,关于,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan MongoDB" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Mongo</h1>
+		<div class="box">
+			Rouwan的Mongo链接使用<code class="language-javascript"> node-mongodb-native </code><br />
+		</div>
+		<h2>配置举例</h2>
+		<div class="box">
+			首先配置Config内Mongo的数据库信息, 在Rouwan启动时, 会自动链接数据库并保持, 同时将数据库表连接存储在<code class="language-javascript"> rw.mongoColList </code>中, 调用格式如下, <code class="language-javascript"> rw.mongoColList['databaseName.collectionName'] </code><br />
+			<pre><code class="language-javascript">mongo:{
+	'test':{    /* 数据库的名字，必须为正确的数据库名 */
+		host:'localhost',    /* 数据库地址 */
+		port:27017,    /* 端口 */
+		user:'root',    /* 用户名 */
+		pass:'pass',    /* 密码 */
+		col:['cola','test','seq']    /* 数据库的Collection列表 */
+	},
+	/* ...省略... */</code></pre>
+		例如，访问<code class="language-javascript">test</code>数据库中的集合<code class="language-javascript"> seq </code>, 则为<code class="language-javascript"> rw.mongoColList['test.seq'] </code>
+		</div>
+		<h2>实际应用举例</h2>
+		<div class="box">
+			<pre><code class="language-javascript">rw.mongoColList['test.cola'].findOne(
+	{value:{$gt:18}},
+	{_id:true,name:true,value:true},
+	function(error,data){
+		/* ...省略... */
+	}
+);</code></pre>
+		</div>
+		<h2>Auto Increment / Sequence</h2>
+		<div class="box">
+			MongoDB原生并不支持Auto Increment / Sequence, Rouwan提供了相应的API实现该功能, 请参考<code class="language-javascript"> rw.util </code>内的<code class="language-javascript"> rw.util.seq </code>
+		</div>
+	</div>
+</body>
+</html>
