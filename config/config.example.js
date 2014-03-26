@@ -165,6 +165,12 @@ exports.config={
 			filename:'backstage',
 			path:'./log/',
 			of:true
+		},
+		'logname':{
+			color:32,
+			filename:'logname',
+			path:'./log/',
+			of:true
 		}
 	},
 

@@ -6,7 +6,7 @@ var $m={
 		'Router',
 		{
 			'title':'Feature',
-			'child':['Cache','Counter','Log','Mail','Mongo','Session','Template','Validator']
+			'child':['Log','Mail','Mongo','Template','Validator']
 		},
 		{
 			'title':'API',

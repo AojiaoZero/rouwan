@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Log - Rouwan - BackStage</title>
+	<meta name="keywords" content="log,日志,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Log" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Log</h1>
+		<div class="box">
+			Rouwan的Log基本提供了3类日志记录, 分别是system(系统), error(错误), backstage(后台), Rouwan同样也支持自定义日志<br />
+			更多信息请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.log </code>
+		</div>
+		<h2>自定义日志配置举例</h2>
+		<div class="box">
+			首先配置Config内的Log信息
+			<pre><code class="language-javascript">log:{
+	test:{    /* 日志名称 */
+		color:32,    /* 颜色(PS1) */
+		filename:'system',    /* 日志文件名前缀 */
+		path:'./log/',    /* 日志存储地址 */
+		of:true    /* 是否开启该日志记录 */
+	},
+	/* ...省略... */</code></pre>
+			颜色代码请参考: <a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt" target="_blank">https://wiki.archlinux.org/index.php/Color_Bash_Prompt</a>
+		</div>
+		<h2>实际应用举例</h2>
+		<div class="box">
+			使用如上的配置, 记录一个<code class="language-javascript"> test </code>的日志
+			<pre><code class="language-javascript">rw.log.write('This is a log.','test');</code></pre>
+			该操作将会创建一个类似<code class="language-javascript"> ./log/test_20140326.log </code>的文件, 记录日志产生日期及内容, 并且在控制台打印<br />
+			关于<code class="language-javascript"> rw.log </code>等信息的更多资料, 请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.log </code>
+		</div>
+	</div>
+</body>
+</html>

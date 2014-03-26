@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>MongoDB - Rouwan - BackStage</title>
-	<meta name="keywords" content="mongodb,关于,rouwan,nodejs,rouwanapi" />
+	<meta name="keywords" content="mongodb,数据库,rouwan,nodejs,rouwanapi" />
 	<meta name="description" content="Rouwan MongoDB" />
 	<meta name="author" content="Sai" />
 	<meta name="copyright" content="2014 Sai" />
@@ -16,6 +16,7 @@
 		<h1>Mongo</h1>
 		<div class="box">
 			Rouwan的Mongo链接使用<code class="language-javascript"> node-mongodb-native </code><br />
+			更多信息请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.mongo </code>
 		</div>
 		<h2>配置举例</h2>
 		<div class="box">
@@ -29,7 +30,7 @@
 		col:['cola','test','seq']    /* 数据库的Collection列表 */
 	},
 	/* ...省略... */</code></pre>
-		例如，访问<code class="language-javascript">test</code>数据库中的集合<code class="language-javascript"> seq </code>, 则为<code class="language-javascript"> rw.mongoColList['test.seq'] </code>
+		例如，访问<code class="language-javascript"> test </code>数据库中的集合<code class="language-javascript"> seq </code>, 则为<code class="language-javascript"> rw.mongoColList['test.seq'] </code>
 		</div>
 		<h2>实际应用举例</h2>
 		<div class="box">
@@ -43,7 +44,7 @@
 		</div>
 		<h2>Auto Increment / Sequence</h2>
 		<div class="box">
-			MongoDB原生并不支持Auto Increment / Sequence, Rouwan提供了相应的API实现该功能, 请参考<code class="language-javascript"> rw.util </code>内的<code class="language-javascript"> rw.util.seq </code>
+			MongoDB原生并不支持Auto Increment / Sequence, Rouwan提供了相应的API实现该功能, 请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.util.seq </code>
 		</div>
 	</div>
 </body>
