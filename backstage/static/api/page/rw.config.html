@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>配置 - Rouwan - BackStage</title>
+	<meta name="keywords" content="about,关于,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="关于Rouwan" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>配置</h1>
+		<div class="box">
+			配置文件位于该位置
+			<pre><code class="language-javascript">./node_modules/rouwan/config/config.example.js</code></pre>
+			该配置文件为配置参考，请复制该文件为<code class="language-javascript"> config.js </code>以使用
+		</div>
+		<h2>Config.js</h2>
+		<div class="box">
+			全局访问方式:  <code class="language-javascript"> rw.config </code>
+			<pre><code class="language-javascript">exports.config={
+	version: 0.1,    /* 当前版本 */
+	build: 2013032601,    /* Build */
+	host: 'YOUR SERVER NAME',    /* 服务器名称 */
+	reloadInt: 5000,    /* 动态文件加载延迟，单位ms，用于解决部分系统对于文件修改会产生两次event的问题，不推荐修改 */
+	
+	/* HTTP */
+	http: {
+		header: {    /* HTTP头内容，以下为默认内容，请勿修改 */
+			'Content-Type': 'text/html;charset=utf-8',
+			'charset': 'utf-8',
+			'Server': 'Rouwan/0.1'
+		},
+		
+		/* 调试 */
+		debug: true,    /* 是否开启Debug模式，如开启，在发生错误时，会在HTTP 500页面内输出详细错误调试信息 */
+		printPostData: true,    /* 是否在控制台上打印post数据，用于调试 */
+		
+		/* 静态文件 */
+		allowEmptyExtname: false,    /* 是否允许访问无扩展名的静态文件 */
+		allowFileDownload: true,    /* 是否允许下载MIME列表以外静态文件 */
+		maxAge: 30*24*3600,    /* 静态文件缓存周期，单位s */
+		compress: ['html', 'js', 'css'],    /* 自动压缩输出的静态文件格式 */
+		mime: {    /* MIME列表 */
+			css: 'text/css',
+			/* ...省略... */
+			xml: 'text/xml',
+			download: 'application/octet-stream'    /* 如果允许非MIME文件下载，下载文件的MIME格式 */
+		},
+		
+		/* Cookie */
+		cookie: {
+			lifeTime: 30*24*3600,    /* Cookie的生存周期，单位s */
+			prefix: 'NRWSID'    /* Cookie中对应Session会话ID的key */
+		}
+	},
+	
+	/* 后台 */
+	backstage: {
+		user: '/* CHANGE THIS !!! */',    /* 后台用户名 !!! 请务必修改 !!! */
+		pass: '/* CHANGE THIS !!! */',    /* 后台密码   !!! 请务必修改 !!! */
+		email: '',    /* 接收后台邮件的地址 */
+		ipList: [],    /* 允许访问后台的ip列表，为空则表示不限制 */
+		startScript: '',    /* 启动Rouwan的脚本(如sh脚本，范例请参考本页最下方的启动脚本)地址；如果使用重启/自动重启功能，则务必填写 */
+		
+		/* 负载监控-自动重启Rouwan */
+		autoRestartMem: 0,    /* 自动重启的内存值，若&lt;0，则表示内存占用百分比；若&gt;0，则表示内存数值，单位为bytes；若=0则表示不开启负载监控 */
+		autoRestartInt: 30000,    /* 负载监控的轮询间隔时间，单位ms */
+		autoRestartEmailTimeout: 15000,    /* 自动重启邮件发送的最长等待时间，如果邮件发送超过该时间，则放弃发送邮件，以防进程卡死 */
+		
+		/* 后台功能开关 */
+		switch: {
+			master: true,    /* 主开关，若为false，则访问后台时输出空白页面 */
+			restart: true,    /* 是否允许通过后台重启Rouwan */
+			exit: true,    /* 是否允许通过后台关闭Rouwan */
+			email: true,    /* 后台登录时，是否发送邮件通知 */
+			object: {
+				view: true,    /* 是否允许通过后台查看变量 */
+				edit: true,    /* 是否允许通过后台编辑变量 */
+				delete: true    /* 是否允许通过后台删除变量 */
+			},
+			session: {
+				count: true,    /* 是否允许通过后台统计Session数量 */
+				clean: true    /* 是否允许通过后台清理Session */
+			},
+			cache: {
+				list: true,    /* 是否允许通过后台查看缓存列表 */
+				view: true,    /* 是否允许通过后台查看缓存 */
+				edit: true,    /* 是否允许通过后台编辑缓存 */
+				delete: true    /* 是否允许通过后台删除缓存 */
+			},
+			code: {
+				list: true,    /* 是否允许通过后台查看文件列表 */
+				view: true,    /* 是否允许通过后台查看文件 */
+				edit: true,    /* 是否允许通过后台编辑文件 */
+				delete: true,    /* 是否允许通过后台删除文件 */
+				create: true    /* 是否允许通过后台创建文件 */
+			}
+		}
+	},
+	
+	/* vHost配置，有关Router的更多信息请参考左侧的rw.router链接 */
+	server: {
+		'Example.com': {    /* vHost的名字，格式任意 */
+			host: ['example.com','localhost','127.0.0.1'],    /* 绑定的host/domain name */
+			port: 80,    /* 端口 */
+			root: __dirname+'/../example/',    /* Root目录，存放处理请求的脚本，对应router */
+			staticPath: __dirname+'/../example/static/',    /* 静态文件目录 */
+			
+			errorPage: {    /* 错误页面地址，格式为URL */
+				//403: '403.html',
+				//404: '404.html'
+			},
+			
+			router: {    /* router路由 */
+				'index': ['','index','index.html'],    /* 格式为 '脚本文件名(不含.js)': ['对应的url router'] */
+				'test': ['test','test.html']
+				/* 如当访问http: //127.0.0.1/test.html时，将执行root目录下test.js文件中的exports.run(req,res)函数，并传递参数req和res，更多信息请参考左侧的rw.router链接 */
+			}
+		},
+		'backstage': {   /* 后台服务部分，将该段完全注释掉即可彻底关闭后台功能 */
+			host: ['localhost','127.0.0.1'],
+			port: 8931,
+			root: __dirname+'/../backstage/module/',
+			staticPath: __dirname+'/../backstage/static/',
+			errorPage: {},
+			router: {
+				'index': ['','index','index.html'],
+				'code': ['code','code.html'],
+				'island': ['island']
+			}
+		}
+	},
+	
+	/* MongoDB配置，可有多个，有关数据库操作的更多信息请参考左侧的rw.mongo链接 */
+	mongo: {
+		'DATABASE_NAME_A': {    /* 数据库的名字，必须为正确的数据库名 */
+			host: 'HOST',    /* 数据库地址 */
+			port: /* PORT */,    /* 端口 */
+			user: 'USER',    /* 用户名 */
+			pass: 'PASS',    /* 密码 */
+			col: ['COL_A','COL_B']    /* 数据库的Collection列表 */
+			/* 如果需要访问某数据库的colA集合，则可以通过 rw.mongoColList['DATABASE_NAME_A.colA'] 访问，更多信息请参考左侧的rw.mongo链接*/
+		},
+		'DATABASE_NAME_B': {
+			host: 'HOST',
+			port: /* PORT */,
+			user: 'USER',
+			pass: 'PASS',
+			col: ['COL_A','COL_B']
+		}
+	},
+	
+	/* Mail，有关Mail操作的更多信息请参考左侧的rw.mail链接 */
+	mail: {
+		'backstage': {    /* mail服务的名字 */
+			service: 'Gmail',    /* 所使用邮箱的服务商，支持Gmail、QQ等，详细支持列表请参考nodemailer */
+			auth: {
+				user: "USER",    /* 邮箱用户名 */
+				pass: "PASS"    /* 邮箱密码 */
+			}
+		},
+		'NAME': {
+			service: 'Gmail',
+			auth: {
+				user: "USER",
+				pass: "PASS"
+			}
+		}
+	},
+	
+	/* 日志系统，可自定义，更多信息请参考左侧的rw.long链接 */
+	log: {
+		system: {    /* 系统日志 */
+			color: 32,    /* 颜色 */
+			filename: 'system',    /* 日志文件名前缀 */
+			path: './log/',    /* 日志存储地址 */
+			of: true    /* 是否开启该日志记录 */
+		},
+		error: {    /* 错误日志 */
+			color: 31,
+			filename: 'error',
+			path: './log/',
+			of: true
+		},
+		backstage: {    /* 后台日志 */
+			color: 34,
+			filename: 'backstage',
+			path: './log/',
+			of: true
+		}
+	},
+	
+	/* Rouwan终止时 */
+	dying: {
+		session: {    /* Session动作 */
+			save: true,    /* 是否保存Session到硬盘 */
+			path: './log/'    /* Session保存位置 */
+		}
+	}
+};
+		
+		
+</code></pre>
+		</div>
+	</div>
+</body>
+</html>

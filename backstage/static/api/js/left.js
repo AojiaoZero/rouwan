@@ -2,6 +2,7 @@ var $m={
 	marr:[
 		'About',
 		'Get Started',
+		'rw.config',
 		{
 			'title':'Tools',
 			'child':['Tv Mao','Tool','Broadcast','Data List','Push']

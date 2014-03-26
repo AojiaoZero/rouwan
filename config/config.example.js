@@ -1,6 +1,7 @@
 exports.config={
-	host:'YOUR SERVER NAME',
 	version:0.1,
+	build:2013032601,
+	host:'YOUR SERVER NAME',
 	reloadInt:5000,
 	http:{
 		header:{
@@ -8,11 +9,14 @@ exports.config={
 			'charset':'utf-8',
 			'Server':'Rouwan/0.1'
 		},
+		
 		debug:true,
+		printPostData:true, // print post data to console.
+		
 		allowEmptyExtname:false,
 		allowFileDownload:true,
 		maxAge:30*24*3600,
-		printPostData:true, // print post data to console.
+		compress:/html|js|css/ig,
 		mime:{
 			css:"text/css",
 			gif:"image/gif",
@@ -34,7 +38,7 @@ exports.config={
 			xml:"text/xml",
 			download:"application/octet-stream"
 		},
-		compress:/html|js|css/ig,
+		
 		cookie:{
 			lifeTime:30*24*3600,
 			prefix:'NRWSID'
@@ -44,12 +48,12 @@ exports.config={
 	backstage:{
 		user:'/* CHANGE THIS !!! */',
 		pass:'/* CHANGE THIS !!! */',
+		email:'',
 		ipList:[],
 		startScript:'',
 		autoRestartMem:0,
 		autoRestartInt:30000,
 		autoRestartEmailTimeout:15000,
-		email:'',
 		switch:{
 			master:true,
 			restart:true,
@@ -81,6 +85,20 @@ exports.config={
 	},
 
 	server:{
+		'Example.com':{
+			host:['example.com','localhost','127.0.0.1'],
+			port:80,
+			root:__dirname+'/../example/',
+			staticPath:__dirname+'/../example/static/',
+			errorPage:{
+				//403:'403.html',
+				//404:'404.html'
+			},
+			router:{
+				'index':['','index','index.html'],
+				'test':['test','test.html']
+			}
+		},
 		'backstage':{
 			host:['localhost','127.0.0.1'],
 			port:8931,
@@ -92,25 +110,18 @@ exports.config={
 				'code':['code','code.html'],
 				'island':['island']
 			}
-		},
-		'ExampleA.com':{
-			host:['localhost','127.0.0.1'],
-			port:80,
-			root:__dirname+'/../example/',
-			staticPath:__dirname+'/../example/static/',
-			errorPage:{
-				//403:'403.html',
-				//404:'404.html'
-			},
-			router:{
-				'index':['','index','index.html'],
-				'test':['test']
-			}
 		}
 	},
 
 	mongo:{
-		'DATABASE_NAME':{
+		'DATABASE_NAME_A':{
+			host:'HOST',
+			port:/* PORT */,
+			user:'USER',
+			pass:'PASS',
+			col:['COL_A','COL_B']
+		},
+		'DATABASE_NAME_B':{
 			host:'HOST',
 			port:/* PORT */,
 			user:'USER',

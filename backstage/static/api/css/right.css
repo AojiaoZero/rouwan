@@ -11,7 +11,10 @@ body{
 	font-family:Hiragino Sans GB,微软雅黑,黑体,Arial,sans-serif;
 	overflow:auto;
 }
-
+a{
+	text-decoration:none;
+	color:#004aff;
+}
 h1,h2{
 	color:#000000;
 	margin:0;
@@ -27,8 +30,11 @@ h2{
 
 pre{
 	border:1px solid #cccccc;
-	padding:5px 10px !important;
-	margin:5px 0 !important;
+	padding:5px 5px !important;
+	margin:5px 0 8px !important;
+}
+code{
+	margin:0 5px !important;
 }
 
 .wrapper{
