@@ -58,6 +58,9 @@ ul .par{
 	font-weight:bold;
 	color:#EFEFEF;
 }
+ul .par a{
+	color:#333333;
+}
 ul .sub,ul .sub .cur{
 	display:none;
 	margin:0 0 0 20px;

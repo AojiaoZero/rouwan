@@ -4,16 +4,13 @@ var $m={
 		'Get Started',
 		'Config',
 		'Router',
-		'Mongo',
-		'Mail',
-		'Log',
 		{
-			'title':'Tools',
-			'child':['Tv Mao','Tool','Broadcast','Data List','Push']
+			'title':'Feature',
+			'child':['Cache','Counter','Log','Mail','Mongo','Session','Template','Validator']
 		},
 		{
-			'title':'Develop',
-			'child':['App Key','Configure','Api Reference','Log']
+			'title':'API',
+			'child':['system.cache','system.counter','system.http','system.log','system.mail','system.mongo','system.server','system.session','system.template','system.util','system.validator']
 		}
 	],
 	build:function(){
