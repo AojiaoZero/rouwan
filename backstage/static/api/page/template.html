@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Template - Rouwan - BackStage</title>
+	<meta name="keywords" content="template,模板,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Template" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Template</h1>
+		<div class="box">
+			Rouwan提供了简单的模板和模板缓存功能<br />
+			关于缓存管理等，更多信息请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.template </code><br />
+			<b>模板文件修改后，Rouwan会自动在一定时间(默认为5s)后重新加载修改过的新模板并刷新缓存，无需重启Rouwan</b>
+		</div>
+		<h2>渲染模板举例</h2>
+		<div class="box">
+			模板内容，该模板保存为<code class="language-javascript"> /www/template/name.html </code>
+			<pre><code class="language-javascript">&lt;div&gt;My name is {{NAME}}.&lt;/div&gt;</code></pre>
+			渲染该模板
+			<pre><code class="language-javascript">rw.t.render('/www/template/name.html',{'NAME':'Sai'});</code></pre>
+			输出结果
+			<pre><code class="language-javascript">&lt;div&gt;My name is Sai.&lt;/div&gt;</code></pre>
+			执行一次后，<code class="language-javascript"> /www/template/name.html </code>会被加入缓存，第二次调用时将直接从缓存中读取
+		</div>
+		<h2>功能</h2>
+		<div class="box">
+			Rouwan暂时只支持单纯的变量替换的模板渲染，替换格式为HTML中<code class="language-javascript"> {{VAR}} </code>替换为渲染变量中的<code class="language-javascript"> {'VAR':'VALUE'} </code>
+		</div>
+	</div>
+</body>
+</html>

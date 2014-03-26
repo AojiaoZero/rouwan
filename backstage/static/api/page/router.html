@@ -16,7 +16,8 @@
 		<h1>Router</h1>
 		<div class="box">
 			Rouwan的Router是配合Config里面的Server(vHost)工作的，可以存在多个Router规则<br />
-			通过绑定Router，发生对应访问行为时，会执行绑定脚本内的<code class="language-javascript"> exports.run() </code>函数，并传送两个变量<code class="language-javascript"> req </code>和<code class="language-javascript"> res </code>, 对应http请求的request和response
+			通过绑定Router，发生对应访问行为时，会执行绑定脚本内的<code class="language-javascript"> exports.run() </code>函数，并传送两个变量<code class="language-javascript"> req </code>和<code class="language-javascript"> res </code>, 对应http请求的request和response<br />
+			<b>脚本修改后，Rouwan会自动在一定时间(默认为5s)后重新加载修改过的新脚本，无需重启Rouwan</b>
 		</div>
 		<h2>配置举例</h2>
 		<div class="box">
