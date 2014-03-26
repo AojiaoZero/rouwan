@@ -5,7 +5,7 @@ exports.validate=function(m,o){
 			if(m[i].email){
 				if(!rw.util.isEmail(o[i])){
 					re.push(m[i].fail);
-					break;
+					continue;
 				}
 			}
 			if(m[i].safe){
@@ -20,26 +20,43 @@ exports.validate=function(m,o){
 			if(m[i].inarr){
 				if(m[i].inarr.indexOf(o[i])<0){
 					re.push(m[i].fail);
-					break;
+					continue;
 				}
 			}
 			if(m[i].type){
+				if(m[i].type=='number'){
+					o[i]=Number(o[i]);
+				}
 				if(typeof(o[i])!=m[i].type){
 					re.push(m[i].fail);
-					break;
+					continue;
+				}
+				if(m[i].type=='number' && m[i].value){
+					if(m[i].value[0]){
+						if(o[i]<m[i].value[0] && m[i].value[0]!=0){
+							re.push(m[i].fail);
+							continue;
+						}
+					}
+					if(m[i].value[1]){
+						if(o[i]>m[i].value[1] && m[i].value[1]!=0){
+							re.push(m[i].fail);
+							continue;
+						}
+					}
 				}
 			}
 			if(m[i].length){
 				if(m[i].length[0]!=0){
 					if(o[i].length<m[i].length[0]){
 						re.push(m[i].fail);
-						break;
+						continue;
 					}
 				}
 				if(m[i].length[1]!=0){
 					if(o[i].length>m[i].length[1]){
 						re.push(m[i].fail);
-						break;
+						continue;
 					}
 				}
 			}
