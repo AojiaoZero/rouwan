@@ -44,6 +44,7 @@
 	/* ...省略... */
 }</code></pre>
 		</div>
+		
 		<a id="rw.cache.put"></a>
 		<h2>rw.cache.put ( id<span>:string</span>, data<span>:*</span>, expire<span>:number</span> )<span>:null</span></h2>
 		<div class="box">
@@ -51,12 +52,13 @@
 			<div class="var">
 				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
 				<code> data </code>可为任意格式的数据，缓存的数据<br />
-				<code> expire </code>为过期时间，单位为ms；可以为0，为0表示不过期<br />
+				<code> expire </code>为<code> number </code>，过期时间，单位为ms；可以为0，为0表示不过期<br />
 				&nbsp;返回<code class="language-javascript"> null </code>
 			</div>
 			<pre><code class="language-javascript">/* 举例 */
 rw.cache.put('example.cache', {'example': 'balabalabala'}, 0)</code></pre>
 		</div>
+		
 		<a id="rw.cache.get"></a>
 		<h2>rw.cache.get ( id<span>:string</span> )<span>:object</span></h2>
 		<div class="box">
@@ -66,6 +68,7 @@ rw.cache.put('example.cache', {'example': 'balabalabala'}, 0)</code></pre>
 				&nbsp;返回形如<code> rw.cacheData </code>中的内容
 			</div>
 		</div>
+		
 		<a id="rw.cache.expire"></a>
 		<h2>rw.cache.expire ( id<span>:string</span> )<span>:null</span></h2>
 		<div class="box">
@@ -75,6 +78,7 @@ rw.cache.put('example.cache', {'example': 'balabalabala'}, 0)</code></pre>
 				&nbsp;返回<code class="language-javascript"> null </code>
 			</div>
 		</div>
+		
 		<a id="rw.cache.delete"></a>
 		<h2>rw.cache.delete ( id<span>:string</span> )<span>:boolean</span></h2>
 		<div class="box">

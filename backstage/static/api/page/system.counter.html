@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Counter - Rouwan - BackStage</title>
+	<meta name="keywords" content="counter,计数器,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan System Counter" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Counter</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.countergroup">Object: rw.counterGroup</a></li>
+				<li><a href="#rw.counter.new">Function: rw.counter.new</a></li>
+				<li><a href="#rw.counter.add">Function: rw.counter.add</a></li>
+				<li><a href="#rw.counter.get">Function: rw.counter.get</a></li>
+				<li><a href="#rw.counter.reset">Function: rw.counter.reset</a></li>
+			</ul>
+		</div>
+		<a id="rw.countergroup"></a>
+		<h2>rw.counterGroup <span>(Object)</span></h2>
+		<div class="box">
+			全部计数器数据保存于此，数据结构如下
+			<pre><code class="language-javascript">{
+	"counter.name": {    /* 计数器名称 */
+		"utime": 1395856570677,    /* 计数器更新时间，ms */
+		"ctime": 1395849606218,    /* 计数器创建时间，ms */
+		"count": 564,    /* 当前周期内计数器数字 */
+		"time": 60000,    /* 计数器周期，ms；每一个周期会清空一次count */
+		"total": 114647    /* 计数器总次数 */
+	},
+	/* ...省略... */
+}</code></pre>
+			关于周期平均值：周期平均值是指，周期内的计数数字的平均值，能更真实的表现出实时数据的情况
+		</div>
+		
+		<a id="rw.counter.new"></a>
+		<h2>rw.counter.new ( id<span>:string</span>, time<span>:number</span>, reset<span>:boolean</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>创建一个新的计数器</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，计数器的ID/名称，如果计数器已存在，根据<code> reset </code>进行下一步操作<br />
+				<code> time </code>为<code> number </code>，周期时间，单位为ms；可为0，为0表示不统计周期平均值<br />
+				<code> reset </code>为<code> boolean </code>，如果计数器已存在，是否重建该计数器；若为<code class="language-javascript"> false </code>，则不作任何操作<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.counter.new('request.permin', 60000)</code></pre>
+		</div>
+		
+		<a id="rw.counter.add"></a>
+		<h2>rw.counter.add ( id<span>:string</span>, re<span>:boolean</span>, step<span>:number</span> )<span>:null</span> | <span>:number</span></h2>
+		<div class="box">
+			<h3>计数器数值增加</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，计数器的ID/名称<br />
+				<code> re </code>为<code> boolean </code>，计数器数值增加之后，是否返回新的平均值<br />
+				<code> step </code>为<code> number </code>，每次增加的数值，默认为<code> 1 </code><br />
+				&nbsp;返回<code class="language-javascript"> null | number </code>
+			</div>
+		</div>
+		
+		<a id="rw.counter.get"></a>
+		<h2>rw.counter.get ( id<span>:string</span>, avg<span>:boolean</span> )<span>:number</span></h2>
+		<div class="box">
+			<h3>获得计数器的平均值</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，计数器的ID/名称<br />
+				<code> avg </code>为<code> boolean </code>，为<code class="language-javascript"> true </code>则不按照周期返回平均值，为<code class="language-javascript"> false </code>则返回周期平均值<br />
+				&nbsp;返回<code> number </code><br />
+				&nbsp;关于周期平均值：周期平均值是指，周期内的计数器数字的平均值，能更真实的表现出实时数据的情况
+			</div>
+		</div>
+		
+		<a id="rw.counter.reset"></a>
+		<h2>rw.counter.reset ( id<span>:string</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>重置一个计数器，使计数器数字为0</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，计数器的ID/名称<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
