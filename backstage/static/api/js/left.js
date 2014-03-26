@@ -2,11 +2,11 @@ var $m={
 	marr:[
 		'About',
 		'Get Started',
-		'rw.config',
-		'rw.router',
-		'rw.mongo',
-		'rw.mail',
-		'rw.log',
+		'Config',
+		'Router',
+		'Mongo',
+		'Mail',
+		'Log',
 		{
 			'title':'Tools',
 			'child':['Tv Mao','Tool','Broadcast','Data List','Push']
