@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Mail - Rouwan - BackStage</title>
+	<meta name="keywords" content="mail,邮件,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Mail" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Mail</h1>
+		<div class="box">
+			Rouwan的Mail功能使用<code class="language-javascript"> nodemailer </code><br />
+			更多信息请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.mail </code>
+		</div>
+		<h2>配置举例</h2>
+		<div class="box">
+			首先配置Config内的Mail信息
+			<pre><code class="language-javascript">mail:{
+	'test':{    /* mail服务的名字，自定义 */
+		service:'Gmail',    /* 所使用邮箱的服务商，支持情况请参考本页下方的"支持的服务商" */
+		auth:{
+			user:"user",    /* 邮箱用户名 */
+			pass:"pass"    /* 邮箱密码 */
+		}
+	},
+	/* ...省略... */</code></pre>
+		</div>
+		<h2>实际应用举例</h2>
+		<div class="box">
+			使用配置信息为<code class="language-javascript"> test </code>的账户发送邮件给<code class="language-"> to@example.com </code>
+			<pre><code class="language-javascript">rw.mail('test',{
+	from: "test &lt;test@example.com&gt;",    /* 发件人 */
+	to: "to@example.com",    /* 收件人 */
+	subject: "subject",    /* 邮件标题 */
+	html:"content"    /* 邮件内容 */
+	},
+	function(error,data){
+		/* ...省略... */
+	}
+);</code></pre>
+		</div>
+		<h2>支持的服务商</h2>
+		<div class="box">
+			以下数据不一定是最新数据，最新数据请查看最新版的nodemailer<pre><code class="language-javascript"> [
+	'Gmail',
+	'QQ',
+	'Hotmail',
+	'hot.ee',
+	'mail.ee',
+	'SES',
+	'Zoho',
+	'iCloud',
+	'SendGrid',
+	'Mailgun',
+	'Postmark',
+	'yandex',
+	'Mail.Ru',
+	'DynectEmail',
+	'Mandrill',
+	'Mailjet',
+	'Yahoo'
+]</code></pre>
+		</div>
+	</div>
+</body>
+</html>
