@@ -27,11 +27,23 @@ h2{
 	font-size:18px;
 	background:url(../images/title2Bar.png) no-repeat center left;
 }
+h2 span{
+	color:#777777;
+	font-size:16px;
+	padding:0 5px;
+}
+h3{
+	font-size:15px;
+	padding:0;
+	margin:0;
+	padding:0 0 5px 5px;
+}
 
 pre{
 	border:1px solid #cccccc;
 	padding:5px 5px !important;
 	margin:5px 0 8px !important;
+	line-height:normal;
 }
 code{
 	margin:0 5px !important;
@@ -41,7 +53,8 @@ code{
 	margin:0 0 50px 20px;
 }
 .wrapper .box{
-	margin:15px 25px 20px 20px;
+	margin:10px 25px 25px 20px;
+	line-height:27px;
 }
 .wrapper .box p{
 	padding:0;
@@ -55,4 +68,25 @@ code{
 .wrapper .box .uul{
 	padding:0;
 	margin:5px 0 15px 35px;
+}
+.wrapper .box .var{
+	padding:0 0 0 25px;
+}
+
+.sbox{
+	background:#eeeeee;
+	padding:13px 20px 11px;
+	border-width:1px 1px 1px 6px;
+	border-style:solid;
+}
+.stable{
+	border-color:green;
+}
+.stable span{
+	color:green;
+}
+
+.apilist{
+	margin:25px 25px 0;
+	padding:0;
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Cache - Rouwan - BackStage</title>
+	<meta name="keywords" content="cache,缓存,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan System Cache" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Cache</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.cachedata">Object: rw.cacheData</a></li>
+				<li><a href="#rw.cache.put">Function: rw.cache.put</a></li>
+				<li><a href="#rw.cache.get">Function: rw.cache.get</a></li>
+				<li><a href="#rw.cache.expire">Function: rw.cache.expire</a></li>
+				<li><a href="#rw.cache.delete">Function: rw.cache.delete</a></li>
+			</ul>
+		</div>
+		<a id="rw.cachedata"></a>
+		<h2>rw.cacheData <span>(Object)</span></h2>
+		<div class="box">
+			全部缓存数据保存于此，数据结构如下
+			<pre><code class="language-javascript">{
+	"cache.name": {    /* 缓存名称 */
+		"id": "cache.name",    /* 缓存名称 */
+		"create": 1395849611419,    /* 缓存创建时间，ms */
+		"destory": 1395853211419,    /* 缓存计划过期时间，ms；为0则表示不过期 */
+		"expire": 3600000,    /* 缓存生存周期，ms；为0则表示永久存在 */
+		"expired": false,    /* 缓存是否已经过期 */
+		"data": {     /* 缓存内存储的数据 */
+			/* ...省略... */
+		}
+	},
+	/* ...省略... */
+}</code></pre>
+		</div>
+		<a id="rw.cache.put"></a>
+		<h2>rw.cache.put ( id<span>:string</span>, data<span>:*</span>, expire<span>:number</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>创建一个新的缓存</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
+				<code> data </code>可为任意格式的数据，缓存的数据<br />
+				<code> expire </code>为过期时间，单位为ms；可以为0，为0表示不过期<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.cache.put('example.cache', {'example': 'balabalabala'}, 0)</code></pre>
+		</div>
+		<a id="rw.cache.get"></a>
+		<h2>rw.cache.get ( id<span>:string</span> )<span>:object</span></h2>
+		<div class="box">
+			<h3>获得一个已存在缓存</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
+				&nbsp;返回形如<code> rw.cacheData </code>中的内容
+			</div>
+		</div>
+		<a id="rw.cache.expire"></a>
+		<h2>rw.cache.expire ( id<span>:string</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>使一个已存在缓存立即过期</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+		</div>
+		<a id="rw.cache.delete"></a>
+		<h2>rw.cache.delete ( id<span>:string</span> )<span>:boolean</span></h2>
+		<div class="box">
+			<h3>删除一个已存在缓存</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
+				&nbsp;返回<code class="language-javascript"> true | false </code>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
