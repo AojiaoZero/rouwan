@@ -3,6 +3,7 @@ var $m={
 		'About',
 		'Get Started',
 		'rw.config',
+		'rw.router',
 		{
 			'title':'Tools',
 			'child':['Tv Mao','Tool','Broadcast','Data List','Push']

@@ -108,8 +108,8 @@
 		'Example.com': {    /* vHost的名字，格式任意 */
 			host: ['example.com','localhost','127.0.0.1'],    /* 绑定的host/domain name */
 			port: 80,    /* 端口 */
-			root: __dirname+'/../example/',    /* Root目录，存放处理请求的脚本，对应router */
-			staticPath: __dirname+'/../example/static/',    /* 静态文件目录 */
+			root: __dirname+'/../example/',    /* Root目录，存放处理请求的脚本，对应router，请尽量使用绝对路径 */
+			staticPath: __dirname+'/../example/static/',    /* 静态文件目录，请尽量使用绝对路径 */
 			
 			errorPage: {    /* 错误页面地址，格式为URL */
 				//403: '403.html',
@@ -202,10 +202,7 @@
 			path: './log/'    /* Session保存位置 */
 		}
 	}
-};
-		
-		
-</code></pre>
+};</code></pre>
 		</div>
 	</div>
 </body>
