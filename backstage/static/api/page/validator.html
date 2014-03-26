@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Validator - Rouwan - BackStage</title>
+	<meta name="keywords" content="validator,验证器,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Validator" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>Validator</h1>
+		<div class="box">
+			Rouwan提供了简单的数据验证器，用于用户提交数据的快速验证<br />
+			关于<code class="language-javascript"> rw.validator </code>的更多信息请参考左侧<code class="language-javascript"> API </code>内的<code class="language-javascript"> system.validator </code>
+		</div>
+		<h2>验证举例</h2>
+		<div class="box">
+			待验证数据
+			<pre><code class="language-javascript">{
+	'name': 'this is my name and it is too long',
+	'email': 'bademail@com',
+	'age': 17,
+	'sex': 'male'
+}</code></pre>
+			验证模板
+			<pre><code class="language-javascript">{
+	'name': {
+		type: 'string',
+		length: [1,30],
+		safe: true,
+		fail: 1
+	},
+	'email': {
+		email: true,
+		length: [1,255],
+		fail: 2
+	},
+	'age': {
+		type: 'number',
+		value: [18,0],
+		fail: 3
+	},
+	'sex': {
+		type: 'string',
+		inarr: ['male', 'female'],
+		fail: 4
+	}
+}</code></pre>
+			验证结果
+			<pre><code class="language-javascript">[ 1, 2, 3 ]</code></pre>
+			即返回三个验证模板中，验证失败条目的错误代码<code class="language-javascript"> fail: 1 </code><code class="language-javascript"> fail: 2 </code><code class="language-javascript"> fail: 3 </code>，第4个验证成功不会返回fail码
+		</div>
+		<h2>支持的验证参数</h2>
+		<div class="box">
+			<pre><code class="language-javascript">{
+	email: true|false,    /* 验证数据是否为Email地址 */
+	safe: true|false,    /* 将数据进行防注入处理 */
+	safereg: true|false,    /* 将数据进行防正则处理 */
+	lowercase: true|false,    /* 将数据进行小写化处理 */
+	uppercase: true|false,    /* 将数据进行大写化处理 */
+	inarr: [],    /* 数据是否在Array内 */
+	type: '',    /* 数据是否为改格式，如string, number等，当type为number时，会将数据处理为Number() */
+	value: ['open',1],    /* 数字是否在该范围内，配合type为number时使用；若为'open'则表示不限制 */
+	length: [0,30]    /* 字符串长度是否在该范围内，配合type为string时使用；若为0则表示不限制 */
+}</code></pre>
+		</div>
+	</div>
+</body>
+</html>

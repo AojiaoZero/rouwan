@@ -17,6 +17,9 @@ exports.validate=function(m,o){
 			if(m[i].lowercase){
 				o[i]=o[i].toLowerCase();
 			}
+			if(m[i].uppercase){
+				o[i]=o[i].toUpperCase();
+			}
 			if(m[i].inarr){
 				if(m[i].inarr.indexOf(o[i])<0){
 					re.push(m[i].fail);
@@ -33,13 +36,13 @@ exports.validate=function(m,o){
 				}
 				if(m[i].type=='number' && m[i].value){
 					if(m[i].value[0]){
-						if(o[i]<m[i].value[0] && m[i].value[0]!=0){
+						if(o[i]<m[i].value[0] && m[i].value[0]!='open'){
 							re.push(m[i].fail);
 							continue;
 						}
 					}
 					if(m[i].value[1]){
-						if(o[i]>m[i].value[1] && m[i].value[1]!=0){
+						if(o[i]>m[i].value[1] && m[i].value[1]!='open'){
 							re.push(m[i].fail);
 							continue;
 						}
