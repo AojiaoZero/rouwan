@@ -12,6 +12,11 @@ body{
 	overflow:auto;
 }
 
+a{
+	text-decoration:none;
+	color:#004aff;
+}
+
 .wrapper{
 	margin:0 0 50px 15px;
 }
@@ -35,7 +40,7 @@ ul li{
 	transition:background-color .2s linear;
 }
 ul li:hover{
-	background-color:#ececec;
+	background-color:#efefef;
 	transition:background-color .2s linear;
 }
 ul li a{
@@ -46,7 +51,7 @@ ul li a{
 	transition:background-color .2s linear;
 }
 ul .cur{
-	background-color:#f1f1f1;
+	background-color:#ececec;
 }
 ul .par{
 	font-size:16px;

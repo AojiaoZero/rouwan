@@ -1,7 +1,7 @@
 var $m={
 	marr:[
 		'About',
-		'B',
+		'Get Started',
 		{
 			'title':'Tools',
 			'child':['Tv Mao','Tool','Broadcast','Data List','Push']

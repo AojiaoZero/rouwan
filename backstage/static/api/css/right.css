@@ -7,24 +7,35 @@ body{
 	font-size:15px;
 	margin:0;
 	padding:0;
-	color:#000000;
+	color:#333333;
 	font-family:Hiragino Sans GB,微软雅黑,黑体,Arial,sans-serif;
 	overflow:auto;
 }
 
-h1{
+h1,h2{
+	color:#000000;
 	margin:0;
 	padding:0 15px;
-	font-size:20px;
+	font-size:21px;
 	font-weight:normal;
 	background:url(../images/titleBar.png) no-repeat center left;
+}
+h2{
+	font-size:18px;
+	background:url(../images/title2Bar.png) no-repeat center left;
+}
+
+pre{
+	border:1px solid #cccccc;
+	padding:5px 10px !important;
+	margin:5px 0 !important;
 }
 
 .wrapper{
 	margin:0 0 50px 20px;
 }
 .wrapper .box{
-	margin:10px 25px 20px 20px;
+	margin:15px 25px 20px 20px;
 }
 .wrapper .box p{
 	padding:0;

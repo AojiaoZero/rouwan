@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>开始 - Rouwan - BackStage</title>
+	<meta name="keywords" content="about,关于,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="关于Rouwan" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>开始</h1>
+		<div class="box">
+			使用Rouwan，只需简单两行代码。
+			<pre><code class="language-javascript">require('rouwan');	/* 加载Rouwan */
+rw.server.start();	/* 启动Rouwan */</code></pre>
+		</div>
+		<h2>使用Session/MongoDB</h2>
+		<div class="box">
+			如需使用Session/MongoDB, 请在启动Rouwan前完成Session/MongoDB的初始化 
+			<pre><code class="language-javascript">require('rouwan');	/* 加载Rouwan */
+rw.sess.init(function(){	/* 初始化Session, 完成后执行Callback */
+	rw.mongo.init(function(){	/* 初始化MongoDB, 完成后执行Callback */
+		rw.server.start();	/* 启动Rouwan */
+	});
+});</code></pre>
+		</div>
+	</div>
+</body>
+</html>
