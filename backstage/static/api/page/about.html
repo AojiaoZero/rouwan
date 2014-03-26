@@ -8,10 +8,38 @@
 	<meta name="author" content="Sai" />
 	<meta name="copyright" content="2014 Sai" />
 	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/about.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 		<h1>关于 Rouwan</h1>
+		<div class="box">
+			<p>Rouwan(肉丸)源自一个同名动漫网站，起初只是为了有趣决定用NondeJs+MongoDB完成整站，在开发过程中满满形成了一个简单的小框架，这个小框架经过完善和修改，就变成了现在的Rouwan。</p>
+			<p>Rouwan拥有以下功能及特点: </p>
+			<ul class="pul">
+				<li>支持vHost, Router以及SSL</li>
+				<li>提供Email(基于nodemailer), MongoDB(基于mongodb-native)支持</li>
+				<li>提供Session(会话), Cache(缓存), Log(日志), Counter(计数器), Template(模板), Validator(验证器)等功能支持</li>
+				<li>提供BackStage(后台), 可直接管理全部变量及当前运行的代码</li>
+				<li>BackStage(后台)提供代码编辑器, 可在线编辑服务端托管代码</li>
+				<li>提供脚本及模板动态加载功能, 如有变更自动重新加载, 无需重启整个应用服务</li>
+				<li>提供负载监控, 可按设定自动重启并邮件通报</li>
+				<li>更多功能请查看左侧API列表</li>
+			</ul>
+		</div>
+		<h1>版本</h1>
+		<div class="box">
+			<script type="text/javascript">$a.vr();</script><br />
+			<span id="version">Loading...</span>
+		</div>
 	</div>
+	<script type="text/javascript">
+		setTimeout(function(){
+			var hjs=document.createElement('script');
+			hjs.setAttribute('src','http://rouwan.us/getversion');
+			document.body.appendChild(hjs);
+		},100);
+	</script>
 </body>
 </html>

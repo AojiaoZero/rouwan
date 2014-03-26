@@ -4,16 +4,12 @@ body{
 	background:transparent;
 	word-break:break-all;
 	word-wrap:break-word;
-	font-size:13px;
+	font-size:15px;
 	margin:0;
 	padding:0;
 	color:#000000;
 	font-family:Hiragino Sans GB,微软雅黑,黑体,Arial,sans-serif;
 	overflow:auto;
-}
-
-.wrapper{
-	margin:0 0 50px 20px;
 }
 
 h1{
@@ -22,4 +18,24 @@ h1{
 	font-size:20px;
 	font-weight:normal;
 	background:url(../images/titleBar.png) no-repeat center left;
+}
+
+.wrapper{
+	margin:0 0 50px 20px;
+}
+.wrapper .box{
+	margin:10px 25px 20px 20px;
+}
+.wrapper .box p{
+	padding:0;
+	margin:0 0 15px;
+	text-indent:30px;
+}
+.wrapper .box .pul{
+	padding:0;
+	margin:6px 0 0 65px;
+}
+.wrapper .box .uul{
+	padding:0;
+	margin:5px 0 15px 35px;
 }
