@@ -249,7 +249,7 @@ exports.staicFileRequest=function(req,res){
 				req=null;
 				return;
 			}
-			if(ext.match(rw.config.http.compress)){
+			if(ext.match(new RegExp(rw.config.http.compress.join('|'),'ig'))){
 				if(req.headers['accept-encoding'].match(/\bgzip\b/)){
 					header['Content-Encoding']='gzip';
 					res.writeHead(200,header);

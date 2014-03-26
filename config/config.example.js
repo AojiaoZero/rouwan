@@ -16,7 +16,7 @@ exports.config={
 		allowEmptyExtname:false,
 		allowFileDownload:true,
 		maxAge:30*24*3600,
-		compress:/html|js|css/ig,
+		compress:['html','js','css'],
 		mime:{
 			css:"text/css",
 			gif:"image/gif",
