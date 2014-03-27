@@ -2,6 +2,7 @@ global.rw.cacheData={};
 
 exports.put=function(id,data,expire){
 	var create=new Date().getTime(),destory;
+	if(!expire){expire=0;}
 	if(expire==0){
 		destory=0;
 	}else{

@@ -44,7 +44,7 @@
 		</div>
 		
 		<a id="rw.counter.new"></a>
-		<h2>rw.counter.new ( id<span>:string</span>, time<span>:number</span>, reset<span>:boolean</span> )<span>:null</span></h2>
+		<h2>rw.counter.new ( id<span>:string</span>, time<span>:number = 0</span>, reset<span>:boolean = false</span> )<span>:null</span></h2>
 		<div class="box">
 			<h3>创建一个新的计数器</h3>
 			<div class="var">
@@ -58,7 +58,7 @@ rw.counter.new('request.permin', 60000)</code></pre>
 		</div>
 		
 		<a id="rw.counter.add"></a>
-		<h2>rw.counter.add ( id<span>:string</span>, re<span>:boolean</span>, step<span>:number</span> )<span>:null</span> | <span>:number</span></h2>
+		<h2>rw.counter.add ( id<span>:string</span>, re<span>:boolean = false</span>, step<span>:number = 1</span> )<span>:null</span> | <span>:number</span></h2>
 		<div class="box">
 			<h3>计数器数值增加</h3>
 			<div class="var">
@@ -70,7 +70,7 @@ rw.counter.new('request.permin', 60000)</code></pre>
 		</div>
 		
 		<a id="rw.counter.get"></a>
-		<h2>rw.counter.get ( id<span>:string</span>, avg<span>:boolean</span> )<span>:number</span></h2>
+		<h2>rw.counter.get ( id<span>:string</span>, avg<span>:boolean = false</span> )<span>:number</span></h2>
 		<div class="box">
 			<h3>获得计数器的平均值</h3>
 			<div class="var">

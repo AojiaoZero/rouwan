@@ -29,7 +29,7 @@
 		</div>
 		
 		<a id="rw.http.zout"></a>
-		<h2>rw.http.zout ( data<span>:string</span>, req<span>:request</span>, res<span>:response</span>, h<span>:headerObject</span> )<span>:null</span></h2>
+		<h2>rw.http.zout ( data<span>:string</span>, req<span>:request</span>, res<span>:response</span>, h<span>:headerObject = null</span> )<span>:null</span></h2>
 		<div class="box">
 			<h3>压缩并输出数据(res.end())，自动判断支持的压缩类型/不压缩</h3>
 			<div class="var">
@@ -44,7 +44,7 @@ rw.http.zout('something to zout.', req, res)</code></pre>
 		</div>
 		
 		<a id="rw.http.throw"></a>
-		<h2>rw.http.throw ( id<span>:number</span>, res<span>:response</span>, data<span>:string</span> )<span>:null</span></h2>
+		<h2>rw.http.throw ( id<span>:number</span>, res<span>:response</span>, data<span>:string = null</span> )<span>:null</span></h2>
 		<div class="box">
 			<h3>输出HTTP错误信息页面</h3>
 			<div class="var">
