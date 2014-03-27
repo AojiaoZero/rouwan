@@ -179,7 +179,7 @@ exports.get=function(url,callback){
 	hret=setTimeout(function(){hre.abort();},120000);
 };
 
-exports.staicFileRequest=function(req,res){
+exports.staticFileRequest=function(req,res){
 	var filePath=rw.path.normalize(rw.config.server[req.server].staticPath+req.url.pathname);
 	rw.fs.exists(filePath,function(exists){
 		if(!exists){

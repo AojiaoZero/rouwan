@@ -91,7 +91,7 @@ exports.request=function(req,res){
 		return;
 	}
 	if(req.method=='GET'){
-		rw.http.staicFileRequest(req,res);
+		rw.http.staticFileRequest(req,res);
 		return;
 	}
 	rw.http.throw(405,res);
