@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Log - Rouwan - BackStage</title>
+	<meta name="keywords" content="log,日志,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Log" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Log</h1>
+		<div class="box">
+			关于<code class="language-javascript"> log </code>配置，等更多信息请参考左侧<code> Feature </code>内的<code> Log </code>
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.log.write">Function: rw.log.write</a></li>
+				<li><a href="#rw.log.writefile">Function: rw.log.writeFile</a></li>
+			</ul>
+		</div>
+		
+		<a id="rw.log.write"></a>
+		<h2>rw.log.write ( data<span>:string</span>, type<span>:string</span>, sync<span>:boolean</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>记录一段日志</h3>
+			<div class="var">
+				<code> data </code>为<code> string </code>，日志内容<br />
+				<code> type </code>为<code> string </code>，日志的类型，对应配置文件中的内容<br />
+				<code> sync </code>为<code> boolean </code>，是否同步写入日志文件；若为<code class="language-javascript"> true </code>，则同步写入日志文件；若为<code class="language-javascript"> false </code>，则异步写入日志文件<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.log.write('This is a log.', 'test')</code></pre>
+		</div>
+		
+		<a id="rw.log.writefile"></a>
+		<h2>rw.log.writeFile ( - )<span>:-</span></h2>
+		<div class="box">
+			<h3>系统函数</h3>
+		</div>
+	</div>
+</body>
+</html>
