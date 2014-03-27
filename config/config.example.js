@@ -90,6 +90,7 @@ exports.config={
 			port:80,
 			root:__dirname+'/../example/',
 			staticPath:__dirname+'/../example/static/',
+			indexFile:'index.html',
 			errorPage:{
 				//403:'403.html',
 				//404:'404.html'
@@ -104,6 +105,7 @@ exports.config={
 			port:8931,
 			root:__dirname+'/../backstage/module/',
 			staticPath:__dirname+'/../backstage/static/',
+			indexFile:'index.html',
 			errorPage:{},
 			router:{
 				'index':['','index','index.html'],

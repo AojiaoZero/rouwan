@@ -196,10 +196,17 @@ exports.staticFileRequest=function(req,res){
 				return;
 			}
 			if(stat.isDirectory()){
-				exports.throw(403,res);
-				filePath=null;
-				req=null;
-				return;
+				if(rw.config.server[req.server].indexFile && rw.config.server[req.server].indexFile.length>0){
+					exports.throw(302,res,'./'+rw.config.server[req.server].indexFile);
+					filePath=null;
+					req=null;
+					return;
+				}else{
+					exports.throw(403,res);
+					filePath=null;
+					req=null;
+					return;
+				}
 			}
 			var lastModified=stat.mtime.toUTCString();
 			if(req.headers['if-modified-since'] && lastModified==req.headers['if-modified-since']){
