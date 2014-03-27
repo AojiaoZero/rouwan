@@ -74,7 +74,7 @@ rw.http.throw(302, res, 'http://example.com/abc.html')</code></pre>
 			<h3>通过get方式获取一个url资源</h3>
 			<div class="var">
 				<code> url </code>为<code> string </code>，请求的资源地址<br />
-				<code> callback </code>为<code class="language-javascript"> function </code>，传递一个变量<code> result </code>；请求成功时<code> result </code>为URL对应的资源数据<code> Buffer </code>，若请求失败，则<code> result </code>为<code class="language-javascript"> false </code><br />
+				<code> callback </code>为<code class="language-javascript"> function </code>，请求结束后调用，传递一个变量<code> result </code>；请求成功时<code> result </code>为URL对应的资源数据<code> Buffer </code>，若请求失败，则<code> result </code>为<code class="language-javascript"> false </code><br />
 				&nbsp;返回<code> null </code>
 			</div>
 			<pre><code class="language-javascript">/* 举例 */

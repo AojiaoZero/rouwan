@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Mail - Rouwan - BackStage</title>
+	<meta name="keywords" content="mail,邮件,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Mail" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Mail</h1>
+		<div class="box">
+			Rouwan的Mail功能使用<code class="language-javascript"> nodemailer </code><br />
+			关于<code class="language-javascript"> mail </code>配置，等更多信息请参考左侧<code> Feature </code>内的<code> Mail </code>
+			<div class="sbox normal">
+				状态：<span>一般</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.mail">Function: rw.mail</a></li>
+			</ul>
+		</div>
+		
+		<a id="rw.mail"></a>
+		<h2>rw.mail ( id<span>:string</span>, opt<span>:object</span>, callback<span>:function</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>发送一封邮件</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，邮件发送配置，对应配置文件中的内容<br />
+				<code> opt </code>为<code> object </code>，要发送邮件的<code> optionObject </code>，参数请参考下方的 <code> optionObject </code><br />
+				<code> callback </code>为<code class="language-javascript"> function </code>，邮件发送结束后调用；传递两个参数<code> error </code>和<code> result </code><br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.mail('test',
+	{
+		from: "test &lt;test@example.com&gt;",    /* 发件人 */
+		to: "to@example.com",    /* 收件人 */
+		subject: "subject",    /* 邮件标题 */
+		html: "content"    /* 邮件HTML内容 */
+	},
+	function(error,data){
+		/* ...省略... */
+	}
+);</code></pre>
+			<pre><code class="language-javascript">/* optionObject，引用自nodemailer */
+var opt = {
+
+    // sender info
+    from: 'Sender Name &lt;sender@example.com&gt;',
+
+    // Comma separated list of recipients
+    to: '"Receiver Name" &lt;nodemailer@disposebox.com&gt;',
+
+    // Subject of the message
+    subject: 'Nodemailer is unicode friendly ✔', //
+
+    // plaintext body
+    text: 'Hello to myself!',
+
+    // HTML body
+    html:'&lt;p&gt;&lt;b&gt;Hello&lt;/b&gt; to myself &lt;img src="cid:note@node"/&gt;&lt;/p&gt;'+
+         '&lt;p&gt;Here\'s a nyan cat for you as an embedded attachment:&lt;br/&gt;&lt;img src="cid:nyan@node"/&gt;&lt;/p&gt;',
+
+    // An array of attachments
+    attachments:[
+
+        // String attachment
+        {
+            fileName: 'notes.txt',
+            contents: 'Some notes about this e-mail',
+            contentType: 'text/plain' // optional, would be detected from the filename
+        },
+
+        // Binary Buffer attachment
+        {
+            fileName: 'image.png',
+            contents: new Buffer('iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/' +
+                                 '//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U' +
+                                 'g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC', 'base64'),
+
+            cid: 'note@node' // should be as unique as possible
+        },
+
+        // File Stream attachment
+        {
+            fileName: 'nyan cat ✔.gif',
+            filePath: __dirname+"/nyan.gif",
+            cid: 'nyan@node' // should be as unique as possible
+        }
+    ]
+};</code></pre>
+		</div>
+	</div>
+</body>
+</html>

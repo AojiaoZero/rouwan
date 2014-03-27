@@ -34,11 +34,12 @@
 		<h2>实际应用举例</h2>
 		<div class="box">
 			使用配置信息为<code class="language-javascript"> test </code>的账户发送邮件给<code class="language-"> to@example.com </code>
-			<pre><code class="language-javascript">rw.mail('test',{
-	from: "test &lt;test@example.com&gt;",    /* 发件人 */
-	to: "to@example.com",    /* 收件人 */
-	subject: "subject",    /* 邮件标题 */
-	html:"content"    /* 邮件内容 */
+			<pre><code class="language-javascript">rw.mail('test',
+	{
+		from: "test &lt;test@example.com&gt;",    /* 发件人 */
+		to: "to@example.com",    /* 收件人 */
+		subject: "subject",    /* 邮件标题 */
+		html: "content"    /* 邮件HTML内容 */
 	},
 	function(error,data){
 		/* ...省略... */

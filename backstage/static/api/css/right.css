@@ -85,6 +85,12 @@ code{
 .stable span{
 	color:green;
 }
+.normal{
+	border-color:blue;
+}
+.normal span{
+	color:blue;
+}
 
 .apilist{
 	margin:25px 25px 0;
