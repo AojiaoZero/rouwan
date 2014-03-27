@@ -188,3 +188,19 @@ exports.monthLength=function(m,y){
 	}
 	return arr[m];
 };
+
+exports.jsonCensor=function(censor){
+	var i=0;
+	return function(key,value){
+		if(i!==0 && typeof(censor)==='object' && typeof(value)=='object' && censor==value){
+			return '[Circular]';
+		}
+		if(i>=29){
+			return '[Data Too Long]';
+		}
+		++i;
+		key=null;
+		censor=null;
+		return value;
+	}
+};
