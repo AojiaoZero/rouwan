@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Mongo - Rouwan - BackStage</title>
+	<meta name="keywords" content="mongodb,mongo,数据库,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Mongo" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Mongo</h1>
+		<div class="box">
+			Rouwan的Mongo链接使用<code class="language-javascript"> node-mongodb-native </code><br />
+			关于<code class="language-javascript"> mongodb </code>的配置，等更多信息请参考左侧<code> Feature </code>内的<code> Mongo </code>
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.mongocollist">Function: rw.mongoColList</a></li>
+				<li><a href="#rw.mongo.init">Function: rw.mongo.init</a></li>
+				<li><a href="#rw.mongo.objectid">Function: rw.mongo.objectID</a></li>
+			</ul>
+		</div>
+		<a id="rw.mongocollist"></a>
+		<h2>rw.mongoColList <span>(Object)</span></h2>
+		<div class="box">
+			全部打开的Collection保存与此变量内，其数据结构如下
+			<pre><code class="language-javascript">{
+	"database.collection": {    /* 数据库名.Collection名 */
+		/* 此为database数据库内Collection集合的node-mongodb-native的Collection，可以直接进行find等操作 */
+	},
+	/* ...省略... */
+}</code></pre>
+		</div>
+		
+		<a id="rw.mongo.init"></a>
+		<h2>rw.mongo.init ( callback<span>:function</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>初始化MongoDB，并按照Config内的配置建立MongoDB链接</h3>
+			<div class="var">
+				<code> callback </code>为<code class="language-javascript"> function </code>，数据库链接完成后执行<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+		</div>
+		
+		<a id="rw.mongo.objectid"></a>
+		<h2>rw.mongo.objectID ( id<span>:string</span> )<span>:ObjectID</span></h2>
+		<div class="box">
+			<h3>创建/将字符串转换为MongoDB的ObjectId</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>，需要转换为<code> ObjectID </code>的数据<br />
+				&nbsp;返回<code> ObjectID </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.mongoColList['example.cola'].findOne(
+	{_id: rw.mongo.objectID('99da9fba415fc9b1e1213527c185e1e1')},
+	{_id: true, value: true},
+	function(error,data){
+		/* ...省略... */
+	}
+)</code></pre>
+		</div>
+	</div>
+</body>
+</html>
