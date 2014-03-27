@@ -91,6 +91,12 @@ exports.config={
 			root:__dirname+'/../example/',
 			staticPath:__dirname+'/../example/static/',
 			indexFile:'index.html',
+			/* ssl:{
+				port:443,
+				ca:'/root/example.ca-bundle',
+				key:'/root/example_private_key.pem',
+				cert:'/root/example.crt',
+			}, */
 			errorPage:{
 				//403:'403.html',
 				//404:'404.html'
