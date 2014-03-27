@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Http - Rouwan - BackStage</title>
+	<meta name="keywords" content="http,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Http" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Http</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.http.zout">Function: rw.http.zout</a></li>
+				<li><a href="#rw.http.throw">Function: rw.http.throw</a></li>
+				<li><a href="#rw.http.get">Function: rw.http.get</a></li>
+				<li><a href="#rw.http.staticfilerequest">Function: rw.http.staticFileRequest</a></li>
+				<li><a href="#rw.http.receivepostdata">Function: rw.http.receivePostData</a></li>
+				<li><a href="#rw.http.runmodule">Function: rw.http.runMoudle</a></li>
+			</ul>
+		</div>
+		
+		<a id="rw.http.zout"></a>
+		<h2>rw.http.zout ( data<span>:string</span>, req<span>:request</span>, res<span>:response</span>, h<span>:headerObject</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>压缩并输出数据(res.end())，自动判断支持的压缩类型/不压缩</h3>
+			<div class="var">
+				<code> data </code>为<code> string </code>，要输出的内容<br />
+				<code> req </code>为<code> request </code><br />
+				<code> res </code>为<code> response </code><br />
+				<code> h </code>为<code> headerObject </code>，可为空，若不为空则使用<code> h </code>作为输出的<code> header </code><br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.http.zout('something to zout.', req, res)</code></pre>
+		</div>
+		
+		<a id="rw.http.throw"></a>
+		<h2>rw.http.throw ( id<span>:number</span>, res<span>:response</span>, data<span>:string</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>输出HTTP错误信息页面</h3>
+			<div class="var">
+				<code> id </code>为<code> number </code>，HTTP代码<br />
+				<code> res </code>为<code> response </code><br />
+				<code> data </code>为<code> string </code>，当<code> id </code>为<code> 302 </code>时，<code> data </code>为跳转到的页面<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.http.throw(302, res, 'http://example.com/abc.html')</code></pre>
+			<pre><code class="language-javascript">/* 支持的HTTP代码列表 */
+/* id : 真实返回的http代码 : 说明 */
+0 : 200 : Invalid Hostname
+2 : 200 : 正在维护
+3 : 200 : 返回空白内容
+302 : 200 : 转向到data地址，使用html模拟转向规避可能带来的cookie问题
+304 : 304 : Not Modified
+403 : 403 : Access Denied
+404 : 404 : File Not Found
+405 : 405 : Method Not Allowed
+500 : 500 : Internal Server Error</code></pre>
+		</div>
+		
+		<a id="rw.http.get"></a>
+		<h2>rw.http.get ( url<span>:string</span>, callback<span>:function</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>通过get方式获取一个url资源</h3>
+			<div class="var">
+				<code> url </code>为<code> string </code>，请求的资源地址<br />
+				<code> callback </code>为<code class="language-javascript"> function </code>，传递一个变量<code> result </code>；请求成功时<code> result </code>为URL对应的资源数据<code> Buffer </code>，若请求失败，则<code> result </code>为<code class="language-javascript"> false </code><br />
+				&nbsp;返回<code> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.http.get('http://example.com/abc.html', 
+	function(result){
+		/* ...省略... */
+	}
+);</code></pre>
+		</div>
+		
+		<a id="rw.http.staticfilerequest"></a>
+		<h2>rw.http.staticFileRequest ( - )<span>:-</span></h2>
+		<div class="box">
+			<h3>系统函数</h3>
+		</div>
+		
+		<a id="rw.http.receivepostdata"></a>
+		<h2>rw.http.receivePostData ( - )<span>:-</span></h2>
+		<div class="box">
+			<h3>系统函数</h3>
+		</div>
+		
+		<a id="rw.http.runmoudle"></a>
+		<h2>rw.http.runMoudle ( - )<span>:-</span></h2>
+		<div class="box">
+			<h3>系统函数</h3>
+		</div>
+	</div>
+</body>
+</html>

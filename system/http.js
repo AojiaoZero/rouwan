@@ -88,7 +88,7 @@ exports.throw=function(id,res,data){
 			);
 			break;
 		case 500:
-			if(data){
+			if(data && data.url){
 				data.url=JSON.stringify(data.url);
 				rw.log.write(data.server+': '+data.url+'\n'+data.stack,'error');
 			}
