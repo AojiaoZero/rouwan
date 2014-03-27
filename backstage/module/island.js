@@ -117,7 +117,11 @@ var dataReceived=function(req,res){
 			i=null;
 			arr=null;
 			var o={'js':'$i.oided(json.re,json.oid)','re':o,'oid':req.post.oid};
-			rw.http.zout(JSON.stringify(o,rw.util.jsonCensor(o)),req,res);
+			try{
+				rw.http.zout(JSON.stringify(o),req,res);
+			}catch(e){
+				rw.http.zout(JSON.stringify(o,rw.util.jsonCensor(o)),req,res);
+			}
 			req=null;
 			res=null;
 			break;
