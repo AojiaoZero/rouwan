@@ -9,6 +9,7 @@ console.log('System Module [FS] Loaded.');
 
 console.log('Load Config File ...');
 global.rw.config=require('../config/config.js').config;
+console.log('Rouwan Version: '+rw.config.version+' (Build '+rw.config.build+')');
 console.log('Config File Loaded.');
 
 console.log('Load Module [Util] ...');
@@ -18,6 +19,8 @@ console.log('Module [Util] Loaded.');
 console.log('Load Module [Log] ...');
 global.rw.log=require('./log.js');
 rw.log.write('Module [Log] Loaded.');
+
+rw.log.write('Rouwan Version: '+rw.config.version+' (Build '+rw.config.build+')');
 
 rw.log.write('Load Module [Dying] ...');
 global.rw.dying=require('./dying.js').dying;
