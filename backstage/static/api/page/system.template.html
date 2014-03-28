@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Tempalte - Rouwan - BackStage</title>
+	<meta name="keywords" content="template,模板,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Tempalte" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Tempalte</h1>
+		<div class="box">
+			Rouwan提供了简单的模板和模板缓存功能<br />
+			关于<code> template </code>的更多信息请参考左侧<code> Feature </code>内的<code> Template </code>
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.tcache">Object: rw.tcache</a></li>
+				<li><a href="#rw.t.load">Function: rw.t.load</a></li>
+				<li><a href="#rw.t.render">Function: rw.t.render</a></li>
+				<li><a href="#rw.t.deletecache">Function: rw.t.deleteCache</a></li>
+			</ul>
+		</div>
+		<a id="rw.tcache"></a>
+		<h2>rw.tcache <span>(Object)</span></h2>
+		<div class="box">
+			全部模板缓存保存与此，其数据结构如下
+			<pre><code class="language-javascript">{
+	"example": "value",
+	"/www/myname.html", "My name is {{NAME}}.",
+	/* ...省略... */
+}</code></pre>
+		</div>
+		
+		<a id="rw.t.load"></a>
+		<h2>rw.t.load ( source<span>:string</span>, clear<span>:boolean = false</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>加载一个模板并存入缓存</h3>
+			** 使用<code> rw.t.render </code>时会自动调用此函数，一般不需直接使用此函数 **
+			<div class="var">
+				<code> source </code>为<code> string </code>，要加载的文件地址，如果不存在则加载并存入缓存，若缓存已存在则不加载<br />
+				<code> clear </code>为<code> boolean </code>，默认为<code class="language-javascript"> false </code>，表示若缓存存在则不加载；若为<code class="language-javascript"> true </code>，表示无视缓存强制加载并刷新缓存<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+		</div>
+		
+		<a id="rw.t.render"></a>
+		<h2>rw.t.render ( source<span>:string</span>, data<span>:object = null</span>, name<span>:string = null</span>, clear<span>:boolean = false</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>渲染一个模板</h3>
+			<div class="var">
+				<code> source </code>为模板文件地址，会通过<code class="language-javascript"> rw.t.load(source, clear) </code>加载并处理该文件<br />
+				<code> data </code>为<code> object </code>，要渲染入模板的数据<br />
+				<code> name </code>为<code> string </code>，若不为空，则表示将渲染结果存入缓存，并可以通过<code class="language-javascript"> rw.tcache[name] </code>调用该缓存<br />
+				<code> clear </code>为<code> boolean </code>，默认为<code class="language-javascript"> false </code>，表示若缓存存在则不加载；若为<code class="language-javascript"> true </code>，表示无视缓存强制加载并刷新缓存<br />
+				&nbsp;返回渲染好的数据<code> string </code><br /><br />
+			</div>
+			<h3>渲染举例</h3>
+				模板内容，该模板保存为<code class="language-javascript"> /www/template/name.html </code>
+				<pre><code class="language-javascript">&lt;div&gt;My name is {{NAME}}.&lt;/div&gt;</code></pre>
+				渲染该模板
+				<pre><code class="language-javascript">rw.t.render('/www/template/name.html', {'NAME':'Sai'}, 'myNameCache');</code></pre>
+				输出结果
+				<pre><code class="language-javascript">&lt;div&gt;My name is Sai.&lt;/div&gt;</code></pre>
+				执行一次后，<code class="language-javascript"> /www/template/name.html </code>会被加入缓存，第二次调用时将直接从缓存中读取<br />
+				同时创建新的模板缓存<code> myNameCache </code>，可以通过<code class="language-javascript"> rw.tcache['myNameCache'] </code>访问
+		</div>
+		
+		<a id="rw.t.deletecache"></a>
+		<h2>rw.t.deleteCache ( id<span>:string</span>, link<span>:boolean = false</span> )<span>:Boolean</span></h2>
+		<div class="box">
+			<h3>删除一个/全部模板缓存数据</h3>
+			<div class="var">
+				<code> id </code>为<code> string </code>模板文件地址/缓存名，若为<code> all </code>, 则表示删除全部缓存<br />
+				<code> link </code>为<code> booelan </code>，默认为<code class="language-javascript"> false </code>，是否删除其关联缓存<br />
+				&nbsp;返回<code class="language-javascript"> true | false </code>, 是否删除成功
+			</div>
+		</div>
+	</div>
+</body>
+</html>
