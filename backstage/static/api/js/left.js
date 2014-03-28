@@ -10,7 +10,7 @@ var $m={
 		},
 		{
 			'title':'API',
-			'child':['system.cache','system.counter','system.http','system.log','system.mail','system.mongo','system.server','system.session','system.template','system.util','system.validator']
+			'child':['system.core','system.cache','system.counter','system.http','system.log','system.mail','system.mongo','system.server','system.session','system.template','system.util','system.validator']
 		}
 	],
 	build:function(){
