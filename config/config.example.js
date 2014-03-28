@@ -1,6 +1,6 @@
 exports.config={
 	version:0.1,
-	build:2013032601,
+	build:2014032601,
 	host:'YOUR SERVER NAME',
 	reloadInt:5000,
 	http:{
