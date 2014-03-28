@@ -85,7 +85,7 @@ exports.config={
 	},
 
 	server:{
-		'Example.com':{
+		'ExampleServer':{
 			host:['example.com','localhost','127.0.0.1'],
 			port:80,
 			root:__dirname+'/../example/',

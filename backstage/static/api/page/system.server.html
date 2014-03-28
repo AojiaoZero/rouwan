@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Server - Rouwan - BackStage</title>
+	<meta name="keywords" content="server,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan Server" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Server</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#request">About: Request &amp; Response</a></li>
+				<li><a href="#rw.serverlist">Object: rw.serverList</a></li>
+				<li><a href="#rw.routerlist">Object: rw.routerList</a></li>
+				<li><a href="#rw.stb">Boolean: rw.stb</a></li>
+				<li><a href="#rw.server.start">Function: rw.server.start</a></li>
+				<li><a href="#rw.server.request">Function: rw.server.request</a></li>
+			</ul>
+		</div>
+		
+		<a id="request"></a>
+		<h2>request</h2>
+		<div class="box">
+			<h3>关于Rouwan对Request及Response的二次加工，两者相比NodeJs原生的Request/Response增加以下内容</h3>
+			以下内容基于下方举例配置文件
+			<pre><code class="language-javascript">/* 配置文件举例 */
+exports.config={
+	/* ...省略... */
+	server:{
+		'ExampleServer':{
+			host:['example.com','localhost','127.0.0.1'],
+			/* ...省略... */
+			router:{
+				'index':['','index','index.html'],
+				'test':['test','test.html']
+			}
+			/* ...省略... */
+		},
+	/* ...省略... */
+}</code></pre>
+			<code> req.server </code>，<code> res.server </code>，为对应请求的vhost的名字即<code> rw.config.server </code>中的<code> key </code>
+			<pre><code class="language-javascript">/* 针对上述配置文件，请求http://example.com/a/b/c/d.html产生的req.server及res.server如下 */
+req.server='ExampleServer'
+res.server='ExampleServer'</code></pre>
+			<code> req.host </code> 为 <code> req.headers.host </code>
+			<pre><code class="language-javascript">/* 针对上述配置文件，请求http://example.com/a/b/c/d.html产生的req.host */
+req.host='example.com'</code></pre>
+			<code> req.url </code>为经过<code class="language-javascript"> url.parse(req.url, true) </code>的<code> req.url </code><br />
+			<code> req.url.pathname </code>为经过<code class="language-javascript"> path.normalize(req.url.pathname) </code>的<code> req.url.pathname </code><br />
+			<code> req.url.router </code>为经过<code class="language-javascript"> req.url.pathname.split('/').slice(1) </code>的数据，即Router
+			<pre><code class="language-javascript">/* 针对上述配置文件，请求http://example.com/a/b/c/d.html产生的req.url.router如下 */
+req.url.router=[ 'a', 'b', 'c', 'd.html' ]</code></pre>
+			<code> req.cookie </code>为经过对象化处理过的<code> req.headers.cookie </code>数据<br />
+			<code> req.module </code>为<code> req.url.router </code>中的第一个元素对应的Router脚本名
+			<pre><code class="language-javascript">/* 针对上述配置文件，请求http://example.com/test.html产生的req.module */
+req.module='test'</code></pre>
+		</div>
+		
+		<a id="rw.serverlist"></a>
+		<h2>rw.serverList <span>(Object)</span></h2>
+		<div class="box">
+			请求的域名和vhost的对应关系，如
+			<pre><code class="language-javascript">{
+	'localhost': 'ExampleServer',
+	'127.0.0.1': 'ExampleServer',
+	'example.com': 'ExampleServer'
+}</code></pre>
+		</div>
+		
+		<a id="rw.routerlist"></a>
+		<h2>rw.routerList <span>(Object)</span></h2>
+		<div class="box">
+			Router与执行脚本(req.module)的对应关系，如
+			<pre><code class="language-javascript">{
+	'ExampleA.com': {
+		'': 'index',
+		'index': 'index',
+		'index.html': 'index',
+		'test': 'test',
+		'test.html': 'test'
+	}
+}</code></pre>
+		</div>
+		
+		<a id="rw.stb"></a>
+		<h2>rw.stb <span>(Object)</span></h2>
+		<div class="box">
+			<h3>服务器是否为Busy状态</h3>
+			默认为<code class="language-javascript"> false </code><br />
+			如果设为<code class="language-javascript"> true </code>，则会对任何请求返回内容<code> Server is too busy. </code>
+		</div>
+		
+		<a id="rw.server.start"></a>
+		<h2>rw.server.start (  )<span>:null</span></h2>
+		<div class="box">
+			<h3>启动Rouwan Server</h3>
+		</div>
+		
+		<a id="rw.server.request"></a>
+		<h2>rw.server.request ( - )<span>:-</span></h2>
+		<div class="box">
+			<h3>系统函数</h3>
+		</div>
+	</div>
+</body>
+</html>
