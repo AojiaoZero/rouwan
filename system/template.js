@@ -77,13 +77,16 @@ exports.clearCacheLink=function(source){
 	}
 };
 
-exports.deleteCache=function(id){
+exports.deleteCache=function(id,link){
 	if(id=='all'){
 		rw.tcache=null;
 		rw.tcache={};
 		return true;
 	}else{
 		rw.tcache[id]=null;
+		if(link){
+			exports.clearCacheLink(id);
+		}
 		return delete rw.tcache[id];
 	}
 };
