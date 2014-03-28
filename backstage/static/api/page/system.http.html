@@ -19,6 +19,7 @@
 				状态：<span>稳定</span></code></pre>
 			</div>
 			<ul class="apilist">
+				<li><a href="#http.sp">Speical: http.sp (文件/请求地址fix)</a></li>
 				<li><a href="#rw.http.zout">Function: rw.http.zout</a></li>
 				<li><a href="#rw.http.throw">Function: rw.http.throw</a></li>
 				<li><a href="#rw.http.get">Function: rw.http.get</a></li>
@@ -26,6 +27,19 @@
 				<li><a href="#rw.http.receivepostdata">Function: rw.http.receivePostData</a></li>
 				<li><a href="#rw.http.runmodule">Function: rw.http.runMoudle</a></li>
 			</ul>
+		</div>
+		<a id="http.sp"></a>
+		<h2>http.sp</h2>
+		<div class="box">
+			<h3>文件/请求地址fix，可用于避免目录嵌套错误等</h3>
+			使用时在请求末尾添加<code> sp </code>参数即可，详细用法请看举例
+			<pre><code class="language-javascript">/* 请求地址 */
+A: http://example.com/a/b/c.html?sp=2
+B: http://example.com/x/a/b/c.html?sp=2</code></pre>
+			此时添加了<code> sp=2 </code>后，<code> A </code>与<code> B </code>的实际解析地均为同样结果，如下
+			<pre><code class="language-javascript">/* 实际解析地址 */
+http://example.com/b/c.html?sp=2</code></pre>
+			即，只保留最后<code> sp </code>层文件夹地址
 		</div>
 		
 		<a id="rw.http.zout"></a>
