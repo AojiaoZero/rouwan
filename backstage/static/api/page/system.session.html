@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Session - Rouwan - BackStage</title>
+	<meta name="keywords" content="session,会话,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan System Cache" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Session</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li><a href="#rw.session">Object: rw.session</a></li>
+				<li><a href="#rw.sessionloaded">Boolean: rw.sessionLoaded</a></li>
+				<li><a href="#rw.sess.init">Function: rw.sess.init</a></li>
+				<li><a href="#rw.sess.start">Function: rw.sess.start</a></li>
+				<li><a href="#edit">访问及修改Session内容</a></li>
+			</ul>
+		</div>
+		<a id="rw.session"></a>
+		<h2>rw.session <span>(Object)</span></h2>
+		<div class="box">
+			全部Session数据保存于此，数据结构如下
+			<pre><code class="language-javascript">{
+	"99da9fba415fc9b1e1213527c185e1e1": {    /* Session ID */
+		"sid": "99da9fba415fc9b1e1213527c185e1e1",    /* Session ID */
+		"ctime": 1395741106089,    /* Session 创建时间，ms */
+		"utime": 1396001154404,    /* Session 更新时间，ms */
+		"data": {    /* Session内存储的数据 */
+			/* ...省略... */
+		}
+	},
+	/* ...省略... */
+}</code></pre>
+		</div>
+		
+		<a id="rw.sessionloaded"></a>
+		<h2>rw.sessionLoaded <span>(Boolean)</span></h2>
+		<div class="box">
+			<h3>Session数据是否加载完毕</h3>
+		</div>
+		
+		<a id="rw.sess.init"></a>
+		<h2>rw.sess.init ( callback<span>:function</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>初始化Session模块</h3>
+			<div class="var">
+				<code> callback </code>为<code class="language-javascript"> function </code>，初始化完成后执行<br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+		</div>
+		
+		<a id="rw.sess.start"></a>
+		<h2>rw.sess.start ( req<span>:request</span>, res<span>:response</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>启动Session</h3>
+			<div class="var">
+				<code> req </code>为<code> request </code><br />
+				<code> res </code>为<code> response </code><br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.sess.start(req, res);    /* 启动Session */
+req.session.data['system_login']='yes';    /* 设置req的Session的"system_login"为"yes" */
+</code></pre>
+		</div>
+		
+		<a id="edit"></a>
+		<h2>访问及修改Session内容</h2>
+		<div class="box">
+			<h3>修改Session</h3>
+			<div class="var">
+				执行<code class="language-javascript"> rw.sess.start(req,res) </code>启动session后，即可通过<code> req.session </code>及<code> req.session.data </code>访问和修改Session内容
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
