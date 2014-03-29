@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http: //www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>System.Util - Rouwan - BackStage</title>
+	<meta name="keywords" content="util,工具,rouwan,nodejs,rouwanapi" />
+	<meta name="description" content="Rouwan System Cache" />
+	<meta name="author" content="Sai" />
+	<meta name="copyright" content="2014 Sai" />
+	<link href="../css/right.css" rel="stylesheet" type="text/css" />
+	<link href="../css/prism.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/prism.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<h1>System.Util</h1>
+		<div class="box">
+			<div class="sbox stable">
+				状态：<span>稳定</span></code></pre>
+			</div>
+			<ul class="apilist">
+				<li>日期相关</li>
+				<li><a href="#rw.util.date">Function: rw.util.date</a></li>
+				<li><a href="#rw.util.nfix">Function: rw.util.nfix</a></li>
+				<li><a href="#rw.util.s2t">Function: rw.util.s2t</a></li>
+				<li><a href="#rw.util.dayname">Function: rw.util.dayName</a></li>
+				<li><a href="#rw.util.monthlength">Function: rw.util.monthLength</a></li>
+				<li>数据库</li>
+				<li><a href="#rw.util.seq">Function: rw.util.seq</a></li>
+				<li>安全相关</li>
+				<li><a href="#rw.util.safe">Function: rw.util.safe</a></li>
+				<li><a href="#rw.util.safereg">Function: rw.util.safeReg</a></li>
+				<li><a href="#rw.util.isemail">Function: rw.util.isEmail</a></li>
+				<li>MD5/密码服务</li>
+				<li><a href="#rw.util.md5">Function: rw.util.md5</a></li>
+				<li><a href="#rw.util.randmd5id">Function: rw.util.randMd5Id</a></li>
+				<li><a href="#rw.util.newsalt">Function: rw.util.newSalt</a></li>
+				<li><a href="#rw.util.newpassword">Function: rw.util.newPassword</a></li>
+				<li><a href="#rw.util.checkpassword">Function: rw.util.checkPassword</a></li>
+				<li>其他</li>
+				<li><a href="#rw.util.jsoncensor">Function: rw.util.jsonCensor</a></li>
+			</ul>
+		</div>
+		
+		<a id="rw.util.date"></a>
+		<h2>rw.util.date ( str<span>:string</span>, t<span>:number = null</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>按照格式返回当前/指定时间的格式化数据</h3>
+			<div class="var">
+				<code> str </code>为<code> string </code>，要返回的日期格式，可混合其他字符串<br />
+				<code> t </code>为<code> number </code>，指定时间，单位ms；若为空则设为当前时间<br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.date('y年m月d日 h:i:s', 1396067512611);
+/* 输出结果：2014年03月29日 12:31:52 */
+</code></pre>
+			<h3>参数介绍</h3>
+			<pre><code class="language-javascript">/* 参数介绍 */
+/* 参数 : 举例 : 说明 */
+y : 2014 : 年
+m : 03 : 月
+d : 29 : 日
+h : 12 : 小时
+i : 35 : 分钟
+s : 34 : 秒
+q : 113 : 毫秒
+w : 6 : 星期
+e : Sat : 星期.EN
+z : 六 : 星期.ZH
+j : 土 : 星期.JP
+</code></pre>
+		</div>
+		
+		<a id="rw.util.nfix"></a>
+		<h2>rw.util.nfix ( n<span>:string</span>, l<span>:number</span>, f<span>:string = '0'</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>按照指定长度和内容补全字符串</h3>
+			<div class="var">
+				<code> n </code>为<code> string </code>，待补全的内容<br />
+				<code> l </code>为<code> number </code>，补全后的长度<br />
+				<code> f </code>为<code> string </code>，用于补全的内容<br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.nfix('3', 2);    /* 一位日期补全为两位 */
+/* 输出结果：03 */
+rw.util.nfix('a', 3, 'x');
+/* 输出结果：xxa */
+</code></pre>
+		</div>
+		
+		<a id="rw.util.s2t"></a>
+		<h2>rw.util.s2t ( t<span>:number</span> )<span>:array</span></h2>
+		<div class="box">
+			<h3>将秒数转为天，小时，分，秒</h3>
+			<div class="var">
+				<code> t </code>为<code> number </code>，需要转换的时间，单位s<br />
+				&nbsp;返回形如<code class="language-javascript"> [日, 时, 分, 秒] </code>的<code> array </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.s2t(100);
+/* 输出：[0, 0, 1, 40] */
+rw.util.s2t(311345);
+/* 输出：[3, 14, 29, 5] */
+</code></pre>
+		</div>
+		
+		<a id="rw.util.dayname"></a>
+		<h2>rw.util.dayName ( d<span>:number</span>, lan<span>:string = null</span> )<span>:array</span></h2>
+		<div class="box">
+			<h3>将数字转换为星期</h3>
+			<div class="var">
+				<code> d </code>为<code> number </code>，需要转换的数字<br />
+				<code> lan </code>为<code> string </code>，转换为的语言，默认为数字格式，<code> 0 </code>对应<code> 7 </code><br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.dayName(3);
+/* 输出：3 */
+rw.util.dayName(3, 'zh');
+/* 输出：三 */
+</code></pre>
+			<h3>参数介绍</h3>
+			<pre><code class="language-javascript">/* 参数介绍 */
+/* lan : 0~6对应 */
+en : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+zh : ['日','一','二','三','四','五','六']
+jp : ['日','月','火','水','木','金','土']
+默认 : ['7','1','2','3','4','5','6']
+</code></pre>
+		</div>
+		
+		<a id="rw.util.monthlength"></a>
+		<h2>rw.util.monthLength ( m<span>:number</span>, y<span>:number</span> )<span>:number</span></h2>
+		<div class="box">
+			<h3>返回月份的天数</h3>
+			<div class="var">
+				<code> m </code>为<code> number </code>，月份<br />
+				<code> y </code>为<code> number </code>，年份，自动判断闰年，可为空，为空则按照非闰年判定<br />
+				&nbsp;返回<code> number </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.monthLength(2, 2012);
+/* 输出：29 */</code></pre>
+		</div>
+		
+	</div>
+</body>
+</html>
