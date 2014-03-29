@@ -145,6 +145,30 @@ rw.util.monthLength(2, 2012);
 /* 输出：29 */</code></pre>
 		</div>
 		
+		<a id="rw.util.seq"></a>
+		<h2>rw.util.seq ( col<span>:collection</span>, id<span>:string</span>, callback<span>:function</span>, step<span>:number = 1</span> )<span>:null</span></h2>
+		<div class="box">
+			<h3>创建/获得自增长ID并返回</h3>
+			<div class="var">
+				<code> col </code>为<code> collection </code>，MongoDB的collectionObject<br />
+				<code> id </code>为<code> string </code>，自增长ID<br />
+				<code> callback </code>为<code> function </code>，自增长完成后执行，并传递两个参数<code> error </code>和<code> object </code><br />
+				<code> step </code>为<code> number </code>，自增长数字，默认为<code> 1 </code><br />
+				&nbsp;返回<code class="language-javascript"> null </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.seq(
+	rw.mongoColList['test.seq'],
+	'userid',
+	function(error, result){
+		/* result的内容如下 (Collection内的数据结构和result的结构相同)
+		{ _id: 'userid', v: 948 }
+		v 即最新的id值
+		 */
+	}
+)</code></pre>
+		</div>
+		
 	</div>
 </body>
 </html>

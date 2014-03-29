@@ -140,8 +140,11 @@ exports.dayName=function(id,lan){
 	}
 };
 
-exports.seq=function(col,id,callback){
-	col.findAndModify({'_id':id},[],{'$inc':{'v':1}},{'new':true,'upsert':true},function(e,d){
+exports.seq=function(col,id,callback,step){
+	if(!step){
+		step=1;
+	}
+	col.findAndModify({'_id':id},[],{'$inc':{'v':step}},{'new':true,'upsert':true},function(e,d){
 		callback(e,d);
 		e=null;
 		d=null;
