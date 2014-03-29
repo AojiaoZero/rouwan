@@ -209,6 +209,67 @@ rw.util.seq(
 /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/</code></pre>
 		</div>
 		
+		<a id="rw.util.md5"></a>
+		<h2>rw.util.md5 ( s<span>:string</span>, d<span>:string = 'hex'</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>生成md5</h3>
+			<div class="var">
+				<code> s </code>为<code> string </code>，待处理的数据<br />
+				<code> d </code>为<code> string </code>，生成的md5数据格式，默认为<code> hex </code><br />
+				&nbsp;返回<code> number </code>
+			</div>
+		</div>
+		
+		<a id="rw.util.randmd5id"></a>
+		<h2>rw.util.randMd5Id ( )<span>:string</span></h2>
+		<div class="box">
+			<h3>随机生成一个md5字符串</h3>
+			<div class="var">
+				&nbsp;返回<code> string </code>
+			</div>
+		</div>
+		
+		<a id="rw.util.newsalt"></a>
+		<h2>rw.util.newSalt ( )<span>:string</span></h2>
+		<div class="box">
+			<h3>随机生成一个新的Salt用于密码服务等</h3>
+			<div class="var">
+				&nbsp;返回长度为<code> 6 </code>的随机<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.newSalt();
+/* 输出：237238 */</code></pre>
+		</div>
+		
+		<a id="rw.util.newpassword"></a>
+		<h2>rw.util.newPassword ( password<span>:string</span>, salt<span>:string</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>根据一个Salt生成一个加密过的密码</h3>
+			<div class="var">
+				<code> password </code>为<code> string </code>，原始密码<br />
+				<code> salt </code>为<code> string </code>，Salt<br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.newPassword('password', '237238');
+/* 输出：cac927443fbb10376dd528b59a2b7194 */</code></pre>
+		</div>
+		
+		<a id="rw.util.checkpassword"></a>
+		<h2>rw.util.checkPassword ( password<span>:string</span>, realpass<span>:string</span>, salt<span>:string</span> )<span>:boolean</span></h2>
+		<div class="box">
+			<h3>验证密码</h3>
+			<div class="var">
+				<code> password </code>为<code> string </code>，待验证的密码<br />
+				<code> realpass </code>为<code> string </code>，真实<code> rw.util.newPassword()的密码 </code><br />
+				<code> salt </code>为<code> string </code>，Salt<br />
+				&nbsp;返回<code class="language-javascript"> true | false </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+rw.util.checkPassword('password', 'cac927443fbb10376dd528b59a2b7194', '237238');
+/* 输出：true */</code></pre>
+		</div>
+		
 		<a id="rw.util.jsoncensor"></a>
 		<h2>rw.util.jsonCensor ( censor<span>:object</span> )<span>:function</span></h2>
 		<div class="box">
