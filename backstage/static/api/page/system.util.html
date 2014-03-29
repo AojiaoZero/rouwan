@@ -209,6 +209,23 @@ rw.util.seq(
 /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/</code></pre>
 		</div>
 		
+		<a id="rw.util.jsoncensor"></a>
+		<h2>rw.util.jsonCensor ( censor<span>:object</span> )<span>:function</span></h2>
+		<div class="box">
+			<h3>辅助JSON.stringify处理大变量/Circular Object</h3>
+			<div class="var">
+				<code> censor </code>为<code> string </code>，待处理的Object<br />
+				&nbsp;返回<code class="language-javascript"> function </code>
+			</div>
+			<pre><code class="language-javascript">/* 举例 */
+var o={ /* 非常复杂的Object，包含Circular */ };
+try{
+	console.log(JSON.stringify(o));
+}catch(e){
+	console.log(JSON.stringify(o, rw.util.jsonCensor(o)));
+}</code></pre>
+		</div>
+		
 	</div>
 </body>
 </html>
