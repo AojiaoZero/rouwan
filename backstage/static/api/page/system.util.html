@@ -169,6 +169,46 @@ rw.util.seq(
 )</code></pre>
 		</div>
 		
+		<a id="rw.util.safe"></a>
+		<h2>rw.util.safe ( s<span>:string</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>防注入安全过滤</h3>
+			<div class="var">
+				<code> s </code>为<code> string </code>，需要过滤的数据<br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* rw.util.safe 会过滤以下内容 */
+/* 过滤的内容 : 过滤为 */
+' : & #39;
+" : & quot;
+< : & lt;
+> : & gt;</code></pre>
+		</div>
+		
+		<a id="rw.util.safereg"></a>
+		<h2>rw.util.safeReg ( s<span>:string</span> )<span>:string</span></h2>
+		<div class="box">
+			<h3>正则安全过滤，确保使用new RegExp()创建正则是不会产生恶意正则，并将空格替换为".*"以供数据库查询</h3>
+			<div class="var">
+				<code> s </code>为<code> string </code>，需要过滤的数据<br />
+				&nbsp;返回<code> string </code>
+			</div>
+			<pre><code class="language-javascript">/* rw.util.safe 会过滤以下内容 */
+['.', '+', '*', '^', '$', '-', '[', ']', '|', '/', '\\', '{', '}', '(', ')', '?', ',']</code></pre>
+		</div>
+		
+		<a id="rw.util.isemail"></a>
+		<h2>rw.util.isEmail ( email<span>:string</span> )<span>:boolean</span></h2>
+		<div class="box">
+			<h3>验证是否为Email</h3>
+			<div class="var">
+				<code> email </code>为<code> string </code>，待验证的Email地址<br />
+				&nbsp;返回<code class="language-javascript"> true | false </code>
+			</div>
+			<pre><code class="language-javascript">/* rw.util.isEmail 使用该正则验证Email地址 */
+/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/</code></pre>
+		</div>
+		
 	</div>
 </body>
 </html>
