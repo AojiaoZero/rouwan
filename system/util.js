@@ -122,7 +122,7 @@ exports.safeReg=function(s){
 };
 
 exports.dayName=function(id,lan){
-	if(id==-1){
+	if(id<0 || id>6){
 		return '?';
 	}
 	switch(lan){
