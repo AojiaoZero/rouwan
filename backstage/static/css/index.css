@@ -1,11 +1,13 @@
-.process,.object,.session,.cache,.monitor{
+.process,.object,.session,.cache,.timetag{
 	font-size:14px;
 	margin:5px 18px 40px;
 }
 .cache{
 	margin:8px 18px 40px;
 }
-
+.hide{
+	display:none;
+}
 #oid{
 	width:400px;
 	font-size:15px;
