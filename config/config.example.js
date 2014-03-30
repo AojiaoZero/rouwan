@@ -59,6 +59,7 @@ exports.config={
 			restart:true,
 			exit:true,
 			email:true,
+			timetag:true,
 			object:{
 				view:true,
 				edit:true,
