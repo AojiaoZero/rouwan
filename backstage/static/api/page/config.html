@@ -78,7 +78,7 @@
 			restart: true,    /* 是否允许通过后台重启Rouwan */
 			exit: true,    /* 是否允许通过后台关闭Rouwan */
 			email: true,    /* 后台登录时，是否发送邮件通知 */
-			timetag:true,    /* 是否开启效率统计，timeTag会记录请求的平均处理时间以及最耗时的请求 */
+			timetag:true,    /* 是否开启效率统计，timeTag会记录请求的平均处理时间以及最耗时的请求，仅限使用rw.http.zout输出的请求；可能会提高负载 */
 			object: {
 				view: true,    /* 是否允许通过后台查看变量 */
 				edit: true,    /* 是否允许通过后台编辑变量 */

@@ -10,8 +10,10 @@
 			<div{{TTHI}}>
 				<h1>Time Tag</h1>
 				<div class="timetag">
-					Time Spent Per Request [10m, 60m, 1d]: {{TSPR}}<br />
-					Longest: {{LONG}}
+					Time Spent Per Request: {{TSPR}}<br />
+					Last [10m, 1h, 1d]: {{TSPRA}}<br />
+					Longest Request: {{LONG}}<br />
+					[ <a href="javascript:void(0)" onclick="$i.ll()" id="lla">List 10 Longest Request</a><span id="llh"></span> ]
 				</div>
 			</div>
 			<div>

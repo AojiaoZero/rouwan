@@ -55,6 +55,7 @@ exports.request=function(req,res){
 		return;
 	}
 	res.server=req.server=rw.serverList[req.headers.host];
+	req.ourl=req.url;
 	req.url=rw.url.parse(req.url,true);
 	res.host=req.headers.host;
 	if(req.url.query.sp){

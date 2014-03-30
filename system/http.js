@@ -285,7 +285,69 @@ exports.staticFileRequest=function(req,res){
 	});
 };
 
+global.rw.timeTag={
+	s:0,
+	c:0,
+	t:0,
+	m:{
+		s:0,
+		c:0,
+		t:0,
+	},
+	h:{
+		s:0,
+		c:0,
+		t:0
+	},
+	d:{
+		s:0,
+		c:0,
+		t:0
+	},
+	list:[{url:'default',time:0}]
+};
+var timeTagSort=function(a,b){return b.time-a.time;}
 exports.zout=function(data,req,res,h){
+	if(rw.config.backstage.switch.timetag){
+		req.timetag.push(process.hrtime());
+		var ttms=(req.timetag[1][0]-req.timetag[0][0])*1000;
+		ttms+=(req.timetag[1][1]-req.timetag[0][1])*0.000001;
+		var d=new Date().getTime();
+		if(!rw.timeTag.s){rw.timeTag.s=d;}
+		if(!rw.timeTag.m.s){rw.timeTag.m.s=d;}
+		if(!rw.timeTag.h.s){rw.timeTag.h.s=d;}
+		if(!rw.timeTag.d.s){rw.timeTag.d.s=d;}
+		rw.timeTag.c++;
+		rw.timeTag.t+=ttms;
+		if((d-rw.timeTag.m.s)>600000){
+			rw.timeTag.m.s=d;
+			rw.timeTag.m.c=0;
+			rw.timeTag.m.t=0;
+		}
+		rw.timeTag.m.c++;
+		rw.timeTag.m.t+=ttms;
+		if((d-rw.timeTag.h.s)>3600000){
+			rw.timeTag.h.s=d;
+			rw.timeTag.h.c=0;
+			rw.timeTag.h.t=0;
+		}
+		rw.timeTag.h.c++;
+		rw.timeTag.h.t+=ttms;
+		if((d-rw.timeTag.d.s)>86400000){
+			rw.timeTag.d.s=d;
+			rw.timeTag.d.c=0;
+			rw.timeTag.d.t=0;
+		}
+		rw.timeTag.d.c++;
+		rw.timeTag.d.t+=ttms;
+		d=null
+		ttms=null;
+		if(ttms>rw.timeTag.list[rw.timeTag.list.length-1].time){
+			rw.timeTag.list.push({url:req.ourl,time:ttms});
+			rw.timeTag.list.sort(timeTagSort);
+			rw.timeTag=rw.timeTag.splice(0,10);
+		}
+	}
 	if(!req.headers['accept-encoding']){
 		res.writeHead(200,rw.config.http.header);
 		res.end(data);
@@ -400,6 +462,9 @@ exports.receivePostData=function(req,res,callback){
 };
 
 exports.runModule=function(req,res){
+	if(rw.config.backstage.switch.timetag){
+		req.timetag=[process.hrtime()];
+	}
 	var m=req.server+'.'+req.module;
 	if(!rw.moduleList[m]){
 		try{
