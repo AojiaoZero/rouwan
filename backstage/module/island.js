@@ -445,6 +445,11 @@ var dataReceived=function(req,res){
 			req=null;
 			res=null;
 			break;
+		case 'll':
+			rw.http.zout(JSON.stringify({'js':'$i.lld(json.l)','l':rw.timeTag.list}),req,res);
+			req=null;
+			res=null;
+			break;
 		default:
 			rw.http.throw(3,res);
 			req=null;

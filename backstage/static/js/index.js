@@ -210,6 +210,20 @@ var $i={
 	scuped:function(c){
 		alert(c+' Sessions Deleted.');
 		$("#sessionClean").html('<a href="javascript:void(0)" onclick="$i.scup()">Clean Now</a>');
+	},
+	ll:function(){
+		$("#lla").hide();
+		$("#llh").html('Loading...');
+		$m.post('./island?sp=1',{"do":"ll"});
+	},
+	lld:function(l){
+		var i,re='';
+		for(i in l){
+			re+='<li>'+l[i].url+'<span>'+(l[i].time).toFixed(5)+' ms</span></li>';
+		}
+		$("#llh").html('');
+		$("#lla").show();
+		$("#llRe").html(re);
 	}
 };
 var $ipwd={

@@ -34,14 +34,14 @@
 	background:#ff6f70;
 }
 
-#cacheRe{
+#cacheRe,#llRe{
 	margin:15px 0 40px 18px !important;
 	font-size:15px;
 }
-#cacheRe li{
+#cacheRe li,#llRe li{
 	list-style:disc !important;
 }
-#cacheRe span{
+#cacheRe span,#llRe span{
 	display:block !important;
 	font-size:13px !important;
 	color:#999999;
