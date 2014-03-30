@@ -22,7 +22,7 @@ var $a={
 			$("#version").html("");
 		}
 		if(obj.doing.length>0){
-			re+='我正在做: <ul class="uul">';
+			re+='正在努力: <ul class="uul">';
 			for(i in obj.doing){
 				re+='<li>'+obj.doing[i]+'</li>';
 			}
