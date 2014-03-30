@@ -340,13 +340,13 @@ exports.zout=function(data,req,res,h){
 		}
 		rw.timeTag.d.c++;
 		rw.timeTag.d.t+=ttms;
+		if(ttms>rw.timeTag.list[rw.timeTag.list.length-1].time){
+			rw.timeTag.list.push({url:'http://'+req.headers.host+req.ourl,time:ttms});
+			rw.timeTag.list.sort(timeTagSort);
+			rw.timeTag.list=rw.timeTag.list.splice(0,10);
+		}
 		d=null
 		ttms=null;
-		if(ttms>rw.timeTag.list[rw.timeTag.list.length-1].time){
-			rw.timeTag.list.push({url:req.ourl,time:ttms});
-			rw.timeTag.list.sort(timeTagSort);
-			rw.timeTag=rw.timeTag.splice(0,10);
-		}
 	}
 	if(!req.headers['accept-encoding']){
 		res.writeHead(200,rw.config.http.header);

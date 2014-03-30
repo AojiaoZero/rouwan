@@ -22,6 +22,7 @@ exports.run=function(req,res){
 		if(rw.timeTag.c>0){
 			tspr='<b>'+(rw.timeTag.t/rw.timeTag.c).toFixed(5)+' ms</b>';
 			tspra='<b>'+(rw.timeTag.m.t/rw.timeTag.m.c).toFixed(5)+' ms, '+(rw.timeTag.h.t/rw.timeTag.h.c).toFixed(5)+' ms, '+(rw.timeTag.d.t/rw.timeTag.d.c).toFixed(5)+' ms</b>';
+			long='<b>'+rw.timeTag.list[0].time+'ms, '+rw.timeTag.list[0].url+'</b>';
 		}
 	}
 	rw.http.zout(
