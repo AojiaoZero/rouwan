@@ -304,7 +304,7 @@ global.rw.timeTag={
 		c:0,
 		t:0
 	},
-	list:[{url:'Log after 30s',time:0}]
+	list:[{url:'Log after 30s',module:'default',time:0}]
 };
 var timeTagSort=function(a,b){return b.time-a.time;}
 exports.zout=function(data,req,res,h){
@@ -341,10 +341,20 @@ exports.zout=function(data,req,res,h){
 		rw.timeTag.d.c++;
 		rw.timeTag.d.t+=ttms;
 		if(ttms>rw.timeTag.list[rw.timeTag.list.length-1].time && (d-rw.timeTag.s)>30000){
-			rw.timeTag.list.push({url:'http://'+req.headers.host+req.ourl,time:ttms});
+			rw.timeTag.list.push({url:'http://'+req.headers.host+req.ourl,module:req.server+'.'+req.module,time:ttms});
 			rw.timeTag.list.sort(timeTagSort);
-			rw.timeTag.list=rw.timeTag.list.splice(0,10);
+			var ttarr=[],nttarr=[],tti=0;
+			for(tti;tti<rw.timeTag.list.length;tti++){
+				if(ttarr.indexOf(rw.timeTag.list[tti].module)==-1){
+					nttarr.push(rw.timeTag.list[tti]);
+					ttarr.push(rw.timeTag.list[tti].module);
+				}
+			}
+			rw.timeTag.list=nttarr.splice(0,10);
 		}
+		nttarr=null;
+		ttarr=null;
+		tti=null;
 		d=null
 		ttms=null;
 	}
