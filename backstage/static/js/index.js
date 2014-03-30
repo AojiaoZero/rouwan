@@ -213,6 +213,7 @@ var $i={
 	},
 	ll:function(){
 		$("#lla").hide();
+		$("#llca").hide();
 		$("#llh").html('Loading...');
 		$m.post('./island?sp=1',{"do":"ll"});
 	},
@@ -223,7 +224,20 @@ var $i={
 		}
 		$("#llh").html('');
 		$("#lla").show();
+		$("#llca").show();
 		$("#llRe").html(re);
+	},
+	llc:function(){
+		$("#lla").hide();
+		$("#llca").hide();
+		$("#llch").html('Loading...');
+		$m.post('./island?sp=1',{"do":"llc"});
+	},
+	llcd:function(){
+		$("#lla").show();
+		$("#llca").show();
+		$("#llch").html('');
+		$("#llRe").html('<li>Cleared.</li>');
 	}
 };
 var $ipwd={
