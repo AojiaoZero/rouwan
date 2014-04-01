@@ -20,6 +20,12 @@ exports.validate=function(m,o){
 			if(m[i].uppercase){
 				o[i]=o[i].toUpperCase();
 			}
+			if(m[i].reg){
+				if(!m[i].reg.test(o[i])){
+					re.push(m[i].fail);
+					continue;
+				}
+			}
 			if(m[i].inarr){
 				if(m[i].inarr.indexOf(o[i])<0){
 					re.push(m[i].fail);
