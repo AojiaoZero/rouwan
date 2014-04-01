@@ -1,6 +1,6 @@
 {
   "name": "rouwan",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple web server based on NodeJs.",
   "main": "rouwan.js",
   "scripts": {
