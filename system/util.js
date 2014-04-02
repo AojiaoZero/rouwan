@@ -185,6 +185,7 @@ exports.randMd5Id=function(){
 };
 
 exports.monthLength=function(m,y){
+	y=y?y:1;
 	var arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
 	if(!(y%100)){
 		y*=0.01;
