@@ -186,7 +186,10 @@ exports.randMd5Id=function(){
 
 exports.monthLength=function(m,y){
 	var arr=[0,31,28,31,30,31,30,31,31,30,31,30,31];
-	if(y && !(y%4) && m==2){
+	if(!(y%100)){
+		y*=0.01;
+	}
+	if(!(y%4) && m==2){
 		return 29;
 	}
 	return arr[m];
