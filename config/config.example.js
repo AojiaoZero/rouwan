@@ -1,5 +1,5 @@
 exports.config={
-	version:'0.1.0',
+	version:'0.1.2',
 	build:2014040101,
 	host:'YOUR SERVER NAME',
 	reloadInt:5000,
@@ -7,7 +7,7 @@ exports.config={
 		header:{
 			'Content-Type':'text/html;charset=utf-8',
 			'charset':'utf-8',
-			'Server':'Rouwan/0.1.0'
+			'Server':'Rouwan/0.1.2'
 		},
 		
 		debug:true,

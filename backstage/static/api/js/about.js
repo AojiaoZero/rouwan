@@ -1,6 +1,6 @@
 var $a={
 	cvr:{
-		version:0.1,
+		version:'0.1.2',
 		build:2014032601,
 	},
 	vr:function(){
