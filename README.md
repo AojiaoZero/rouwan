@@ -18,3 +18,8 @@ Rouwan
 ========
 
 请参考API文档：http://rouwan.us/api/index.html
+
+正在努力(2014.04.04)
+========
+
+* 添加连接池
