@@ -41,6 +41,7 @@ exports.start=function(){
 	
 };
 
+global.rw.httpConnectionPool=[];
 global.rw.stb=false;
 exports.request=function(req,res){
 	if(rw.stb){
