@@ -5,8 +5,6 @@ exports.write=function(data,type,sync){
 	if(rw.config.log[type] && rw.config.log[type].of){
 		color=rw.config.log[type].color;
 		exports.writeFile(data,rw.config.log[type].path+rw.config.log[type].filename+'_'+rw.util.date('ymd')+'.log',sync);
-	}else if(!config[type]){
-		exports.writeFile(data,rw.config.log['system'].path+rw.config.log['system'].filename+'_'+rw.util.date('ymd')+'.log',sync);
 	}
 	console.log('\033[0;'+color+';1m'+data+'\033[0m');
 };
