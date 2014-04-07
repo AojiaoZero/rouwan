@@ -4,8 +4,8 @@ exports.config={
 	host:'YOUR SERVER NAME',
 	reloadInt:5000,
 	http:{
-		maxConnection:0,
-		timeout:120000,
+		//maxConnection:0,
+		//timeout:120000,
 		
 		header:{
 			'Content-Type':'text/html;charset=utf-8',
