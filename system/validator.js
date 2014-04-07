@@ -26,32 +26,26 @@ exports.validate=function(m,o){
 					continue;
 				}
 			}
-			if(m[i].inarr){
-				if(m[i].inarr.indexOf(o[i])<0){
-					re.push(m[i].fail);
-					continue;
-				}
-			}
 			if(m[i].type){
 				if(m[i].type=='number'){
 					o[i]=Number(o[i]);
+					if(isNaN(o[i])){
+						re.push(m[i].fail);
+						continue;
+					}
 				}
 				if(typeof(o[i])!=m[i].type){
 					re.push(m[i].fail);
 					continue;
 				}
 				if(m[i].type=='number' && m[i].value){
-					if(m[i].value[0]){
-						if(o[i]<m[i].value[0] && m[i].value[0]!='open'){
-							re.push(m[i].fail);
-							continue;
-						}
+					if(o[i]<m[i].value[0] && m[i].value[0]!='open'){
+						re.push(m[i].fail);
+						continue;
 					}
-					if(m[i].value[1]){
-						if(o[i]>m[i].value[1] && m[i].value[1]!='open'){
-							re.push(m[i].fail);
-							continue;
-						}
+					if(o[i]>m[i].value[1] && m[i].value[1]!='open'){
+						re.push(m[i].fail);
+						continue;
 					}
 				}
 			}
@@ -67,6 +61,12 @@ exports.validate=function(m,o){
 						re.push(m[i].fail);
 						continue;
 					}
+				}
+			}
+			if(m[i].inarr){
+				if(m[i].inarr.indexOf(o[i])<0){
+					re.push(m[i].fail);
+					continue;
 				}
 			}
 		}
