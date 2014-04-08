@@ -16,6 +16,8 @@ exports.config={
 		debug:true,
 		printPostData:true, // print post data to console.
 		
+		maxPostSize:2097152,
+		
 		allowEmptyExtname:false,
 		allowFileDownload:true,
 		maxAge:30*24*3600,

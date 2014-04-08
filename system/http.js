@@ -415,7 +415,7 @@ exports.receivePostData=function(req,res,callback){
 	req.on("data",function(chunk){
 		chunks.push(chunk);
 		size+=chunk.length;
-		if(size>=2097152){
+		if(size>=rw.config.http.maxPostSize){
 			exports.throw(405,res);
 			chunks=null;
 			size=null;
