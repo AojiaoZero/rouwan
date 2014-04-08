@@ -169,7 +169,7 @@ exports.get=function(url,callback){
 			}else{
 				callback(data);
 				ac=null;
-				data=nulll;
+				data=null;
 			}
 		});
 	}).on("error",function(){
