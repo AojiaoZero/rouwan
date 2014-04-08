@@ -40,6 +40,9 @@
 		debug: true,    /* 是否开启Debug模式，如开启，在发生错误时，会在HTTP 500页面内输出详细错误调试信息 */
 		printPostData: true,    /* 是否在控制台上打印post数据，用于调试 */
 		
+		/* POST */
+		maxPostSize:2097152,    /* 最大post数据的大小 */
+		
 		/* 静态文件 */
 		allowEmptyExtname: false,    /* 是否允许访问无扩展名的静态文件 */
 		allowFileDownload: true,    /* 是否允许下载MIME列表以外静态文件 */
