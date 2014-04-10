@@ -113,6 +113,7 @@
 			host: ['example.com','localhost','127.0.0.1'],    /* 绑定的host/domain name */
 			port: 80,    /* 端口 */
 			root: __dirname+'/../example/',    /* Root目录，存放处理请求的脚本，对应router，请尽量使用绝对路径 */
+			/* 在Rouwan创建vHost时，如果root目录下存在名为init.js的文件时，会在创建vHost前执行init.js文件一次，之后不会二次执行 */
 			staticPath: __dirname+'/../example/static/',    /* 静态文件目录，请尽量使用绝对路径 */
 			indexFile: 'index.html',    /* 请求静态目录时的默认索引文件，若为空则表示不索引 */
 			
