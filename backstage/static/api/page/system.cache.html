@@ -46,13 +46,14 @@
 		</div>
 		
 		<a id="rw.cache.put"></a>
-		<h2>rw.cache.put ( id<span>:string</span>, data<span>:*</span>, expire<span>:number = 0</span> )<span>:null</span></h2>
+		<h2>rw.cache.put ( id<span>:string</span>, data<span>:*</span>, expire<span>:number = 0</span>, save<span>:boolean = true</span> )<span>:null</span></h2>
 		<div class="box">
 			<h3>创建一个新的缓存</h3>
 			<div class="var">
 				<code> id </code>为<code> string </code>，缓存的ID/名称<br />
 				<code> data </code>可为任意格式的数据，缓存的数据<br />
 				<code> expire </code>为<code> number </code>，过期时间，单位为ms；可以为0，为0表示不过期<br />
+				<code> save </code>为<code> boolean </code>，是否将该缓存内容保存到磁盘上<br />
 				&nbsp;返回<code class="language-javascript"> null </code>
 			</div>
 			<pre><code class="language-javascript">/* 举例 */
