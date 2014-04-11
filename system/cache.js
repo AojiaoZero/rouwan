@@ -1,7 +1,8 @@
 global.rw.cacheData={};
 
-exports.put=function(id,data,expire){
+exports.put=function(id,data,expire,save){
 	var create=new Date().getTime(),destory;
+	if(typeof(save)!='undefined'){save=true;}
 	if(!expire){expire=0;}
 	if(expire==0){
 		destory=0;
@@ -14,6 +15,7 @@ exports.put=function(id,data,expire){
 		destory:destory,
 		expire:expire,
 		expired:false,
+		save:save,
 		data:data
 	};
 };

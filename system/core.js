@@ -79,6 +79,20 @@ rw.log.write('Load Module [Cache] ...');
 global.rw.cache=require('./cache.js');
 rw.log.write('Module [Cache] Loaded.');
 
+rw.log.write('Initializing Cache ...');
+rw.log.write('Reloading Cache ...');
+if(rw.fs.existsSync(rw.config.dying.cache.path+'cache.json')){
+	var fss=rw.fs.statSync(rw.config.dying.cache.path+'cache.json');
+	rw.log.write('Cache Size ['+fss.size+']');
+	try{
+		rw.cacheData=JSON.parse(rw.fs.readFileSync(rw.config.dying.cache.path+'cache.json'));
+		rw.fs.unlinkSync(rw.config.dying.cache.path+'cache.json');
+	}catch(e){
+		rw.log.write('Cache Reload Error. '+e,'error');
+	}
+	fss=null;
+}
+
 rw.log.write('Load Module [Mail] ...');
 global.rw.server=require('./mail.js');
 rw.log.write('Module [Mail] Loaded.');

@@ -17,7 +17,7 @@ exports.init=function(callback){
 				rw.session=JSON.parse(rw.fs.readFileSync(rw.config.dying.session.path+'session.json'));
 				rw.fs.unlinkSync(rw.config.dying.session.path+'session.json');
 			}catch(e){
-				rw.log.write('Session Error. '+e,'error');
+				rw.log.write('Session Reload Error. '+e,'error');
 			}
 		}
 	}

@@ -192,6 +192,10 @@ exports.config={
 		session:{
 			save:true,
 			path:'./log/'
+		},
+		cache:{
+			save:true,
+			path:'./log/'
 		}
 	}
 };
