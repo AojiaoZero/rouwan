@@ -94,7 +94,7 @@ if(rw.fs.existsSync(rw.config.dying.cache.path+'cache.json')){
 }
 
 rw.log.write('Load Module [Mail] ...');
-global.rw.server=require('./mail.js');
+require('./mail.js');
 rw.log.write('Module [Mail] Loaded.');
 
 rw.log.write('Load Module [Session] ...');
